@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>La Farina — Sabores e Texturas</title>
+  <meta name="description" content="Pão artesanal, focaccias, massas frescas e conservas feitos à mão em Díli, Timor-Leste. Encomendas por WhatsApp.">
+  
+  <!-- Fontes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=Sora:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="grain"></div>
+
+  <!-- ============ HEADER / NAVEGAÇÃO ============ -->
+  <header class="main-header" id="topo">
+    <div class="header-container">
+      <div class="logo">
+        <a class="brand" href="#topo">
+          <span class="brand-word">La Farina</span>
+        </a>
+      </div>
+      
+      <div class="nav-wrapper">
+        <nav class="main-nav" id="mainNav">
+          <a href="#topo">Home</a>
+          <a href="#sobre">Sobre Nós</a>
+          <a href="#produtos">Produtos</a>
+          <a href="#contato">Contato</a>
+        </nav>
+        <a class="btn btn-primary btn-cart" href="#carrinho">Carrinho</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ CONTEÚDO PRINCIPAL ============ -->
+  <main>
+
+    <!-- Seção Hero (Introdução) -->
+    <section class="hero-section" id="home">
+      <div class="hero-image"></div>
+      <div class="hero-content">
+        <h2 class="section-subtitle">Sabores e texturas</h2>
+        <h1 class="hero-title">La Farina</h1>
+        <p class="hero-description">Pão artesanal, focaccias douradas e massas frescas feitas com paciência, tempo e dedicação, mesmo no coração de Díli.</p>
+        <a href="#produtos" class="btn btn-secondary">Ver Produtos</a>
+      </div>
+    </section>
+
+    <!-- Seção Sobre Nós -->
+    <section class="about-section" id="sobre">
+      <div class="about-image"></div>
+      <div class="about-content">
+        <h2 class="section-title">Sobre Nós</h2>
+        <p class="about-text">A La Farina é uma padaria artesanal localizada em Díli, Timor-Leste. Oferecemos uma variedade de pães de fermentação natural, focaccias, massas frescas e conservas feitos à mão com ingredientes de alta qualidade. Nosso objetivo é proporcionar aos nossos clientes uma experiência gastronômica única, combinando sabores autênticos e texturas irresistíveis.</p>
+        <a href="#contato" class="btn btn-outline">Saiba Mais</a>
+      </div>
+    </section>
+
+    <!-- Seção de Produtos -->
+    <section class="products-section" id="produtos">
+      <h2 class="section-title">Nossos Produtos</h2>
+      
+      <div class="products-grid">
+        <!-- Item 1: Pão -->
+        <div class="product-card">
+          <div class="product-thumb">
+            <img src="images/pao.jpg" alt="Pão Artesanal de Fermentação Natural">
+          </div>
+          <h3 class="product-name">Pão Artesanal</h3>
+          <p class="product-description">Delicioso pão feito à mão com crosta crocante e miolo macio.</p>
+          <a href="#contato" class="btn btn-product">Encomendar</a>
+        </div>
+
+        <!-- Item 2: Focaccia -->
+        <div class="product-card">
+          <div class="product-thumb">
+            <img src="images/focaccia.jpg" alt="Focaccia Artesanal com Alecrim">
+          </div>
+          <h3 class="product-name">Focaccia</h3>
+          <p class="product-description">Focaccia macia, regada com azeite e ervas frescas, perfeita para qualquer ocasião.</p>
+          <a href="#contato" class="btn btn-product">Encomendar</a>
+        </div>
+
+        <!-- Item 3: Massas -->
+        <div class="product-card">
+          <div class="product-thumb">
+            <img src="images/massa.jpg" alt="Massas Frescas Feitas à Mão">
+          </div>
+          <h3 class="product-name">Massas Frescas</h3>
+          <p class="product-description">Massas artesanais cortadas no dia, ideais para um almoço autêntico.</p>
+          <a href="#contato" class="btn btn-product">Encomendar</a>
+        </div>
+
+        <!-- Item 4: Conservas (Ajustado para evitar duplicados) -->
+        <div class="product-card">
+          <div class="product-thumb">
+            <img src="images/conservas.jpg" alt="Conservas Artesanais da Casa">
+          </div>
+          <h3 class="product-name">Conservas</h3>
+          <p class="product-description">Vegetais e condimentos selecionados preservados em azeite aromatizado.</p>
+          <a href="#contato" class="btn btn-product">Encomendar</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Seção de Contato / Encomendas -->
+    <section class="contact-section" id="contato">
+      <h2 class="section-title">Contato</h2>
+      <p class="contact-subtitle">Entre em contato conosco para encomendas e informações.</p>
+      
+      <form class="contact-form">
+        <div class="form-group">
+          <input type="text" placeholder="Nome" required class="form-control">
+        </div>
+        <div class="form-group">
+          <input type="email" placeholder="Email" required class="form-control">
+        </div>
+        <div class="form-group">
+          <textarea placeholder="Mensagem ou lista de pedido..." required class="form-control" rows="5"></textarea>
+        </div>
+        <button type="submit" class="btn btn-submit">Enviar Mensagem</button>
+      </form>
+    </section>
+
+  </main>
+
+  <!-- ============ RODAPÉ ============ -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <p class="copyright">&copy; 2026 La Farina. Todos os direitos reservados.</p>
+      <nav class="footer-nav">
+        <a href="#topo">Home</a>
+        <a href="#sobre">Sobre Nós</a>
+        <a href="#produtos">Produtos</a>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
+</body>
+</html>
