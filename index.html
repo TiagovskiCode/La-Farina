@@ -14,39 +14,32 @@
       href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Sora:wght@100..800&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
   </head>
 
   <body>
-    <header class="header">
+    <header class="header" id="topo">
       <div class="header-container">
         <div class="logo">
           <a href="index.html"><img src="logo.png" alt="La Farina Logo" /></a>
         </div>
-        <div class="navigation">
-          <div class="nav-bar">
-            <a href="index.html">Início</a>
-            <a href="about.html">Sobre Nós</a>
-            <a href="shop.html">Loja</a>
-            <a href="contact.html">Contactar</a>
-          </div>
-          <div>
-            <button class="order-button">
-              <a href="encomendar">Encomendar</a>
-            </button>
-          </div>
+        <div class="nav-bar">
+          <a href="index.html">Início</a>
+          <a href="about.html">Sobre Nós</a>
+          <a href="shop.html">Loja</a>
+          <a href="contact.html">Contactar</a>
         </div>
+        <button class="order-button" id="abrirCarrinhoTopo" type="button">
+          Carrinho <span id="contadorTopo" class="contador-badge">0</span>
+        </button>
       </div>
     </header>
 
     <main>
-      <section
-        class="hero"
-        class="background-image"
-        style="
-          background-image: url(&quot;img/background.jpg&quot;);
-          background-size: cover;
-        "
-      >
+      <section class="hero">
         <div class="hero-content">
           <h2>Sabores e Texturas</h2>
           <h1>La Farina</h1>
@@ -54,17 +47,46 @@
             Pão artesanal, focaccias douradas e massas frescas feitas com
             paciência, tempo e dedicação, mesmo no coração de Díli.
           </p>
-          <a href="shop.html" class="button"
-            >Ver produtos
-            <img src="img/right-arrow.png" alt="Seta para a direita"
-          /></a>
+          <div class="hero-actions">
+            <a href="shop.html" class="button">Ver produtos</a>
+            <a href="about.html" class="hero-link">Conhecer a nossa história →</a>
+          </div>
+        </div>
+        <a href="#sobre-nos" class="scroll-cue" aria-label="Descer para a próxima secção">
+          <span></span>
+        </a>
+      </section>
+
+      <section class="pilares">
+        <div class="pilares-grid">
+          <div class="pilar">
+            <span class="pilar-icone">🌾</span>
+            <h3>Feito à mão, todos os dias</h3>
+            <p>Sem atalhos: pão, massa e focaccia amassados e moldados à mão, no próprio dia.</p>
+          </div>
+          <div class="pilar">
+            <span class="pilar-icone">🍅</span>
+            <h3>Ingredientes frescos</h3>
+            <p>Trabalhamos com produtos locais e de qualidade, sem conservantes desnecessários.</p>
+          </div>
+          <div class="pilar">
+            <span class="pilar-icone">💛</span>
+            <h3>Impacto social real</h3>
+            <p>Cada encomenda apoia a formação de jovens timorenses em parceria com o Casa Vida.</p>
+          </div>
+          <div class="pilar">
+            <span class="pilar-icone">🛵</span>
+            <h3>Entrega em Díli</h3>
+            <p>Encomendas por WhatsApp, com entrega direta ao teu condomínio.</p>
+          </div>
         </div>
       </section>
 
-      <section class="about">
+      <section class="about" id="sobre-nos">
         <div class="about-content">
           <div class="about-image">
             <img src="img/meninas.png" alt="Imagem da padaria La Farina" />
+            <p class="about-card">A equipa por traz</p>
           </div>
           <div class="about-text">
             <h1>Quem somos nós ?</h1>
@@ -77,93 +99,99 @@
               pão, cada focaccia, cada massa carrega um pouco dessa história:
               comida feita com cuidado, para construir um futuro novo.
             </p>
-            <a href="about.html" class="button"
-              >Mais sobre nós !
-              <img src="img/right-arrow.png" alt="Seta para a direita"
-            /></a>
+            <a href="about.html" class="button">Mais sobre nós!</a>
           </div>
         </div>
       </section>
 
       <section class="massas">
         <div class="massas-info">
-          <h1>Recomendados pelo Chef</h1>
+          <h2>Recomendados pelo chefe</h2>
+
           <div class="cards">
             <div class="card">
-              <img src="img/pao.jpg" alt="" />
-              <h1>Pão Artesanal</h1>
-              <p>
-                Pão de fermentação e amassado lento, com crosta crocante e miolo
-                macio. Do clássico ao multigrãos, feito todos os dias.
-              </p>
-              <button class="button">
-                <a href=""
-                  >Ver mais desta categoria
-                  <img src="img/right-arrow.png" alt=""
-                /></a>
-              </button>
+              <img src="img/pao.jpg" alt="Pão Artesanal" />
+              <div class="card-info">
+                <h3>Pão Artesanal</h3>
+                <p>
+                  Pão de fermentação e amassado lento, com crosta crocante e miolo
+                  macio. Do clássico ao multigrãos, feito todos os dias.
+                </p>
+                <a href="shop.html#pao" class="button button--sm">Ver mais esta categoria</a>
+              </div>
             </div>
+
             <div class="card">
-              <img src="img/focaccias.jpg" alt="" />
-              <h1>Focaccias</h1>
-              <p>
-                Focaccias douradas, regadas em azeite e ervas frescas — salgadas
-                ou doces, perfeitas para partilhar.
-              </p>
-              <button class="button">
-                <a href=""
-                  >Ver mais desta categoria
-                  <img src="img/right-arrow.png" alt=""
-                /></a>
-              </button>
+              <img src="img/focaccias.jpg" alt="Focaccias" />
+              <div class="card-info">
+                <h3>Focaccias</h3>
+                <p>
+                  Focaccias douradas, regadas em azeite e ervas frescas — salgadas
+                  ou doces, perfeitas para partilhar.
+                </p>
+                <a href="shop.html#focaccia" class="button button--sm">Ver mais esta categoria</a>
+              </div>
             </div>
+
             <div class="card">
-              <img src="img/massas.jpg" alt="" />
-              <h1>Massas Frescas</h1>
-              <p>
-                Massa cortada e moldada à mão, no próprio dia. De fettuccine a
-                nhoque, para um prato com sabor de casa.
-              </p>
-              <button class="button">
-                <a href=""
-                  >Ver mais desta categoria
-                  <img src="img/right-arrow.png" alt=""
-                /></a>
-              </button>
+              <img src="img/massas.jpg" alt="Massas Frescas" />
+              <div class="card-info">
+                <h3>Massas Frescas</h3>
+                <p>
+                  Massa cortada e moldada à mão, no próprio dia. De fettuccine a
+                  nhoque, para um prato com sabor de casa.
+                </p>
+                <a href="shop.html#massas" class="button button--sm">Ver mais esta categoria</a>
+              </div>
             </div>
+
             <div class="card">
-              <img src="img/molhos.jpg" alt="" />
-              <h1>Molhos & Conservas</h1>
-              <p>
-                Compotas, chimichurri e conservas feitas em pequenos lotes — o
-                toque final para qualquer refeição.
-              </p>
-              <button class="button">
-                <a href=""
-                  >Ver mais desta categoria
-                  <img src="img/right-arrow.png" alt=""
-                /></a>
-              </button>
+              <img src="img/molhos.jpg" alt="Molhos e Conservas" />
+              <div class="card-info">
+                <h3>Molhos &amp; Conservas</h3>
+                <p>
+                  Compotas, chimichurri e conservas feitas em pequenos lotes — o
+                  toque final para qualquer refeição.
+                </p>
+                <a href="shop.html#molhos" class="button button--sm">Ver mais esta categoria</a>
+              </div>
             </div>
+          </div>
+
+          <div class="ver-loja-toda">
+            <a href="shop.html" class="button">Ver a loja toda</a>
           </div>
         </div>
       </section>
 
       <section class="encomendar">
         <div class="encomendar-info">
+          <span class="encomendar-eyebrow">Simples e rápido</span>
           <h1>Como encomendar ?</h1>
           <h2>Direto do forno para a tua mesa</h2>
           <div class="cards-encomendar">
             <div class="cards-encomendar-info">
-              <h1>1</h1>
+              <div class="passo-topo">
+                <span class="passo-icone">🛍️</span>
+                <span class="step-number">1</span>
+              </div>
+              <h3>Escolhe</h3>
               <p>Escolhe os produtos na loja e toca em "Adicionar"</p>
             </div>
             <div class="cards-encomendar-info">
-              <h1>2</h1>
+              <div class="passo-topo">
+                <span class="passo-icone">🛒</span>
+                <span class="step-number">2</span>
+              </div>
+              <h3>Confirma</h3>
               <p>Confirma a tua lista na barra do carrinho.</p>
             </div>
             <div class="cards-encomendar-info">
-              <h1>3</h1>
+              <div class="passo-topo">
+                <span class="passo-icone">✅</span>
+                <span class="step-number">3</span>
+              </div>
+              <h3>Finaliza</h3>
               <p>Toca em "Finalizar" e a encomenda é enviada.</p>
             </div>
           </div>
@@ -173,25 +201,26 @@
       <section class="reviews">
         <div class="reviews-info">
           <h1>O que dizem os nossos clientes</h1>
+          <p class="rating-stat">⭐ 4.9 <span>baseado nas avaliações dos nossos clientes em Díli</span></p>
           <div class="cards-reviews">
             <div class="cards-reviews-info">
-              <h1>⭐⭐⭐⭐⭐</h1>
+              <span class="stars">⭐⭐⭐⭐⭐</span>
               <p>
                 O pão multigrãos é incrível, sempre fresco e vale mesmo a pena.
                 Já é hábito encomendar todas as semanas.
               </p>
-              <h1>Tiago Teixeira, Díli</h1>
+              <span class="reviewer">Tiago Teixeira, Díli</span>
             </div>
             <div class="cards-reviews-info">
-              <h1>⭐⭐⭐⭐⭐</h1>
+              <span class="stars">⭐⭐⭐⭐⭐</span>
               <p>
                 A focaccia de tomate e pesto foi a melhor coisa que comi este
                 mês. Entrega rápida e tudo super bem embalado.
               </p>
-              <h1>Helder, Díli</h1>
+              <span class="reviewer">Helder, Díli</span>
             </div>
             <div class="cards-reviews-info">
-              <h1><img src="img/facebook.png" alt="" /></h1>
+              <span class="review-icon"><img src="img/facebook.png" alt="" /></span>
               <p>Ainda não deixaste a tua review?</p>
               <p>
                 Adorávamos saber a tua experiência com a La Farina — o que
@@ -212,66 +241,111 @@
             projeto? Estamos só a uma mensagem de distância.
           </p>
           <div class="redes-sociais">
-            <button>Falar no WhatsApp <img src="img/whatsapp.png" alt=""></button>
-            <button>Segue-nos no Instagram <img src="img/instagram.png" alt=""></button>
+            <button>
+              Falar no WhatsApp <img src="img/whatsapp.png" alt="" />
+            </button>
+            <button>
+              Segue-nos no Instagram <img src="img/instagram.png" alt="" />
+            </button>
           </div>
         </div>
       </section>
-
     </main>
 
     <footer class="main-footer">
-        
-        <div class="footer-content">
-            
-            <div class="footer-brand">
-                <div class="brand-header">
-                    <img src="https://via.placeholder.com/50/FFD700/000000?text=Logo" alt="La Farina Logo" class="brand-logo">
-                    
-                    <span class="brand-location">Díli, Timor-Leste</span>
-                    
-                    <div class="social-icons">
-                        <a href="#" class="social-icon whatsapp" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                        <a href="#" class="social-icon facebook" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-                        <a href="#" class="social-icon instagram" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-                
-                <p class="brand-description">
-                    Um projeto social em parceria com o <br>
-                    <strong>Casa Vida Women & Children's Shelter.</strong>
-                </p>
-            </div>
+      <div class="footer-cta">
+        <div class="footer-cta-inner">
+          <div>
+            <h2>Fica com fome só de pensar?</h2>
+            <p>Escolhe os teus favoritos na loja e recebe em casa, em Díli.</p>
+          </div>
+          <a href="shop.html" class="button">Ver a loja</a>
+        </div>
+      </div>
 
-            <div class="footer-links-col">
-                <h3>Navegação</h3>
-                <ul>
-                    <li><a href="#">Início</a></li>
-                    <li><a href="#">Sobre nós</a></li>
-                    <li><a href="#">Loja</a></li>
-                    <li><a href="#">Contactar</a></li>
-                </ul>
+      <div class="footer-content">
+        <div class="footer-brand">
+          <div class="brand-header">
+            <img src="logo.png" alt="La Farina Logo" class="brand-logo" />
+            <div class="brand-name-block">
+              <span class="brand-name">La Farina</span>
+              <span class="brand-location">Díli, Timor-Leste</span>
             </div>
+          </div>
 
-            <div class="footer-links-col">
-                <h3>Contacto</h3>
-                <ul>
-                    <li><a href="tel:#">Telefone</a></li>
-                    <li><a href="mailto:#">Email</a></li>
-                    <li><a href="#">Morada</a></li>
-                </ul>
-            </div>
+          <p class="brand-description">
+            Um projeto social em parceria com o
+            <strong>Casa Vida Women &amp; Children's Shelter.</strong>
+          </p>
 
+          <div class="social-icons">
+            <a href="#" class="social-icon whatsapp" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="#" class="social-icon facebook" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+            <a href="#" class="social-icon instagram" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          </div>
         </div>
 
-        <div class="footer-bottom">
-            <div class="footer-bottom-content">
-                <p>&copy; 2026 La Farina. Todos os direitos reservados.</p>
-                <p>Desenvolvido por Tiago Teixeira</p>
-            </div>
+        <div class="footer-links-col">
+          <h3>Navegação</h3>
+          <ul>
+            <li><a href="index.html">Início</a></li>
+            <li><a href="about.html">Sobre nós</a></li>
+            <li><a href="shop.html">Loja</a></li>
+            <li><a href="contact.html">Contactar</a></li>
+          </ul>
         </div>
 
+        <div class="footer-links-col">
+          <h3>Contacto</h3>
+          <ul>
+            <li><a href="tel:#">Telefone</a></li>
+            <li><a href="mailto:#">Email</a></li>
+            <li><a href="#">Morada</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links-col">
+          <h3>Horário</h3>
+          <ul>
+            <li>Segunda a sábado</li>
+            <li>8h &ndash; 18h</li>
+            <li>Encomendas por WhatsApp</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-bottom-content">
+          <p>&copy; 2026 La Farina. Todos os direitos reservados.</p>
+          <p>Desenvolvido por Tiago Teixeira</p>
+          <a href="#topo" class="voltar-topo">Voltar ao topo ↑</a>
+        </div>
+      </div>
     </footer>
 
+    <!-- ===================== PAINEL DO CARRINHO ===================== -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <aside class="cart-panel" id="cartPanel" aria-label="Carrinho de compras">
+      <div class="cart-panel-header">
+        <h2>O teu carrinho</h2>
+        <button class="cart-fechar" id="cartFecharBtn" aria-label="Fechar carrinho" type="button">&times;</button>
+      </div>
+
+      <div class="cart-panel-lista" id="cartLista">
+        <p class="cart-vazio" id="cartVazioMsg">O teu carrinho está vazio. Vai à loja e adiciona os teus favoritos!</p>
+      </div>
+
+      <div class="cart-panel-footer">
+        <div class="cart-total-row">
+          <span>Total</span>
+          <span id="cartTotal">$0</span>
+        </div>
+        <button class="button" id="cartCheckout" type="button" style="width:100%; justify-content:center;">
+          Finalizar no WhatsApp
+        </button>
+      </div>
+    </aside>
+
+    <script src="script.js"></script>
   </body>
 </html>
