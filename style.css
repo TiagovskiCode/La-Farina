@@ -154,7 +154,7 @@ p{
 }
 
 .logo{ justify-self: start; }
-.logo img{ width: 60px; height: auto; }
+.logo img{ width: 70px; height: auto; }
 
 .nav-bar{
   display: flex;
@@ -386,7 +386,7 @@ p{
 .about-text{ display: flex; flex-direction: column; }
 
 .about-text h1{
-  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-size: clamp(2.5rem, 3vw, 4.5rem);
   color: var(--green-lafarina);
   text-shadow: 0 2px 4px rgba(28,20,16,0.12);
   margin-bottom: 20px;
@@ -970,9 +970,9 @@ p{
 .page-hero{
   padding: 180px 5vw 80px;
   text-align: center;
-  background-color: var(--forest-deep);
-  background-image: radial-gradient(circle at 20% 20%, rgba(224,169,59,.12), transparent 45%),
-                     radial-gradient(circle at 80% 80%, rgba(58,120,59,.18), transparent 45%);
+  background-color: var(--forest);
+  background-image: url(img/background-massas.jpg);
+  background-size: cover;
 }
 .page-hero .hero-badge{
   color: var(--cream);
