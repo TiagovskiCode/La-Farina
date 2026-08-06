@@ -1,9 +1,15 @@
 <!doctype html>
-<html lang="en">
+<html lang="pt">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>La Farina - Bakery</title>
+    <title>La Farina — Pão, Focaccias e Massas Artesanais em Díli</title>
+    <meta name="description" content="La Farina: pão artesanal, focaccias e massas frescas feitas em Díli, Timor-Leste, em parceria com o Casa Vida Women & Children's Shelter. Encomenda por WhatsApp." />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="La Farina — Pão, Focaccias e Massas Artesanais em Díli" />
+    <meta property="og:description" content="Pão artesanal, focaccias e massas frescas feitas em Díli, em parceria com o Casa Vida Women & Children's Shelter." />
+    <meta property="og:image" content="logo.png" />
 
     <link rel="stylesheet" href="style.css" />
     <link rel="shortcut icon" href="logo.png" type="image/x-icon" />
@@ -26,15 +32,20 @@
         <div class="logo">
           <a href="index.html"><img src="logo.png" alt="La Farina Logo" /></a>
         </div>
-        <div class="nav-bar">
+        <nav class="nav-bar" id="mainNav">
           <a href="index.html">Início</a>
           <a href="about.html">Sobre Nós</a>
           <a href="shop.html">Loja</a>
           <a href="contact.html">Contactar</a>
+        </nav>
+        <div class="header-actions">
+          <button class="order-button" id="abrirCarrinhoTopo" type="button">
+            Carrinho <span id="contadorTopo" class="contador-badge">0</span>
+          </button>
+          <button class="nav-toggle" id="navToggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="mainNav">
+            <span></span><span></span><span></span>
+          </button>
         </div>
-        <button class="order-button" id="abrirCarrinhoTopo" type="button">
-          Carrinho <span id="contadorTopo" class="contador-badge">0</span>
-        </button>
       </div>
     </header>
 
@@ -48,7 +59,7 @@
             paciência, tempo e dedicação, mesmo no coração de Díli.
           </p>
           <div class="hero-actions">
-            <a href="shop.html" class="button">Ver produtos</a>
+            <a href="shop.html" class="button button--accent">Ver produtos</a>
             <a href="about.html" class="hero-link">Conhecer a nossa história →</a>
           </div>
         </div>
@@ -57,39 +68,35 @@
         </a>
       </section>
 
-      <section class="pilares">
-        <div class="pilares-grid">
-          <div class="pilar">
-            <span class="pilar-icone">🌾</span>
+      <section class="home-pilares">
+        <div class="home-pilares-grid">
+          <div class="home-pilar">
             <h3>Feito à mão, todos os dias</h3>
             <p>Sem atalhos: pão, massa e focaccia amassados e moldados à mão, no próprio dia.</p>
           </div>
-          <div class="pilar">
-            <span class="pilar-icone">🍅</span>
+          <div class="home-pilar">
             <h3>Ingredientes frescos</h3>
             <p>Trabalhamos com produtos locais e de qualidade, sem conservantes desnecessários.</p>
           </div>
-          <div class="pilar">
-            <span class="pilar-icone">💛</span>
+          <div class="home-pilar">
             <h3>Impacto social real</h3>
             <p>Cada encomenda apoia a formação de jovens timorenses em parceria com o Casa Vida.</p>
           </div>
-          <div class="pilar">
-            <span class="pilar-icone">🛵</span>
+          <div class="home-pilar">
             <h3>Entrega em Díli</h3>
             <p>Encomendas por WhatsApp, com entrega direta ao teu condomínio.</p>
           </div>
         </div>
       </section>
 
-      <section class="about" id="sobre-nos">
-        <div class="about-content">
-          <div class="about-image">
-            <img src="img/meninas.png" alt="Imagem da padaria La Farina" />
-            <p class="about-card">A equipa por traz</p>
+      <section class="home-sobre" id="sobre-nos">
+        <div class="home-sobre-content">
+          <div class="home-sobre-image">
+            <img src="img/meninas.jpg" alt="Imagem da padaria La Farina" />
+            <p class="home-sobre-card">A equipa por traz</p>
           </div>
-          <div class="about-text">
-            <h1>Quem somos nós ?</h1>
+          <div class="home-sobre-text">
+            <h2>Quem somos nós ?</h2>
             <p>
               A La Farina nasceu do trabalho voluntário da Chef Pollyanna
               Serrano no Casa Vida Women & Children's Shelter, em Díli. Aqui,
@@ -167,8 +174,8 @@
       <section class="encomendar">
         <div class="encomendar-info">
           <span class="encomendar-eyebrow">Simples e rápido</span>
-          <h1>Como encomendar ?</h1>
-          <h2>Direto do forno para a tua mesa</h2>
+          <h2>Como encomendar ?</h2>
+          <h3>Direto do forno para a tua mesa</h3>
           <div class="cards-encomendar">
             <div class="cards-encomendar-info">
               <div class="passo-topo">
@@ -200,7 +207,7 @@
 
       <section class="reviews">
         <div class="reviews-info">
-          <h1>O que dizem os nossos clientes</h1>
+          <h2>O que dizem os nossos clientes</h2>
           <p class="rating-stat">⭐ 4.9 <span>baseado nas avaliações dos nossos clientes em Díli</span></p>
           <div class="cards-reviews">
             <div class="cards-reviews-info">
@@ -232,21 +239,21 @@
         </div>
       </section>
 
-      <section class="contacto">
-        <div class="contacto-info">
-          <h1>Contacto</h1>
-          <h2>Fala conosco</h2>
+      <section class="home-contacto">
+        <div class="home-contacto-info">
+          <h2>Contacto</h2>
+          <h3>Fala conosco</h3>
           <p>
             Tens dúvidas, encomendas especiais ou queres saber mais sobre o
             projeto? Estamos só a uma mensagem de distância.
           </p>
-          <div class="redes-sociais">
-            <button>
-              Falar no WhatsApp <img src="img/whatsapp.png" alt="" />
-            </button>
-            <button>
-              Segue-nos no Instagram <img src="img/instagram.png" alt="" />
-            </button>
+          <div class="home-redes-sociais">
+            <a href="https://wa.me/67077467853" target="_blank" rel="noopener" class="button">
+              <i class="fab fa-whatsapp"></i> Falar no WhatsApp
+            </a>
+            <a href="https://www.instagram.com/lafarinatimor/" target="_blank" rel="noopener" class="button button--ghost">
+              <i class="fab fa-instagram"></i> Segue-nos no Instagram
+            </a>
           </div>
         </div>
       </section>
@@ -281,7 +288,7 @@
           <div class="social-icons">
             <a href="#" class="social-icon whatsapp" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
             <a href="#" class="social-icon facebook" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-            <a href="#" class="social-icon instagram" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.instagram.com/lafarinatimor/" class="social-icon instagram" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
           </div>
         </div>
 
@@ -340,7 +347,7 @@
           <span>Total</span>
           <span id="cartTotal">$0</span>
         </div>
-        <button class="button" id="cartCheckout" type="button" style="width:100%; justify-content:center;">
+        <button class="button button--accent" id="cartCheckout" type="button" style="width:100%; justify-content:center;">
           Finalizar no WhatsApp
         </button>
       </div>

@@ -47,23 +47,25 @@ const PRODUCTS = {
     { id: 'lasagne-beef',     name: 'Lasanha de Carne (1,7kg)',        price: 20, img: 'https://images.pexels.com/photos/5949922/pexels-photo-5949922.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Ingredientes frescos, pronta para o forno.' },
     { id: 'lasagne-veg',      name: 'Lasanha Vegetariana (1,7kg)',     price: 15, img: 'https://images.pexels.com/photos/4378160/pexels-photo-4378160.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Ingredientes frescos, pronta para o forno.' },
   ],
+  // NOTA: várias imagens desta categoria ainda estão repetidas (placeholders
+  // do Pexels). Por marcar com fotos reais dos produtos assim que as tivermos.
   molhos: [
-    { id: 'garlic-confit',    name: 'Confit de Alho',               price: 3,  img: 'https://images.pexels.com/photos/3273989/pexels-photo-3273989.jpeg?auto=compress&cs=tinysrgb&w=800' },
-    { id: 'chimichurri',      name: 'Chimichurri',                  price: 5,  img: 'https://images.pexels.com/photos/9685273/pexels-photo-9685273.jpeg?auto=compress&cs=tinysrgb&w=800' },
-    { id: 'caponata',         name: 'Caponata de Beringela',        price: 4,  img: 'https://images.pexels.com/photos/8580763/pexels-photo-8580763.jpeg?auto=compress&cs=tinysrgb&w=800' },
-    { id: 'peperonata',       name: 'Peperonata',                   price: 10, img: 'https://images.pexels.com/photos/1051849/pexels-photo-1051849.jpeg?auto=compress&cs=tinysrgb&w=800' },
-    { id: 'tomato-sauce-s',   name: 'Molho de Tomate',               price: 4,  img: 'https://images.pexels.com/photos/9685273/pexels-photo-9685273.jpeg?auto=compress&cs=tinysrgb&w=800' },
-    { id: 'brazil-chilli',    name: 'Pimenta Brasileira',           price: 4,  img: 'https://images.pexels.com/photos/8896839/pexels-photo-8896839.jpeg?auto=compress&cs=tinysrgb&w=800' },
-    { id: 'plum-merlot',      name: 'Compota de Ameixa com Merlot', price: 10, img: 'https://images.pexels.com/photos/1051849/pexels-photo-1051849.jpeg?auto=compress&cs=tinysrgb&w=800' },
-    { id: 'pineapple-ginger', name: 'Compota de Ananás e Gengibre', price: 5,  img: 'https://images.pexels.com/photos/8896839/pexels-photo-8896839.jpeg?auto=compress&cs=tinysrgb&w=800' },
-    { id: 'mango-passion',    name: 'Compota de Manga e Maracujá',  price: 5,  img: 'https://images.pexels.com/photos/1051849/pexels-photo-1051849.jpeg?auto=compress&cs=tinysrgb&w=800' },
-    { id: 'chili-jam',        name: 'Compota de Pimenta',           price: 5,  img: 'https://images.pexels.com/photos/8896839/pexels-photo-8896839.jpeg?auto=compress&cs=tinysrgb&w=800' },
-    { id: 'tangerine-jam',    name: 'Compota de Tangerina',         price: 7,  img: 'https://images.pexels.com/photos/1051849/pexels-photo-1051849.jpeg?auto=compress&cs=tinysrgb&w=800' },
-    { id: 'tomato-sauce-600', name: 'Molho de Tomate (600g)',       price: 5,  img: 'https://images.pexels.com/photos/9685273/pexels-photo-9685273.jpeg?auto=compress&cs=tinysrgb&w=800' },
-    { id: 'bolognese-600',    name: 'Molho Bolonhesa (600g)',       price: 8,  img: 'https://images.pexels.com/photos/5949922/pexels-photo-5949922.jpeg?auto=compress&cs=tinysrgb&w=800' },
-    { id: 'white-sauce-600',  name: 'Molho Branco (600g)',          price: 5,  img: 'https://images.pexels.com/photos/8580763/pexels-photo-8580763.jpeg?auto=compress&cs=tinysrgb&w=800' },
-    { id: 'cassava-powder',   name: 'Farinha de Mandioca (400g)',   price: 5,  img: 'https://images.pexels.com/photos/3273989/pexels-photo-3273989.jpeg?auto=compress&cs=tinysrgb&w=800' },
-    { id: 'potato-sticks',    name: 'Batata Palha (200g)',          price: 3,  img: 'https://images.pexels.com/photos/8580763/pexels-photo-8580763.jpeg?auto=compress&cs=tinysrgb&w=800' },
+    { id: 'garlic-confit',    name: 'Confit de Alho',               price: 3,  img: 'https://images.pexels.com/photos/3273989/pexels-photo-3273989.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Alho confitado lentamente em azeite.' },
+    { id: 'chimichurri',      name: 'Chimichurri',                  price: 5,  img: 'https://images.pexels.com/photos/9685273/pexels-photo-9685273.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Molho fresco de ervas, alho e vinagre.' },
+    { id: 'caponata',         name: 'Caponata de Beringela',        price: 4,  img: 'https://images.pexels.com/photos/8580763/pexels-photo-8580763.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Beringela agridoce ao estilo siciliano.' },
+    { id: 'peperonata',       name: 'Peperonata',                   price: 10, img: 'https://images.pexels.com/photos/1051849/pexels-photo-1051849.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Pimentos salteados em azeite e ervas.' },
+    { id: 'tomato-sauce-s',   name: 'Molho de Tomate',              price: 4,  img: 'https://images.pexels.com/photos/9685273/pexels-photo-9685273.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Molho de tomate tradicional, base para massas.' },
+    { id: 'brazil-chilli',    name: 'Pimenta Brasileira',           price: 4,  img: 'https://images.pexels.com/photos/8896839/pexels-photo-8896839.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Molho de pimenta com toque brasileiro.' },
+    { id: 'plum-merlot',      name: 'Compota de Ameixa com Merlot', price: 10, img: 'https://images.pexels.com/photos/1051849/pexels-photo-1051849.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Compota encorpada de ameixa reduzida em Merlot.' },
+    { id: 'pineapple-ginger', name: 'Compota de Ananás e Gengibre', price: 5,  img: 'https://images.pexels.com/photos/8896839/pexels-photo-8896839.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Doce e picante, ótima com queijos.' },
+    { id: 'mango-passion',    name: 'Compota de Manga e Maracujá',  price: 5,  img: 'https://images.pexels.com/photos/1051849/pexels-photo-1051849.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Sabor tropical de manga e maracujá.' },
+    { id: 'chili-jam',        name: 'Compota de Pimenta',           price: 5,  img: 'https://images.pexels.com/photos/8896839/pexels-photo-8896839.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Compota agridoce com pimenta.' },
+    { id: 'tangerine-jam',    name: 'Compota de Tangerina',         price: 7,  img: 'https://images.pexels.com/photos/1051849/pexels-photo-1051849.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Compota cítrica de tangerina.' },
+    { id: 'tomato-sauce-600', name: 'Molho de Tomate (600g)',       price: 5,  img: 'https://images.pexels.com/photos/9685273/pexels-photo-9685273.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Frasco de 600g, ideal para a semana.' },
+    { id: 'bolognese-600',    name: 'Molho Bolonhesa (600g)',       price: 8,  img: 'https://images.pexels.com/photos/5949922/pexels-photo-5949922.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Molho de carne encorpado, frasco de 600g.' },
+    { id: 'white-sauce-600',  name: 'Molho Branco (600g)',          price: 5,  img: 'https://images.pexels.com/photos/8580763/pexels-photo-8580763.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Molho branco cremoso, frasco de 600g.' },
+    { id: 'cassava-powder',   name: 'Farinha de Mandioca (400g)',   price: 5,  img: 'https://images.pexels.com/photos/3273989/pexels-photo-3273989.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Farinha torrada, produto local.' },
+    { id: 'potato-sticks',    name: 'Batata Palha (200g)',          price: 3,  img: 'https://images.pexels.com/photos/8580763/pexels-photo-8580763.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Crocante, ótima para acompanhar.' },
   ],
 };
 
@@ -277,9 +279,21 @@ document.getElementById('cartCheckout')?.addEventListener('click', () => {
 const navToggle = document.getElementById('navToggle');
 const mainNav = document.getElementById('mainNav');
 if (navToggle && mainNav){
+  const fecharMenuMobile = () => {
+    mainNav.classList.remove('open');
+    navToggle.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', 'false');
+  };
+
   navToggle.addEventListener('click', () => {
     const aberto = mainNav.classList.toggle('open');
+    navToggle.classList.toggle('open', aberto);
     navToggle.setAttribute('aria-expanded', String(aberto));
+  });
+
+  // fecha o menu assim que se escolhe uma página
+  mainNav.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', fecharMenuMobile);
   });
 }
 

@@ -6,6 +6,11 @@
     <title>Sobre Nós — La Farina</title>
     <meta name="description" content="Conhece a história da La Farina: um projeto social nascido em parceria com o Casa Vida Women & Children's Shelter, em Díli." />
 
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Sobre Nós — La Farina" />
+    <meta property="og:description" content="Conhece a história da La Farina, um projeto social em parceria com o Casa Vida Women & Children's Shelter." />
+    <meta property="og:image" content="logo.png" />
+
     <link rel="stylesheet" href="style.css" />
     <link rel="shortcut icon" href="logo.png" type="image/x-icon" />
 
@@ -27,35 +32,40 @@
         <div class="logo">
           <a href="index.html"><img src="logo.png" alt="La Farina Logo" /></a>
         </div>
-        <div class="nav-bar">
+        <nav class="nav-bar" id="mainNav">
           <a href="index.html">Início</a>
           <a href="about.html" class="active">Sobre Nós</a>
           <a href="shop.html">Loja</a>
           <a href="contact.html">Contactar</a>
+        </nav>
+        <div class="header-actions">
+          <button class="order-button" id="abrirCarrinhoTopo" type="button">
+            Carrinho <span id="contadorTopo" class="contador-badge">0</span>
+          </button>
+          <button class="nav-toggle" id="navToggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="mainNav">
+            <span></span><span></span><span></span>
+          </button>
         </div>
-        <button class="order-button" id="abrirCarrinhoTopo" type="button">
-          Carrinho <span id="contadorTopo" class="contador-badge">0</span>
-        </button>
       </div>
     </header>
 
     <main>
       <!-- ===================== BANNER DA PÁGINA ===================== -->
-      <section class="page-hero">
+      <section class="page-hero page-hero--about">
         <span class="hero-badge">A Nossa História</span>
         <h1>Sabores com um propósito</h1>
         <p>Da cozinha do Casa Vida até à tua mesa — conhece as pessoas por trás da La Farina.</p>
       </section>
 
       <!-- ===================== HISTÓRIA ===================== -->
-      <section class="about">
-        <div class="about-content">
-          <div class="about-image">
+      <section class="about-story">
+        <div class="about-story-content">
+          <div class="about-story-image">
             <img src="img/meninas.png" alt="Chef Pollyanna com a equipa da La Farina" />
-            <p class="about-card">Como tudo começou</p>
+            <p class="about-story-card">Como tudo começou</p>
           </div>
-          <div class="about-text">
-            <h1>Uma cozinha, duas alunas, um novo começo</h1>
+          <div class="about-story-text">
+            <h2>Uma cozinha, duas alunas, um novo começo</h2>
             <p>
               O projeto <strong>La Farina</strong> nasceu do trabalho voluntário da
               Chef Pollyanna Serrano no Casa Vida Women &amp; Children's Shelter,
@@ -75,6 +85,27 @@
         </div>
       </section>
 
+      <!-- ===================== VISÃO, MISSÃO E VALORES ===================== -->
+      <section class="about-pilares">
+        <div class="about-pilares-grid about-pilares-grid--3">
+          <div class="about-pilar">
+            <span class="about-pilar-icone">🌅</span>
+            <h3>Visão</h3>
+            <p>Ser uma porta de oportunidade para jovens mulheres timorenses através de competências, trabalho e crescimento — uma referência em panificação e massa artesanal em Timor-Leste.</p>
+          </div>
+          <div class="about-pilar">
+            <span class="about-pilar-icone">🤝</span>
+            <h3>Missão</h3>
+            <p>Combinar técnicas italianas com ingredientes locais, oferecendo produtos artesanais de qualidade e criando oportunidades de trabalho para jovens timorenses, sobretudo mulheres.</p>
+          </div>
+          <div class="about-pilar">
+            <span class="about-pilar-icone">💛</span>
+            <h3>Valores</h3>
+            <p>Qualidade, integridade, empoderamento, sustentabilidade e hospitalidade — em cada fornecedor escolhido e em cada produto que sai da nossa cozinha.</p>
+          </div>
+        </div>
+      </section>
+
       <!-- ===================== MISSÃO / CITAÇÃO ===================== -->
       <section class="missao">
         <blockquote class="missao-quote">
@@ -84,14 +115,75 @@
         <span class="missao-autor">— Nélia &amp; Verônica</span>
       </section>
 
-      <!-- ===================== EQUIPA ===================== -->
+      <!-- ===================== IMPACTO SOCIAL ===================== -->
+      <section class="impacto">
+        <div class="impacto-info">
+          <span class="encomendar-eyebrow">Impacto Social</span>
+          <h2>O que queremos alcançar</h2>
+        </div>
+        <div class="impacto-grid">
+          <div class="impacto-item">
+            <span class="impacto-numero">10</span>
+            <p>jovens mulheres formadas em panificação e massa fresca, todos os anos</p>
+          </div>
+          <div class="impacto-item">
+            <span class="impacto-numero">10</span>
+            <p>postos de trabalho a tempo inteiro, 80% ocupados por mulheres</p>
+          </div>
+          <div class="impacto-item">
+            <span class="impacto-numero">❤</span>
+            <p>parte dos lucros reinvestida diretamente a apoiar o Casa Vida Women &amp; Children's Shelter</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== CHEFES ===================== -->
       <section class="equipa">
         <div class="equipa-info">
-          <span class="encomendar-eyebrow">Quem faz acontecer</span>
-          <h2>A equipa por trás da La Farina</h2>
+          <span class="encomendar-eyebrow">Quem ensina</span>
+          <h2>Os chefes por trás da La Farina</h2>
         </div>
 
         <div class="equipa-grid">
+          <div class="equipa-card">
+            <div class="equipa-foto">
+              <img src="img/helder.jpg" alt="Chef Helder Machado" />
+            </div>
+            <h3>Helder Machado</h3>
+            <p class="equipa-role">Direção &amp; Formação</p>
+            <p>
+              Chef brasileiro com mais de 7 anos de experiência em
+              Timor-Leste. É diretor-geral e chef principal do Aroma Café —
+              eleito em 2022 o Melhor Restaurante de Timor-Leste pela
+              iniciativa Tourism for All da USAID — onde também lidera a
+              formação culinária de jovens timorenses.
+            </p>
+          </div>
+
+          <div class="equipa-card">
+            <div class="equipa-foto">
+              <img src="img/pollyanna.jpg" alt="Chef Pollyanna Serrano" />
+            </div>
+            <h3>Pollyanna Serrano</h3>
+            <p class="equipa-role">Gastronomia Italiana</p>
+            <p>
+              Chef brasileira especializada em massa fresca e panificação
+              artesanal italiana. É quem forma diretamente a Nélia e a
+              Verônica, partilhando técnicas todos os dias na cozinha da
+              La Farina.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== EQUIPA ===================== -->
+      <section class="equipa equipa--alt">
+        <div class="equipa-info">
+          <span class="encomendar-eyebrow">Quem faz acontecer</span>
+          <h2>As padeiras em formação</h2>
+        </div>
+
+        <div class="equipa-grid equipa-grid--3">
           <div class="equipa-card">
             <div class="equipa-foto">
               <img src="img/nelia.jpg" alt="Nélia, padeira da La Farina" />
@@ -117,6 +209,19 @@
               lote que sai da cozinha.
             </p>
           </div>
+
+          <div class="equipa-card">
+            <div class="equipa-foto">
+              <img src="img/maculina.jpg" alt="Maculina, padeira da La Farina" />
+            </div>
+            <h3>Maculina</h3>
+            <p class="equipa-role">Panificação &amp; Massa Fresca</p>
+            <p>
+              A mais recente a juntar-se à equipa, também em formação
+              direta com a Chef Pollyanna nas técnicas de panificação e
+              massa fresca da La Farina.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -125,12 +230,15 @@
         <div class="crowdfunding-content">
           <h2>Ajuda a construir o futuro da La Farina</h2>
           <p>
-            Estamos a angariar fundos para abrir um espaço físico onde a
-            Nélia, a Verônica e outras jovens do Casa Vida podem continuar a
+            Estamos a angariar fundos para abrir um espaço físico — com
+            cozinha aberta, onde vais poder ver o pão a sair do forno e a
+            massa a ser feita à tua frente, e uma esquina de café para
+            experimentares tudo no local. Um lugar onde a Nélia, a Verônica,
+            a Maculina e outras jovens do Casa Vida podem continuar a
             aprender e a crescer. Cada contribuição aproxima-nos desse
             objetivo.
           </p>
-          <a href="#" target="_blank" rel="noopener" class="button">Apoiar a campanha</a>
+          <a href="#" target="_blank" rel="noopener" class="button button--accent">Apoiar a campanha</a>
         </div>
       </section>
     </main>
@@ -164,7 +272,7 @@
           <div class="social-icons">
             <a href="#" class="social-icon whatsapp" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
             <a href="#" class="social-icon facebook" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-            <a href="#" class="social-icon instagram" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.instagram.com/lafarinatimor/" class="social-icon instagram" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
           </div>
         </div>
 
@@ -223,7 +331,7 @@
           <span>Total</span>
           <span id="cartTotal">$0</span>
         </div>
-        <button class="button" id="cartCheckout" type="button" style="width:100%; justify-content:center;">
+        <button class="button button--accent" id="cartCheckout" type="button" style="width:100%; justify-content:center;">
           Finalizar no WhatsApp
         </button>
       </div>
