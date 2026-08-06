@@ -1,3 +1,21 @@
+/* =============================================================
+   LA FARINA — style.css
+   Índice:
+     1. Tokens (cores, fontes, espaçamentos)
+     2. Reset & base
+     3. Tipografia
+     4. Sistema de botões
+     5. Header
+     6. Hero
+     7. Sobre Nós
+     8. Recomendados pelo chefe
+     9. Como Encomendar
+    10. Reviews
+    11. Contacto
+    12. Footer
+    13. Responsivo
+   ============================================================= */
+
 /* ---------- 1. TOKENS ---------- */
 :root{
   /* cores */
@@ -116,10 +134,7 @@ p{
   white-space: normal;
   box-shadow: none;
 }
-.button--sm:hover{
-  color: var(--rust);
-  transform: none; 
-}
+.button--sm:hover{ transform: none; }
 
 /* ---------- 5. HEADER ---------- */
 .header{
@@ -145,7 +160,7 @@ p{
 }
 
 .logo{ justify-self: start; }
-.logo img{ width: 70px; height: auto; }
+.logo img{ width: 60px; height: auto; }
 
 .nav-bar{
   display: flex;
@@ -205,7 +220,7 @@ p{
   padding: 0 18vw;
   background-image:
     linear-gradient(100deg, rgba(19,34,26,.72) 0%, rgba(19,34,26,.38) 42%, rgba(19,34,26,.12) 70%),
-    url('img/background-2.jpg');
+    url('img/background.jpg');
   background-size: cover;
   background-position: center;
   overflow: hidden;
@@ -325,11 +340,7 @@ p{
   grid-template-columns: repeat(4, 1fr);
   gap: 32px;
 }
-.home-pilar{
-   text-align: center; 
-   padding-top: 20px; 
-}
-
+.home-pilar{ text-align: center; padding-top: 20px; border-top: 1px solid var(--line); }
 .home-pilar-icone{
   display: inline-flex;
   align-items: center;
@@ -338,7 +349,6 @@ p{
   font-size: 24px;
   filter: grayscale(.15);
 }
-
 .home-pilar h3{
   font-family: var(--font-body);
   font-weight: 700;
@@ -346,7 +356,6 @@ p{
   color: var(--forest-deep);
   margin-bottom: 6px;
 }
-
 .home-pilar p{
   font-size: 14px;
   color: var(--ink-soft);
@@ -464,17 +473,9 @@ p{
   border-radius: 12px;
   box-shadow: var(--shadow-card);
 }
-
 .home-sobre-text{ display: flex; flex-direction: column; }
 .home-sobre-text h2{
   font-size: clamp(2.5rem, 5vw, 4.5rem);
-}
-
-.about-text{ display: flex; flex-direction: column; }
-
-.about-text h1{
-  font-size: clamp(2.5rem, 3vw, 4.5rem);
-
   color: var(--green-lafarina);
   text-shadow: 0 2px 4px rgba(28,20,16,0.12);
   margin-bottom: 20px;
@@ -1146,9 +1147,9 @@ p{
 .page-hero{
   padding: 180px 5vw 80px;
   text-align: center;
-  background-color: var(--forest);
-  background-image: url(img/background-massas.jpg);
-  background-size: cover;
+  background-color: var(--forest-deep);
+  background-image: radial-gradient(circle at 20% 20%, rgba(224,169,59,.12), transparent 45%),
+                     radial-gradient(circle at 80% 80%, rgba(58,120,59,.18), transparent 45%);
 }
 /* ganchos por página: usa estas classes para mudar SÓ um banner
    (cor de fundo, imagem, etc.) sem mexer nas outras páginas */
