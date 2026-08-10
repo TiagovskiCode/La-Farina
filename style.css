@@ -57,6 +57,16 @@
 
 html{ scroll-behavior: smooth; }
 
+/* foco visível para navegação por teclado (acessibilidade) */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+[tabindex]:focus-visible{
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
 body{
   background: var(--cream);
   color: var(--ink);
@@ -134,7 +144,11 @@ p{
   white-space: normal;
   box-shadow: none;
 }
-.button--sm:hover{ transform: none; }
+.button--sm:hover{
+  color: var(--rust);
+  transform: none; 
+  transition: color .2s ease;
+}
 
 /* ---------- 5. HEADER ---------- */
 .header{
@@ -220,7 +234,7 @@ p{
   padding: 0 18vw;
   background-image:
     linear-gradient(100deg, rgba(19,34,26,.72) 0%, rgba(19,34,26,.38) 42%, rgba(19,34,26,.12) 70%),
-    url('img/background.jpg');
+    url('img/background-2.jpg');
   background-size: cover;
   background-position: center;
   overflow: hidden;
@@ -340,7 +354,10 @@ p{
   grid-template-columns: repeat(4, 1fr);
   gap: 32px;
 }
-.home-pilar{ text-align: center; padding-top: 20px; border-top: 1px solid var(--line); }
+.home-pilar{
+   text-align: center; 
+   padding-top: 20px; 
+}
 .home-pilar-icone{
   display: inline-flex;
   align-items: center;
@@ -756,24 +773,7 @@ p{
 .reviews-info h2{
   font-size: clamp(2.2rem, 4.5vw, 3.2rem);
   color: var(--paper);
-  margin-bottom: 12px;
-}
-
-.rating-stat{
-  display: flex;
-  align-items: baseline;
-  justify-content: center;
-  gap: 8px;
   margin-bottom: 44px;
-  font-family: var(--font-body);
-  font-weight: 700;
-  font-size: 20px;
-  color: var(--gold);
-}
-.rating-stat span{
-  font-weight: 400;
-  font-size: 14px;
-  color: rgba(246,238,219,.7);
 }
 
 .cards-reviews{
@@ -787,19 +787,16 @@ p{
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: 300px;
-  padding: 24px;
+  width: 100%;
+  max-width: 420px;
+  padding: 32px;
   background-color: var(--paper);
   border-radius: var(--radius-md);
   text-align: left;
 }
 
-/* estrelas / ícone do facebook no topo do card */
-.stars,
 .review-icon{
   display: block;
-  font-size: 20px;
-  color: var(--gold);
   margin-bottom: 12px;
 }
 .review-icon img{
@@ -808,28 +805,7 @@ p{
 }
 
 .cards-reviews-info p{ font-size: 15px; margin-bottom: 8px; }
-
-/* nome do cliente, no fim do card */
-.reviewer{
-  display: block;
-  font-family: var(--font-body);
-  font-weight: 700;
-  font-size: 15px;
-  color: var(--forest-deep);
-  margin-top: 8px;
-}
-
-.cards-reviews-info button{
-  margin-top: 12px;
-  padding: 12px 24px;
-  background-color: var(--gold);
-  color: var(--forest-deep);
-  font-weight: 600;
-  font-size: 15px;
-  border-radius: 25px;
-  transition: background-color .3s ease;
-}
-.cards-reviews-info button:hover{ background-color: var(--gold-deep); }
+.cards-reviews-info .button{ margin-top: 12px; align-self: flex-start; }
 
 /* ---------- 11. CONTACTO (independentes por página) ---------- */
 .home-contacto{
@@ -956,6 +932,17 @@ p{
 .button--ghost:hover{
   background-color: rgba(246,238,219,.08);
   border-color: rgba(246,238,219,.7);
+}
+
+/* gradiente oficial do Instagram */
+.button--instagram{
+  background: linear-gradient(45deg, #FEDA75 0%, #FA7E1E 25%, #D62976 50%, #962FBF 75%, #4F5BD5 100%);
+  color: var(--paper);
+  transition: filter .2s ease;
+}
+.button--instagram:hover{
+  background: linear-gradient(45deg, #FEDA75 0%, #FA7E1E 25%, #D62976 50%, #962FBF 75%, #4F5BD5 100%);
+  filter: brightness(1.08);
 }
 
 .contact-telefone{
@@ -1156,6 +1143,42 @@ p{
 .page-hero--about{}
 .page-hero--contact{}
 .page-hero--shop{}
+
+/* ---------- 6.5 PÁGINA 404 ---------- */
+.page-404{
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 180px 6vw 100px;
+  background-color: var(--forest-deep);
+}
+.page-404-numero{
+  font-family: var(--font-display);
+  font-size: clamp(5rem, 14vw, 9rem);
+  line-height: 1;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+.page-404 h1{
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  color: var(--cream);
+  margin-bottom: 12px;
+}
+.page-404 p{
+  max-width: 480px;
+  color: rgba(246,238,219,.85);
+  margin-bottom: 36px;
+}
+.page-404-actions{
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+}
 
 .page-hero .hero-badge{
   color: var(--cream);
@@ -1404,7 +1427,9 @@ p{
 
 /* ---------- 12.6 BARRA FIXA DO CARRINHO ---------- */
 .cart-bar{
-  position: sticky;
+  position: fixed;
+  left: 0;
+  right: 0;
   bottom: 0;
   z-index: 60;
   background: var(--forest-deep);
@@ -1413,6 +1438,8 @@ p{
   transition: transform .3s ease;
 }
 .cart-bar.visible{ transform: translateY(0); }
+/* forçado pelo JS quando o footer entra em vista, para nunca sobrepor */
+.cart-bar.perto-footer{ transform: translateY(100%) !important; }
 .cart-bar-row{
   max-width: var(--content-width);
   margin: 0 auto;

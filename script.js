@@ -299,3 +299,16 @@ if (navToggle && mainNav){
 
 /* ---------- INIT ---------- */
 atualizarInterfaceCarrinho();
+
+/* ---------- 8. BARRA DO CARRINHO x FOOTER ---------- */
+// esconde a cart-bar assim que o footer entra em vista, para nunca sobrepor
+const cartBarEl = document.getElementById('cartBar');
+const footerEl = document.querySelector('.main-footer');
+if (cartBarEl && footerEl && 'IntersectionObserver' in window){
+  const footerObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      cartBarEl.classList.toggle('perto-footer', entry.isIntersecting);
+    });
+  }, { threshold: 0 });
+  footerObserver.observe(footerEl);
+}
