@@ -391,22 +391,18 @@ p{
   gap: 32px;
 }
 .about-pilares-grid--3{ grid-template-columns: repeat(3, 1fr); }
-.about-pilar{ text-align: center; padding-top: 20px; border-top: 1px solid var(--line); }
-.about-pilar-icone{
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 14px;
-  font-size: 24px;
-  filter: grayscale(.15);
+.about-pilar{
+  text-align: center;
 }
+
 .about-pilar h3{
   font-family: var(--font-body);
   font-weight: 700;
-  font-size: 16px;
+  font-size: 20px;
   color: var(--forest-deep);
   margin-bottom: 6px;
 }
+
 .about-pilar p{
   font-size: 14px;
   color: var(--ink-soft);
@@ -425,7 +421,11 @@ p{
   gap: 32px;
 }
 .contact-pilares-grid--3{ grid-template-columns: repeat(3, 1fr); }
-.contact-pilar{ text-align: center; padding-top: 20px; border-top: 1px solid var(--line); }
+
+.contact-pilar{ 
+  text-align: center; 
+}
+
 .contact-pilar-icone{
   display: inline-flex;
   align-items: center;
@@ -478,8 +478,8 @@ p{
 }
 .home-sobre-card{
   position: absolute;
-  bottom: 24px;
-  left: -18px;
+  bottom: -20px;
+  right: -20px;
   z-index: 1;
   padding: 10px 20px;
   background-color: var(--forest);
@@ -548,7 +548,7 @@ p{
 }
 .about-story-text{ display: flex; flex-direction: column; }
 .about-story-text h2{
-  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-size: clamp(2.5rem, 2vw, 4.5rem);
   color: var(--green-lafarina);
   text-shadow: 0 2px 4px rgba(28,20,16,0.12);
   margin-bottom: 20px;
@@ -563,7 +563,7 @@ p{
 .massas{
   padding: 96px 5vw;
   background-image:
-    linear-gradient(rgba(19,34,26,.88), rgba(19,34,26,.92)),
+    linear-gradient(rgba(19, 34, 26, 0.65), rgba(19,34,26,.65)),
     url('img/background-massas.jpg');
   background-size: cover;
   background-position: center;
@@ -1135,14 +1135,35 @@ p{
   padding: 180px 5vw 80px;
   text-align: center;
   background-color: var(--forest-deep);
-  background-image: radial-gradient(circle at 20% 20%, rgba(224,169,59,.12), transparent 45%),
-                     radial-gradient(circle at 80% 80%, rgba(58,120,59,.18), transparent 45%);
+  background-image: radial-gradient(circle at 20% 20%, rgba(224,169,59,.12), transparent 25%),
+                     radial-gradient(circle at 80% 80%, rgba(58,120,59,.18), transparent 25%);
 }
 /* ganchos por página: usa estas classes para mudar SÓ um banner
    (cor de fundo, imagem, etc.) sem mexer nas outras páginas */
-.page-hero--about{}
-.page-hero--contact{}
-.page-hero--shop{}
+.page-hero--about{
+  background-size: cover;
+  padding: 180px 5vw 80px;
+  text-align: center;
+  background-color: var(--forest-deep);
+  background-image: linear-gradient(100deg, rgba(19,34,26,.72) 0%, rgba(19,34,26,.38) 42%, rgba(19,34,26,.12) 70%),
+  url('img/background-massas.jpg');
+}
+.page-hero--contact{
+  background-size: cover;
+  padding: 180px 5vw 80px;
+  text-align: center;
+  background-color: var(--forest-deep);
+  background-image: linear-gradient(100deg, rgba(19,34,26,.72) 0%, rgba(19,34,26,.38) 42%, rgba(19,34,26,.12) 70%),
+  url('img/assistence.jpg');
+}
+.page-hero--shop{
+  background-size: cover;
+  padding: 180px 5vw 80px;
+  text-align: center;
+  background-color: var(--forest-deep);
+  background-image: linear-gradient(100deg, rgba(19,34,26,.72) 0%, rgba(19,34,26,.38) 42%, rgba(19,34,26,.12) 70%),
+  url('img/pasta-shop.jpg');
+}
 
 /* ---------- 6.5 PÁGINA 404 ---------- */
 .page-404{

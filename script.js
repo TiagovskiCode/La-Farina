@@ -45,7 +45,7 @@ const PRODUCTS = {
     { id: 'gnocchi-trad',     name: 'Nhoque Tradicional (500g)',       price: 8,  img: 'https://images.pexels.com/photos/6659620/pexels-photo-6659620.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Pré-cozido, pronto a saltear.' },
     { id: 'gnocchi-cheese',   name: 'Nhoque Recheado de Queijo (500g)',price: 14, img: 'https://images.pexels.com/photos/6659628/pexels-photo-6659628.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Pré-cozido, recheio cremoso de queijo.' },
     { id: 'lasagne-beef',     name: 'Lasanha de Carne (1,7kg)',        price: 20, img: 'https://images.pexels.com/photos/5949922/pexels-photo-5949922.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Ingredientes frescos, pronta para o forno.' },
-    { id: 'lasagne-veg',      name: 'Lasanha Vegetariana (1,7kg)',     price: 15, img: 'https://images.pexels.com/photos/4378160/pexels-photo-4378160.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Ingredientes frescos, pronta para o forno.' },
+    { id: 'lasagne-veg',      name: 'Lasanha Vegetariana (1,7kg)',     price: 15, img: 'https://images.pexels.com/photos/4079520/pexels-photo-4079520.jpeg', desc: 'Ingredientes frescos, pronta para o forno.' },
   ],
   // NOTA: várias imagens desta categoria ainda estão repetidas (placeholders
   // do Pexels). Por marcar com fotos reais dos produtos assim que as tivermos.
