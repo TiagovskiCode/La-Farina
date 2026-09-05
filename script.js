@@ -69,6 +69,16 @@ const PRODUCTS = {
   ],
 };
 
+// Atribui a categoria a cada produto automaticamente (evita repetir o campo
+// à mão em cada um dos ~30 produtos). Usado, por exemplo, para saber que
+// só o Pão tem a opção de corte (inteiro / fatiado).
+Object.entries(PRODUCTS).forEach(([cat, lista]) => {
+  lista.forEach(p => { p.categoria = cat; });
+});
+
+// Rótulos do corte, usados na etiqueta do carrinho e na mensagem do WhatsApp
+const CORTE_LABELS = { inteiro: 'Inteiro', fatiado: 'Fatiado' };
+
 const WHATSAPP_NUMBER = '67077467853'; // TODO: confirmar número
 
 function money(n){ return '$' + n.toFixed(2).replace(/\.00$/, ''); }
@@ -94,6 +104,39 @@ function encontrarProduto(id){
   return null;
 }
 
+/**
+ * O carrinho pode guardar variantes do mesmo produto (ex: pão inteiro vs
+ * fatiado) usando uma "chave composta" no formato "id::corte". Estas duas
+ * funções separam a chave nas suas duas partes.
+ */
+function idBase(chave){
+  return chave.split('::')[0];
+}
+function corteDeChave(chave){
+  const partes = chave.split('::');
+  return partes.length > 1 ? partes[1] : null;
+}
+
+/** Nome do produto com o corte anexado, quando aplicável (ex: "Ciabatta (Fatiado)") */
+function nomeComCorte(p, corte){
+  return corte ? `${p.name} (${CORTE_LABELS[corte]})` : p.name;
+}
+
+// Migração: carrinhos guardados antes desta funcionalidade tinham o pão
+// guardado só com o id simples (sem corte). Ao carregar, migramos essas
+// entradas para "id::inteiro", que passa a ser o valor por omissão.
+Object.keys(cart).forEach(chave => {
+  if (!chave.includes('::')){
+    const p = encontrarProduto(chave);
+    if (p && p.categoria === 'pao'){
+      const novaChave = `${chave}::inteiro`;
+      cart[novaChave] = (cart[novaChave] || 0) + cart[chave];
+      delete cart[chave];
+    }
+  }
+});
+guardarCarrinho();
+
 /* ---------- 3. RENDERIZAÇÃO DA LOJA (só existe em shop.html) ---------- */
 const grid = document.getElementById('productGrid');
 const tabs = document.querySelectorAll('.tab');
@@ -108,9 +151,128 @@ function criarCardHTML(p, i){
         <span class="card-price">${money(p.price)}</span>
       </div>
       <p class="card-desc">${p.desc || ''}</p>
-      <button class="button button--sm produto-add" data-id="${p.id}" type="button">Adicionar</button>
+      ${criarAreaProdutoHTML(p)}
     </article>
   `;
+}
+
+// Guarda, por produto, qual o corte escolhido AGORA na loja (não é o
+// carrinho em si — é só a opção selecionada antes de clicar "Adicionar").
+// Só é relevante para produtos da categoria "pao".
+const corteEscolhido = {};
+
+function corteAtualDoProduto(p){
+  if (p.categoria !== 'pao') return null;
+  return corteEscolhido[p.id] || 'inteiro';
+}
+
+/** Devolve a chave usada no objeto `cart` para este produto, já com o corte incluído quando aplicável */
+function chaveCarrinho(p){
+  const corte = corteAtualDoProduto(p);
+  return corte ? `${p.id}::${corte}` : p.id;
+}
+
+/**
+ * Área completa de um produto no card: o seletor de corte (só para pão)
+ * + o controlo de quantidade correspondente à opção selecionada.
+ */
+function criarAreaProdutoHTML(p){
+  const seletor = p.categoria === 'pao' ? criarSeletorCorteHTML(p) : '';
+  return `
+    <div class="produto-area" data-produto="${p.id}">
+      ${seletor}
+      ${criarControloHTML(p)}
+    </div>
+  `;
+}
+
+/** Seletor "Inteiro / Fatiado" — só aparece nos produtos da categoria pão */
+function criarSeletorCorteHTML(p){
+  const corte = corteAtualDoProduto(p);
+  return `
+    <div class="produto-corte" role="group" aria-label="Escolher corte de ${p.name}">
+      <button class="corte-btn ${corte === 'inteiro' ? 'ativo' : ''}" data-produto="${p.id}" data-corte="inteiro" type="button">Inteiro</button>
+      <button class="corte-btn ${corte === 'fatiado' ? 'ativo' : ''}" data-produto="${p.id}" data-corte="fatiado" type="button">Fatiado</button>
+    </div>
+  `;
+}
+
+/**
+ * Devolve o HTML do controlo de quantidade de um produto (considerando já
+ * o corte selecionado, quando aplicável), consoante o estado do carrinho:
+ *  - qty === 0 -> botao "Adicionar"
+ *  - qty > 0   -> stepper "- qty +" (permite ajustar sem sair do card)
+ */
+function criarControloHTML(p){
+  const chave = chaveCarrinho(p);
+  const qty = cart[chave] || 0;
+
+  if (qty > 0){
+    return `
+      <div class="produto-controlo produto-controlo--ativo" data-id="${chave}">
+        <button class="produto-qty-btn" data-id="${chave}" data-delta="-1" type="button" aria-label="Diminuir quantidade de ${p.name}">−</button>
+        <span class="produto-qty-valor">${qty}</span>
+        <button class="produto-qty-btn" data-id="${chave}" data-delta="1" type="button" aria-label="Aumentar quantidade de ${p.name}">+</button>
+      </div>
+    `;
+  }
+
+  return `
+    <div class="produto-controlo" data-id="${chave}">
+      <button class="button button--sm produto-add" data-id="${chave}" type="button">Adicionar</button>
+    </div>
+  `;
+}
+
+/**
+ * Liga os eventos de clique de uma área de produto completa: o seletor de
+ * corte (se existir) e o controlo de quantidade (Adicionar / stepper).
+ */
+function ligarAreaProduto(areaEl){
+  if (!areaEl) return;
+
+  areaEl.querySelectorAll('.corte-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      corteEscolhido[btn.dataset.produto] = btn.dataset.corte;
+      atualizarAreaProduto(btn.dataset.produto, false);
+    });
+  });
+
+  const btnAdd = areaEl.querySelector('.produto-add');
+  if (btnAdd){
+    btnAdd.addEventListener('click', () => adicionarAoCarrinho(btnAdd.dataset.id));
+  }
+
+  areaEl.querySelectorAll('.produto-qty-btn').forEach(btn => {
+    btn.addEventListener('click', () => alterarQuantidade(btn.dataset.id, Number(btn.dataset.delta)));
+  });
+}
+
+/**
+ * Substitui, no DOM, a área inteira de UM produto (seletor de corte +
+ * controlo de quantidade) — evita re-renderizar a grelha toda a cada
+ * clique (o que reiniciaria as animacoes de entrada e faria a grelha
+ * "saltar"). Chamada sempre que o corte OU a quantidade mudam.
+ */
+function atualizarAreaProduto(produtoId, comPulso){
+  if (!grid) return;
+  const areaAtual = grid.querySelector(`.produto-area[data-produto="${produtoId}"]`);
+  if (!areaAtual) return;
+
+  const p = encontrarProduto(produtoId);
+  if (!p) return;
+
+  areaAtual.outerHTML = criarAreaProdutoHTML(p);
+  const areaNova = grid.querySelector(`.produto-area[data-produto="${produtoId}"]`);
+  ligarAreaProduto(areaNova);
+
+  if (comPulso && areaNova){
+    const controloNovo = areaNova.querySelector('.produto-controlo--ativo');
+    if (controloNovo){
+      controloNovo.classList.add('pulso');
+      controloNovo.addEventListener('animationend', () => controloNovo.classList.remove('pulso'), { once: true });
+    }
+  }
 }
 
 function renderCategoria(cat){
@@ -125,9 +287,7 @@ function renderCategoria(cat){
     grid.innerHTML = PRODUCTS[cat].map((p, i) => criarCardHTML(p, i)).join('');
   }
 
-  grid.querySelectorAll('.produto-add').forEach(btn => {
-    btn.addEventListener('click', () => adicionarAoCarrinho(btn.dataset.id, btn));
-  });
+  grid.querySelectorAll('.produto-area').forEach(areaEl => ligarAreaProduto(areaEl));
 }
 
 if (tabs.length){
@@ -143,24 +303,20 @@ if (tabs.length){
 }
 
 /* ---------- 4. LÓGICA DO CARRINHO ---------- */
-function adicionarAoCarrinho(id, btn){
-  cart[id] = (cart[id] || 0) + 1;
+function adicionarAoCarrinho(chave){
+  cart[chave] = (cart[chave] || 0) + 1;
   guardarCarrinho();
   atualizarInterfaceCarrinho();
-  if (btn){
-    const original = btn.textContent;
-    btn.textContent = 'Adicionado ✓';
-    btn.classList.add('added');
-    setTimeout(() => { btn.textContent = original; btn.classList.remove('added'); }, 800);
-  }
+  atualizarAreaProduto(idBase(chave), true); // true = mostra o pulso de feedback ao passar de 0 para 1
 }
 
-function alterarQuantidade(id, delta){
-  if (!cart[id]) return;
-  cart[id] += delta;
-  if (cart[id] <= 0) delete cart[id];
+function alterarQuantidade(chave, delta){
+  if (!cart[chave]) return;
+  cart[chave] += delta;
+  if (cart[chave] <= 0) delete cart[chave];
   guardarCarrinho();
   atualizarInterfaceCarrinho();
+  atualizarAreaProduto(idBase(chave), false); // mantém o card da loja sincronizado com o painel lateral
 }
 
 function totalItens(){
@@ -169,7 +325,7 @@ function totalItens(){
 
 function totalPreco(){
   return Object.entries(cart).reduce((sum, [id, qty]) => {
-    const p = encontrarProduto(id);
+    const p = encontrarProduto(idBase(id));
     return sum + (p ? p.price * qty : 0);
   }, 0);
 }
@@ -212,12 +368,13 @@ function renderizarListaCarrinho(){
   }
 
   lista.innerHTML = entries.map(([id, qty]) => {
-    const p = encontrarProduto(id);
+    const p = encontrarProduto(idBase(id));
     if (!p) return '';
+    const corte = corteDeChave(id);
     return `
       <div class="cart-item">
         <div class="cart-item-info">
-          <span class="cart-item-nome">${p.name}</span>
+          <span class="cart-item-nome">${nomeComCorte(p, corte)}</span>
           <span class="cart-item-preco">${money(p.price)}</span>
         </div>
         <div class="cart-item-qty">
@@ -260,8 +417,9 @@ document.getElementById('cartCheckout')?.addEventListener('click', () => {
   if (entries.length === 0) return;
 
   const linhas = entries.map(([id, qty]) => {
-    const p = encontrarProduto(id);
-    return p ? `• ${qty}x ${p.name} — ${money(p.price * qty)}` : '';
+    const p = encontrarProduto(idBase(id));
+    const corte = corteDeChave(id);
+    return p ? `• ${qty}x ${nomeComCorte(p, corte)} — ${money(p.price * qty)}` : '';
   });
 
   const mensagem = [
