@@ -1146,8 +1146,9 @@ p{
   text-align: center;
   background-color: var(--forest-deep);
   background-image: linear-gradient(100deg, rgba(19,34,26,.72) 0%, rgba(19,34,26,.38) 42%, rgba(19,34,26,.12) 70%),
-  url('img/background-massas.jpg');
+  url('img/pasta.jpg');
 }
+
 .page-hero--contact{
   background-size: cover;
   padding: 180px 5vw 80px;
@@ -1338,7 +1339,9 @@ p{
 .crowdfunding{
   padding: 90px 5vw;
   text-align: center;
-  background-color: var(--forest);
+  background-size: cover;
+  background-image: linear-gradient(100deg, rgba(0, 0, 0, 0.50) 0%, rgba(0, 0, 0, 0.50) 0%),
+  url('img/pasta-help.jpg');
 }
 .crowdfunding-content{
   max-width: 620px;
