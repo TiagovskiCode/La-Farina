@@ -8,6 +8,8 @@
      5. Painel do carrinho (abrir/fechar)
      6. Checkout via WhatsApp
      7. Menu mobile
+     8. Barra do carrinho x footer
+     9. Subscrição semanal
    ============================================================= */
 
 /* ---------- 1. DADOS DOS PRODUTOS ---------- */
@@ -82,6 +84,45 @@ const CORTE_LABELS = { inteiro: 'Inteiro', fatiado: 'Fatiado' };
 const WHATSAPP_NUMBER = '67077467853'; // TODO: confirmar número
 
 function money(n){ return '$' + n.toFixed(2).replace(/\.00$/, ''); }
+
+// Planos de subscrição semanal, usados na secção "assinaturas" da loja
+const SUBSCRIPTIONS = [
+  {
+    id: 'sub-pao',
+    nome: 'Cesta de Pão',
+    preco: 18,
+    desc: 'Um pão à tua escolha, toda a semana, sem teres de encomendar.',
+    itens: [
+      '1x pão artesanal à escolha (inteiro ou fatiado)',
+      'Entrega semanal, sempre no mesmo dia',
+      'Podes trocar o pão quando quiseres',
+    ],
+  },
+  {
+    id: 'sub-mix',
+    nome: 'Cesta Mista',
+    preco: 32,
+    desc: 'Pão + focaccia toda a semana — para quem gosta de variedade.',
+    itens: [
+      '1x pão artesanal à escolha',
+      '1x focaccia à escolha',
+      'Entrega semanal, sempre no mesmo dia',
+    ],
+    destaque: true,
+  },
+  {
+    id: 'sub-completa',
+    nome: 'Cesta Completa',
+    preco: 45,
+    desc: 'Pão, focaccia e massa fresca — tudo o que precisas para a semana.',
+    itens: [
+      '1x pão artesanal à escolha',
+      '1x focaccia à escolha',
+      '1x massa fresca (500g)',
+      'Entrega semanal, sempre no mesmo dia',
+    ],
+  },
+];
 
 /* ---------- 2. ESTADO DO CARRINHO ---------- */
 // carregado do localStorage para o carrinho sobreviver entre páginas
@@ -395,10 +436,111 @@ function renderizarListaCarrinho(){
 const cartPanel = document.getElementById('cartPanel');
 const cartOverlay = document.getElementById('cartOverlay');
 
+// Categorias que fazem bom par com cada categoria já presente no carrinho
+// (ex: quem leva massa, é natural sugerir um molho para acompanhar).
+const CATEGORIAS_COMPLEMENTARES = {
+  pao: ['molhos'],
+  focaccia: ['molhos'],
+  massas: ['molhos'],
+  molhos: ['massas', 'pao'],
+};
+
+/** Baralha um array sem alterar o original (Fisher-Yates) */
+function baralhar(array){
+  const copia = [...array];
+  for (let i = copia.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    [copia[i], copia[j]] = [copia[j], copia[i]];
+  }
+  return copia;
+}
+
+/**
+ * Escolhe até `maxItens` produtos para recomendar no carrinho, com base
+ * nas categorias já presentes (ex: massas -> sugere molhos). Nunca sugere
+ * um produto que já esteja no carrinho.
+ */
+function obterRecomendacoes(maxItens){
+  const idsNoCarrinho = new Set(Object.keys(cart).map(idBase));
+
+  const categoriasNoCarrinho = new Set();
+  idsNoCarrinho.forEach(id => {
+    const p = encontrarProduto(id);
+    if (p) categoriasNoCarrinho.add(p.categoria);
+  });
+
+  const categoriasAlvo = new Set();
+  categoriasNoCarrinho.forEach(cat => {
+    (CATEGORIAS_COMPLEMENTARES[cat] || []).forEach(c => categoriasAlvo.add(c));
+  });
+
+  let candidatos = [];
+  categoriasAlvo.forEach(cat => candidatos.push(...(PRODUCTS[cat] || [])));
+  candidatos = candidatos.filter(p => !idsNoCarrinho.has(p.id));
+
+  // Sem categorias complementares (ou já tudo adicionado) -> sugere de todo o catálogo
+  if (candidatos.length === 0){
+    candidatos = Object.values(PRODUCTS).flat().filter(p => !idsNoCarrinho.has(p.id));
+  }
+
+  return baralhar(candidatos).slice(0, maxItens);
+}
+
+/**
+ * Desenha o bloco "Também podes gostar" dentro do painel do carrinho.
+ * Só aparece quando há pelo menos 1 item no carrinho.
+ */
+function renderizarRecomendacoes(){
+  const bloco = document.getElementById('cartRecomendacoes');
+  if (!bloco) return;
+
+  if (Object.keys(cart).length === 0){
+    bloco.classList.remove('visible');
+    bloco.innerHTML = '';
+    return;
+  }
+
+  const recomendados = obterRecomendacoes(3);
+  if (recomendados.length === 0){
+    bloco.classList.remove('visible');
+    bloco.innerHTML = '';
+    return;
+  }
+
+  bloco.classList.add('visible');
+  bloco.innerHTML = `
+    <h3 class="cart-recomendacoes-titulo">Também podes gostar</h3>
+    <div class="cart-recomendacoes-lista">
+      ${recomendados.map(p => `
+        <div class="recomendacao-item">
+          <img src="${p.img}" alt="${p.name}" loading="lazy">
+          <div class="recomendacao-info">
+            <span class="recomendacao-nome">${p.name}</span>
+            <span class="recomendacao-preco">${money(p.price)}</span>
+          </div>
+          <button class="recomendacao-add" data-id="${p.id}" type="button" aria-label="Adicionar ${p.name} ao carrinho">+</button>
+        </div>
+      `).join('')}
+    </div>
+  `;
+
+  bloco.querySelectorAll('.recomendacao-add').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const p = encontrarProduto(btn.dataset.id);
+      if (!p) return;
+      // pão recomendado entra sempre como "Inteiro" por omissão
+      const chave = p.categoria === 'pao' ? `${p.id}::inteiro` : p.id;
+      adicionarAoCarrinho(chave);
+      renderizarRecomendacoes(); // já não sugere o mesmo produto outra vez
+    });
+  });
+}
+
 function abrirCarrinho(){
   if (!cartPanel) return;
   cartPanel.classList.add('open');
   cartOverlay.classList.add('visible');
+  renderizarRecomendacoes(); // recalcula as sugestões sempre que o carrinho abre
 }
 function fecharCarrinho(){
   if (!cartPanel) return;
@@ -470,3 +612,54 @@ if (cartBarEl && footerEl && 'IntersectionObserver' in window){
   }, { threshold: 0 });
   footerObserver.observe(footerEl);
 }
+
+/* ---------- 9. SUBSCRIÇÃO SEMANAL ---------- */
+
+/** HTML de um card de plano de subscrição */
+function criarAssinaturaHTML(sub){
+  return `
+    <div class="assinatura-card ${sub.destaque ? 'assinatura-card--destaque' : ''}">
+      ${sub.destaque ? '<span class="assinatura-badge">Mais popular</span>' : ''}
+      <h3>${sub.nome}</h3>
+      <p class="assinatura-desc">${sub.desc}</p>
+      <div class="assinatura-preco">${money(sub.preco)}<span>/semana</span></div>
+      <ul class="assinatura-lista">
+        ${sub.itens.map(item => `<li>${item}</li>`).join('')}
+      </ul>
+      <button class="button ${sub.destaque ? 'button--accent' : ''} assinatura-btn" data-id="${sub.id}" type="button">Subscrever</button>
+    </div>
+  `;
+}
+
+/**
+ * Desenha os planos de subscrição na loja e liga o botão "Subscrever" a
+ * uma mensagem de WhatsApp pré-formatada (não há pagamento recorrente
+ * automático — a Nélia/Verônica combinam os detalhes e o pagamento
+ * diretamente com o cliente, tal como as encomendas normais).
+ */
+function renderizarAssinaturas(){
+  const grid = document.getElementById('assinaturasGrid');
+  if (!grid) return;
+
+  grid.innerHTML = SUBSCRIPTIONS.map(criarAssinaturaHTML).join('');
+
+  grid.querySelectorAll('.assinatura-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const sub = SUBSCRIPTIONS.find(s => s.id === btn.dataset.id);
+      if (!sub) return;
+
+      const mensagem = [
+        `Olá! Quero subscrever a "${sub.nome}" (${money(sub.preco)}/semana) na La Farina.`,
+        '',
+        'Inclui:',
+        ...sub.itens.map(item => `• ${item}`),
+        '',
+        'Podem confirmar-me o dia de entrega e como funciona o pagamento semanal?',
+      ].join('\n');
+
+      window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(mensagem)}`, '_blank');
+    });
+  });
+}
+
+renderizarAssinaturas();

@@ -1166,6 +1166,15 @@ p{
   url('img/pasta-shop.jpg');
 }
 
+.page-hero--subscription {
+  background-size: cover;
+  padding: 180px 5vw 80px;
+  text-align: center;
+  background-color: var(--forest-deep);
+  background-image: linear-gradient(100deg, rgba(19,34,26,.72) 0%, rgba(19,34,26,.38) 42%, rgba(19,34,26,.12) 70%),
+  url('https://images.pexels.com/photos/30666735/pexels-photo-30666735.jpeg');
+}
+
 /* ---------- 6.5 PÁGINA 404 ---------- */
 .page-404{
   min-height: 70vh;
@@ -1361,6 +1370,118 @@ p{
 .loja{
   padding: 60px 5vw 100px;
   background-color: var(--cream);
+}
+
+/* ---------- SUBSCRIÇÃO SEMANAL ---------- */
+.assinaturas{
+  padding: 90px 5vw;
+  background-color: var(--paper);
+}
+
+.assinaturas-info{
+  max-width: var(--content-width);
+  margin: 0 auto 44px;
+  text-align: center;
+}
+.assinaturas-info h2{
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  margin-top: 8px;
+}
+.assinaturas-info p{
+  max-width: 52ch;
+  margin: 12px auto 0;
+  color: var(--ink-soft);
+}
+
+.assinaturas-grid{
+  max-width: var(--content-width);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  align-items: stretch;
+}
+
+.assinatura-card{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 32px 28px;
+  background-color: var(--cream);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+}
+
+/* Plano em destaque — ligeiramente elevado e com moldura em rust */
+.assinatura-card--destaque{
+  background-color: var(--paper);
+  border-color: var(--rust);
+  transform: translateY(-8px);
+}
+
+.assinatura-badge{
+  position: absolute;
+  top: -14px;
+  left: 28px;
+  padding: 5px 14px;
+  background-color: var(--rust);
+  color: var(--paper);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  border-radius: 999px;
+}
+
+.assinatura-card h3{
+  font-size: 22px;
+  margin-bottom: 6px;
+}
+
+.assinatura-desc{
+  color: var(--ink-soft);
+  font-size: 14px;
+  margin-bottom: 18px;
+}
+
+.assinatura-preco{
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  color: var(--gold-deep);
+  margin-bottom: 20px;
+}
+.assinatura-preco span{
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+
+.assinatura-lista{
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 28px;
+  flex-grow: 1;
+}
+.assinatura-lista li{
+  position: relative;
+  padding-left: 24px;
+  font-size: 14px;
+  color: var(--ink);
+}
+.assinatura-lista li::before{
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--green-lafarina);
+  font-weight: 700;
+}
+
+.assinatura-btn{
+  width: 100%;
 }
 .loja-inner{
   max-width: var(--content-width);
@@ -1676,6 +1797,87 @@ p{
 }
 .qty-btn:hover{ background-color: var(--cream); }
 
+/* ---------- RECOMENDAÇÕES FINAIS NO CARRINHO ---------- */
+.cart-recomendacoes{
+  display: none; /* fica visible via JS quando há sugestões para mostrar */
+  padding: 16px 24px;
+  border-top: 1px solid var(--line);
+  background-color: var(--cream);
+}
+.cart-recomendacoes.visible{
+  display: block;
+}
+
+.cart-recomendacoes-titulo{
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--forest-deep);
+  margin-bottom: 12px;
+}
+
+.cart-recomendacoes-lista{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.recomendacao-item{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px;
+  background-color: var(--paper);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line);
+}
+
+.recomendacao-item img{
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  object-fit: cover;
+  flex-shrink: 0;
+  background: linear-gradient(135deg, var(--gold), var(--rust));
+}
+
+.recomendacao-info{
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.recomendacao-nome{
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.recomendacao-preco{
+  font-size: 12px;
+  color: var(--ink-soft);
+}
+
+.recomendacao-add{
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  border: none;
+  border-radius: 50%;
+  background-color: var(--forest-deep);
+  color: var(--cream);
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color .2s ease, transform .15s ease;
+}
+.recomendacao-add:hover{ background-color: var(--forest); }
+.recomendacao-add:active{ transform: scale(0.9); }
+
 .cart-panel-footer{
   padding: 20px 24px;
   border-top: 1px solid var(--line);
@@ -1710,6 +1912,8 @@ p{
   .equipa-grid{ grid-template-columns: 1fr; max-width: 420px; }
   .impacto-grid{ grid-template-columns: repeat(2, 1fr); }
   .product-grid--todos{ grid-template-columns: repeat(2, 1fr); }
+  .assinaturas-grid{ grid-template-columns: repeat(2, 1fr); }
+  .assinatura-card--destaque{ transform: none; }
 }
 
 @media (max-width: 700px){
@@ -1718,6 +1922,8 @@ p{
   .about-pilares-grid{ grid-template-columns: 1fr; }
   .contact-pilares-grid{ grid-template-columns: 1fr; }
   .impacto-grid{ grid-template-columns: 1fr; gap: 32px; }
+  .assinaturas-grid{ grid-template-columns: 1fr; }
+  .assinatura-card--destaque{ transform: none; }
   .header-container{ padding: 0 16px; }
   .logo img{ width: 48px; }
 

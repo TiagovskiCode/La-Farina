@@ -3,12 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Loja — La Farina</title>
-    <meta name="description" content="Pão artesanal, focaccias, massas frescas e conservas da La Farina. Escolhe, adiciona ao carrinho e encomenda por WhatsApp." />
+    <title>Assinatura Semanal — La Farina</title>
+    <meta name="description" content="Subscreve uma cesta semanal de pão, focaccia e massa fresca da La Farina — recebe sempre, sem teres de encomendar de cada vez." />
 
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Loja — La Farina" />
-    <meta property="og:description" content="Pão artesanal, focaccias, massas frescas e conservas. Escolhe, adiciona ao carrinho e encomenda por WhatsApp." />
+    <meta property="og:title" content="Assinatura Semanal — La Farina" />
+    <meta property="og:description" content="Subscreve uma cesta semanal de pão, focaccia e massa fresca — recebe sempre, sem teres de encomendar de cada vez." />
     <meta property="og:image" content="logo.png" />
 
     <link rel="stylesheet" href="style.css" />
@@ -35,8 +35,8 @@
         <nav class="nav-bar" id="mainNav">
           <a href="index.html">Início</a>
           <a href="about.html">Sobre Nós</a>
-          <a href="shop.html" class="active">Loja</a>
-          <a href="subscription.html">Assinatura</a>
+          <a href="shop.html">Loja</a>
+          <a href="subscription.html" class="active">Assinatura</a>
           <a href="contact.html">Contactar</a>
         </nav>
         <div class="header-actions">
@@ -52,71 +52,61 @@
 
     <main>
       <!-- ===================== BANNER DA PÁGINA ===================== -->
-      <section class="page-hero page-hero--shop">
-        <span class="hero-badge">A Loja</span>
-        <h1>Escolhe, adiciona, encomenda</h1>
-        <p>Tudo feito à mão, no próprio dia. Adiciona os teus favoritos ao carrinho e finaliza por WhatsApp.</p>
+      <section class="page-hero--subscription">
+        <span class="hero-badge">Novidade</span>
+        <h1>Não queres pensar nisso toda semana?</h1>
+        <p>Subscreve uma cesta semanal e recebe sempre, sem teres de encomendar de cada vez. Escolhe o plano, confirmamos por WhatsApp e tratamos do resto.</p>
       </section>
 
-      <!-- ===================== LOJA ===================== -->
-      <section class="loja">
-        <div class="loja-inner">
-
-          <div class="tabs" id="tabs" role="tablist" aria-label="Categorias de produtos">
-            <button class="tab active" data-cat="todos" role="tab" aria-selected="true">Todos</button>
-            <button class="tab" data-cat="pao" role="tab" aria-selected="false">Pão</button>
-            <button class="tab" data-cat="focaccia" role="tab" aria-selected="false">Focaccias</button>
-            <button class="tab" data-cat="massas" role="tab" aria-selected="false">Massas Frescas</button>
-            <button class="tab" data-cat="molhos" role="tab" aria-selected="false">Molhos &amp; Conservas</button>
-          </div>
-
-          <div class="product-grid" id="productGrid">
-            <!-- gerado dinamicamente pelo script.js a partir de PRODUCTS -->
-          </div>
+      <!-- ===================== PLANOS DE SUBSCRIÇÃO ===================== -->
+      <section class="assinaturas">
+        <div class="assinaturas-grid" id="assinaturasGrid">
+          <!-- gerado dinamicamente pelo script.js a partir de SUBSCRIPTIONS -->
         </div>
       </section>
 
-      <!-- ===================== BARRA DO CARRINHO ===================== -->
-      <div class="cart-bar" id="cartBar">
-        <div class="cart-bar-row">
-          <span id="cartSummary">0 itens</span>
-          <button class="button button--sm" id="cartAbrirBtn" type="button" style="width:auto;">Ver carrinho</button>
+      <!-- ===================== COMO FUNCIONA ===================== -->
+      <section class="encomendar">
+        <div class="encomendar-info">
+          <span class="encomendar-eyebrow">Simples e sem complicações</span>
+          <h2>Como funciona a assinatura?</h2>
+          <h3>Uma vez combinado, é sempre igual</h3>
+          <div class="cards-encomendar">
+            <div class="cards-encomendar-info">
+              <div class="passo-topo">
+                <span class="passo-icone">🧺</span>
+                <span class="step-number">1</span>
+              </div>
+              <h3>Escolhe o plano</h3>
+              <p>Escolhe a cesta que melhor se adapta a ti e toca em "Subscrever".</p>
+            </div>
+            <div class="cards-encomendar-info">
+              <div class="passo-topo">
+                <span class="passo-icone">💬</span>
+                <span class="step-number">2</span>
+              </div>
+              <h3>Combinamos por WhatsApp</h3>
+              <p>Confirmamos contigo o dia de entrega e a forma de pagamento semanal.</p>
+            </div>
+            <div class="cards-encomendar-info">
+              <div class="passo-topo">
+                <span class="passo-icone">🚚</span>
+                <span class="step-number">3</span>
+              </div>
+              <h3>Recebe toda a semana</h3>
+              <p>Sem teres de voltar a encomendar — cancela ou altera quando quiseres.</p>
+            </div>
+          </div>
         </div>
-      </div>
+      </section>
     </main>
-
-    <!-- ===================== PAINEL DO CARRINHO ===================== -->
-    <div class="cart-overlay" id="cartOverlay"></div>
-    <aside class="cart-panel" id="cartPanel" aria-label="Carrinho de compras">
-      <div class="cart-panel-header">
-        <h2>O teu carrinho</h2>
-        <button class="cart-fechar" id="cartFecharBtn" aria-label="Fechar carrinho" type="button">&times;</button>
-      </div>
-
-      <div class="cart-panel-lista" id="cartLista">
-        <p class="cart-vazio" id="cartVazioMsg">O teu carrinho está vazio. Vai à loja e adiciona os teus favoritos!</p>
-      </div>
-
-      <!-- Recomendações finais — preenchido dinamicamente pelo script.js -->
-      <div class="cart-recomendacoes" id="cartRecomendacoes"></div>
-
-      <div class="cart-panel-footer">
-        <div class="cart-total-row">
-          <span>Total</span>
-          <span id="cartTotal">$0</span>
-        </div>
-        <button class="button button--accent" id="cartCheckout" type="button" style="width:100%; justify-content:center;">
-          Finalizar no WhatsApp
-        </button>
-      </div>
-    </aside>
 
     <footer class="main-footer">
       <div class="footer-cta">
         <div class="footer-cta-inner">
           <div>
-            <h2>Fica com fome só de pensar?</h2>
-            <p>Escolhe os teus favoritos na loja e recebe em casa, em Díli.</p>
+            <h2>Preferes escolher à peça?</h2>
+            <p>A loja continua disponível para encomendas pontuais, sem compromisso.</p>
           </div>
           <a href="shop.html" class="button">Ver a loja</a>
         </div>
@@ -182,6 +172,32 @@
         </div>
       </div>
     </footer>
+
+    <!-- ===================== PAINEL DO CARRINHO ===================== -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <aside class="cart-panel" id="cartPanel" aria-label="Carrinho de compras">
+      <div class="cart-panel-header">
+        <h2>O teu carrinho</h2>
+        <button class="cart-fechar" id="cartFecharBtn" aria-label="Fechar carrinho" type="button">&times;</button>
+      </div>
+
+      <div class="cart-panel-lista" id="cartLista">
+        <p class="cart-vazio" id="cartVazioMsg">O teu carrinho está vazio. Vai à loja e adiciona os teus favoritos!</p>
+      </div>
+
+      <!-- Recomendações finais — preenchido dinamicamente pelo script.js -->
+      <div class="cart-recomendacoes" id="cartRecomendacoes"></div>
+
+      <div class="cart-panel-footer">
+        <div class="cart-total-row">
+          <span>Total</span>
+          <span id="cartTotal">$0</span>
+        </div>
+        <button class="button button--accent" id="cartCheckout" type="button" style="width:100%; justify-content:center;">
+          Finalizar no WhatsApp
+        </button>
+      </div>
+    </aside>
 
     <script src="script.js"></script>
   </body>
