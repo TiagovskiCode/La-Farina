@@ -1132,45 +1132,32 @@ p{
 /* ---------- 12.1 PÁGINA — BANNER INTERNO ---------- */
 /* usado no topo das páginas internas (sobre nós, contacto, loja...) */
 .page-hero{
-  padding: 180px 5vw 80px;
+  /* fluido: escala suavemente com o ecrã em vez de "saltar" num breakpoint fixo */
+  padding: clamp(120px, 24vw, 180px) 6vw clamp(48px, 10vw, 80px);
   text-align: center;
   background-color: var(--forest-deep);
+  background-size: cover;
   background-image: radial-gradient(circle at 20% 20%, rgba(224,169,59,.12), transparent 25%),
                      radial-gradient(circle at 80% 80%, rgba(58,120,59,.18), transparent 25%);
 }
-/* ganchos por página: usa estas classes para mudar SÓ um banner
-   (cor de fundo, imagem, etc.) sem mexer nas outras páginas */
+/* ganchos por página: só a imagem de fundo muda — padding, cor base e
+   alinhamento vêm sempre de .page-hero, para o hero ficar fluido em
+   qualquer página sem repetir os mesmos valores 4 vezes */
 .page-hero--about{
-  background-size: cover;
-  padding: 180px 5vw 80px;
-  text-align: center;
-  background-color: var(--forest-deep);
   background-image: linear-gradient(100deg, rgba(19,34,26,.72) 0%, rgba(19,34,26,.38) 42%, rgba(19,34,26,.12) 70%),
   url('img/pasta.jpg');
 }
 
 .page-hero--contact{
-  background-size: cover;
-  padding: 180px 5vw 80px;
-  text-align: center;
-  background-color: var(--forest-deep);
   background-image: linear-gradient(100deg, rgba(19,34,26,.72) 0%, rgba(19,34,26,.38) 42%, rgba(19,34,26,.12) 70%),
   url('img/assistence.jpg');
 }
 .page-hero--shop{
-  background-size: cover;
-  padding: 180px 5vw 80px;
-  text-align: center;
-  background-color: var(--forest-deep);
   background-image: linear-gradient(100deg, rgba(19,34,26,.72) 0%, rgba(19,34,26,.38) 42%, rgba(19,34,26,.12) 70%),
   url('img/pasta-shop.jpg');
 }
 
-.page-hero--subscription {
-  background-size: cover;
-  padding: 180px 5vw 80px;
-  text-align: center;
-  background-color: var(--forest-deep);
+.page-hero--subscription{
   background-image: linear-gradient(100deg, rgba(19,34,26,.72) 0%, rgba(19,34,26,.38) 42%, rgba(19,34,26,.12) 70%),
   url('https://images.pexels.com/photos/30666735/pexels-photo-30666735.jpeg');
 }
@@ -1374,13 +1361,13 @@ p{
 
 /* ---------- SUBSCRIÇÃO SEMANAL ---------- */
 .assinaturas{
-  padding: 90px 5vw;
+  padding: clamp(48px, 12vw, 90px) 5vw;
   background-color: var(--paper);
 }
 
 .assinaturas-info{
   max-width: var(--content-width);
-  margin: 0 auto 44px;
+  margin: 0 auto clamp(28px, 6vw, 44px);
   text-align: center;
 }
 .assinaturas-info h2{
@@ -1397,8 +1384,10 @@ p{
   max-width: var(--content-width);
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
+  /* fluido: preenche o espaço disponível e reflui sozinho (3 -> 2 -> 1
+     coluna) consoante a largura do ecrã, sem precisar de breakpoints */
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  gap: clamp(20px, 4vw, 28px);
   align-items: stretch;
 }
 
@@ -1406,24 +1395,28 @@ p{
   position: relative;
   display: flex;
   flex-direction: column;
-  padding: 32px 28px;
+  padding: clamp(24px, 5vw, 32px) clamp(20px, 4vw, 28px);
   background-color: var(--cream);
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-card);
 }
 
-/* Plano em destaque — ligeiramente elevado e com moldura em rust */
+/* Plano em destaque — ligeiramente elevado e com moldura em rust.
+   Sem translateY em ecrãs estreitos: quando os cards empilham em 1
+   coluna, "levantar" o card do meio deixa de fazer sentido visual. */
 .assinatura-card--destaque{
   background-color: var(--paper);
   border-color: var(--rust);
-  transform: translateY(-8px);
+}
+@media (min-width: 860px){
+  .assinatura-card--destaque{ transform: translateY(-8px); }
 }
 
 .assinatura-badge{
   position: absolute;
   top: -14px;
-  left: 28px;
+  left: clamp(16px, 5vw, 28px);
   padding: 5px 14px;
   background-color: var(--rust);
   color: var(--paper);
@@ -1435,7 +1428,7 @@ p{
 }
 
 .assinatura-card h3{
-  font-size: 22px;
+  font-size: clamp(19px, 4vw, 22px);
   margin-bottom: 6px;
 }
 
@@ -1447,7 +1440,7 @@ p{
 
 .assinatura-preco{
   font-family: var(--font-display);
-  font-size: 2.2rem;
+  font-size: clamp(1.8rem, 6vw, 2.2rem);
   color: var(--gold-deep);
   margin-bottom: 20px;
 }
@@ -1912,18 +1905,13 @@ p{
   .equipa-grid{ grid-template-columns: 1fr; max-width: 420px; }
   .impacto-grid{ grid-template-columns: repeat(2, 1fr); }
   .product-grid--todos{ grid-template-columns: repeat(2, 1fr); }
-  .assinaturas-grid{ grid-template-columns: repeat(2, 1fr); }
-  .assinatura-card--destaque{ transform: none; }
 }
 
 @media (max-width: 700px){
-  .page-hero{ padding: 140px 6vw 60px; }
   .home-pilares-grid{ grid-template-columns: 1fr; }
   .about-pilares-grid{ grid-template-columns: 1fr; }
   .contact-pilares-grid{ grid-template-columns: 1fr; }
   .impacto-grid{ grid-template-columns: 1fr; gap: 32px; }
-  .assinaturas-grid{ grid-template-columns: 1fr; }
-  .assinatura-card--destaque{ transform: none; }
   .header-container{ padding: 0 16px; }
   .logo img{ width: 48px; }
 
