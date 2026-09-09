@@ -81,7 +81,7 @@ Object.entries(PRODUCTS).forEach(([cat, lista]) => {
 // Rótulos do corte, usados na etiqueta do carrinho e na mensagem do WhatsApp
 const CORTE_LABELS = { inteiro: 'Inteiro', fatiado: 'Fatiado' };
 
-const WHATSAPP_NUMBER = '67077467853'; // +670 7746 7853 — número oficial confirmado
+const WHATSAPP_NUMBER = '67077192888'; // +670 7719 2888 — número oficial confirmado
 
 function money(n){ return '$' + n.toFixed(2).replace(/\.00$/, ''); }
 
