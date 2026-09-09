@@ -200,6 +200,9 @@ p{
   color: var(--forest);
   font-weight: 700;
 }
+/* os ícones só aparecem no menu mobile (ver breakpoint 700px) — no
+   desktop o nav-bar mantém-se limpo, só com texto */
+.nav-bar a i{ display: none; }
 
 /* ---------- 5b. MENU MOBILE (hamburger) ---------- */
 .nav-toggle{
@@ -208,19 +211,25 @@ p{
   justify-content: center;
   align-items: center;
   gap: 5px;
-  width: 40px;
-  height: 40px;
-  border-radius: 10px;
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
   flex-shrink: 0;
+  background-color: rgba(28,20,16,0.05);
+  transition: background-color .25s ease;
 }
+.nav-toggle:hover{ background-color: rgba(28,20,16,0.1); }
 .nav-toggle span{
   display: block;
-  width: 22px;
+  width: 20px;
   height: 2px;
   background: var(--ink);
   border-radius: 2px;
-  transition: transform .25s ease, opacity .2s ease;
+  transition: transform .25s ease, opacity .2s ease, background-color .25s ease;
 }
+/* estado aberto: preenche a rust, condizente com os outros CTAs do site */
+.nav-toggle.open{ background-color: var(--rust); }
+.nav-toggle.open span{ background-color: var(--paper); }
 .nav-toggle.open span:nth-child(1){ transform: translateY(7px) rotate(45deg); }
 .nav-toggle.open span:nth-child(2){ opacity: 0; }
 .nav-toggle.open span:nth-child(3){ transform: translateY(-7px) rotate(-45deg); }
@@ -1912,7 +1921,14 @@ p{
   .about-pilares-grid{ grid-template-columns: 1fr; }
   .contact-pilares-grid{ grid-template-columns: 1fr; }
   .impacto-grid{ grid-template-columns: 1fr; gap: 32px; }
-  .header-container{ padding: 0 16px; }
+  .header-container{
+    padding: 0 16px;
+    /* mobile: só 2 colunas — logo à esquerda, ações (carrinho + hamburguer)
+       à direita. O nav-bar deixa de ocupar coluna própria porque passa a
+       painel flutuante em position:fixed (ver abaixo). */
+    grid-template-columns: auto auto;
+    justify-content: space-between;
+  }
   .logo img{ width: 48px; }
 
   .nav-toggle{ display: flex; }
@@ -1922,40 +1938,133 @@ p{
     font-size: 14px;
   }
 
+  /* Painel do menu — cartão flutuante "solto" do header, não faixa
+     edge-to-edge, para ficar mais estilizado e condizente com os
+     restantes cartões do site (cart-panel, produto-card, etc.) */
   .nav-bar{
     position: fixed;
-    top: 80px;
-    left: 0;
-    right: 0;
+    top: 92px;
+    left: 12px;
+    right: 12px;
     flex-direction: column;
     align-items: stretch;
-    background: var(--paper);
-    border-top: 1px solid var(--line);
-    box-shadow: var(--shadow-card);
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 16px 40px rgba(28,20,16,0.16);
     max-height: 0;
     overflow: hidden;
     opacity: 0;
+    transform: translateY(-10px);
     pointer-events: none;
-    transition: max-height .3s ease, opacity .25s ease;
+    transition: max-height .35s ease, opacity .25s ease, transform .3s ease;
   }
   .nav-bar.open{
-    max-height: 400px;
+    max-height: 480px;
     opacity: 1;
+    transform: translateY(0);
     pointer-events: auto;
   }
-  .nav-bar a{
-    padding: 16px 24px;
-    border-bottom: 1px solid var(--line);
-    font-size: 18px;
+
+  /* Faixa decorativa no topo do painel — o mesmo gradiente dourado/rust
+     usado nos acentos do site, para o menu não parecer uma lista "nua" */
+  .nav-bar::before{
+    content: '';
+    display: block;
+    height: 4px;
+    background: linear-gradient(90deg, var(--gold), var(--rust));
   }
+
+  .nav-bar a{
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 22px;
+    border-bottom: 1px solid var(--line);
+    font-size: 16.5px;
+    font-weight: 600;
+    position: relative;
+    transition: background-color .2s ease, color .2s ease, padding-left .2s ease;
+    /* animação em cascata: cada link entra com um pequeno atraso quando
+       o painel abre, em vez de aparecer tudo de uma vez */
+    opacity: 0;
+    transform: translateX(-8px);
+  }
+  .nav-bar.open a{
+    animation: nav-link-entra .35s ease forwards;
+  }
+  .nav-bar.open a:nth-child(1){ animation-delay: .05s; }
+  .nav-bar.open a:nth-child(2){ animation-delay: .10s; }
+  .nav-bar.open a:nth-child(3){ animation-delay: .15s; }
+  .nav-bar.open a:nth-child(4){ animation-delay: .20s; }
+  .nav-bar.open a:nth-child(5){ animation-delay: .25s; }
+  @keyframes nav-link-entra{
+    to{ opacity: 1; transform: translateX(0); }
+  }
+
+  /* Ícone de cada link — só existe visualmente aqui no mobile */
+  .nav-bar a i{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    font-size: 15px;
+    color: var(--rust);
+    flex-shrink: 0;
+  }
+
+  .nav-bar a:last-child{ border-bottom: none; }
+  .nav-bar a:hover{
+    background-color: rgba(28,20,16,0.04);
+    padding-left: 28px;
+  }
+  .nav-bar a.active{
+    color: var(--rust);
+    background-color: rgba(168,75,42,0.08);
+    font-weight: 700;
+  }
+  /* pequena barra vertical rust do lado esquerdo do link ativo, para
+     ficar claro qual a página atual mesmo com o menu fechado a seguir */
+  .nav-bar a.active::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 10px;
+    bottom: 10px;
+    width: 3px;
+    border-radius: 0 3px 3px 0;
+    background-color: var(--rust);
+  }
+  .nav-bar a.active i{ color: var(--rust); }
 
   .hero-actions{ flex-direction: column; align-items: flex-start; gap: 16px; }
   .scroll-cue{ display: none; }
   .about{ padding: 8vh 6vw; }
   .home-sobre-image{ height: auto; aspect-ratio: 4/3; }
   .about-story-image{ height: auto; aspect-ratio: 4/3; }
-  .cards{ grid-template-columns: 1fr; }
-  .product-grid--todos{ grid-template-columns: repeat(2, 1fr); }
+  .cards{ grid-template-columns: repeat(2, 1fr); gap: 14px; }
+
+  /* Cards mais compactos em mobile — menos padding e imagens mais baixas,
+     para caber mais produtos por scroll sem ficar apertado */
+  .card{ padding: 14px; border-radius: 10px; }
+  .card img{ aspect-ratio: 4 / 3; border-radius: 10px; margin-bottom: 10px; }
+  .card-info h3{ font-size: 16px; margin-bottom: 4px; }
+  .card-info p{ font-size: 12.5px; }
+  .card-info .button--sm{ padding: 9px 10px; font-size: 12.5px; }
+
+  .product-grid{ grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .product-grid--todos{ grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .produto-card{ gap: 6px; }
+  .produto-card img{ aspect-ratio: 4 / 3; margin-bottom: 2px; border-radius: 8px; }
+  .card-name{ font-size: 14px; }
+  .card-price{ font-size: 13px; }
+  .card-desc{ font-size: 12px; }
+  .produto-add{ padding: 9px 10px; font-size: 12.5px; }
+  .produto-corte{ gap: 4px; }
+  .corte-btn{ padding: 5px 6px; font-size: 11px; }
+  .produto-qty-btn{ width: 26px; height: 26px; font-size: 14px; }
+  .produto-qty-valor{ font-size: 13px; }
+  .badge{ font-size: .58rem; padding: .3em .6em; }
   .cards-encomendar::before{ display: none; }
   .cards-encomendar-info{ width: 100%; max-width: 320px; }
   .cards-reviews-info{ width: 100%; max-width: 340px; }
@@ -1968,5 +2077,12 @@ p{
 }
 
 @media (max-width: 420px){
-  .product-grid--todos{ grid-template-columns: 1fr; }
+  /* ecrãs muito estreitos: mantém as 2 colunas compactas, só aperta
+     ainda mais o espaçamento para não ficar demasiado apertado */
+  .product-grid,
+  .product-grid--todos,
+  .cards{ gap: 10px; }
+  .card{ padding: 12px; }
+  .card-name{ font-size: 13px; }
+  .card-price{ font-size: 12px; }
 }
