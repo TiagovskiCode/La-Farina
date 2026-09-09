@@ -110,6 +110,21 @@ p{
   transition: background-color .2s ease, border-color .2s ease, color .2s ease;
 }
 
+/* a seta desliza ligeiramente para a direita no hover — dá vida ao
+   botão sem precisar de imagem nenhuma, e nunca desalinha porque nasce
+   do próprio texto */
+.button::after{
+  content: '\2192';
+  display: inline-block;
+  transition: transform .25s ease;
+}
+.button:hover::after{
+  transform: translateX(4px);
+}
+@media (prefers-reduced-motion: reduce){
+  .button:hover::after{ transform: none; }
+}
+
 .button{
   background-color: var(--forest-deep);
   color: var(--cream);
@@ -315,6 +330,13 @@ p{
 .hero-link:hover{
   color: var(--gold);
   border-color: var(--gold);
+}
+.hero-link .seta{
+  display: inline-block;
+  transition: transform .25s ease;
+}
+.hero-link:hover .seta{
+  transform: translateX(4px);
 }
 
 .scroll-cue{
