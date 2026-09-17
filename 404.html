@@ -7,7 +7,13 @@
     <meta name="robots" content="noindex" />
 
     <link rel="stylesheet" href="style.css" />
-    <link rel="shortcut icon" href="logo.png" type="image/x-icon" />
+    <!-- Ícones e instalação como app (PWA) -->
+    <link rel="icon" href="favicon.ico" sizes="any" />
+    <link rel="icon" href="icon-192.png" type="image/png" sizes="192x192" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#13221A" />
+    <meta name="apple-mobile-web-app-title" content="La Farina" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -24,6 +30,9 @@
   <body>
     <header class="header" id="topo">
       <div class="header-container">
+        <button class="nav-toggle" id="navToggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="mainNav">
+          <span></span><span></span><span></span>
+        </button>
         <div class="logo">
           <a href="index.html"><img src="logo.png" alt="La Farina Logo" /></a>
         </div>
@@ -37,9 +46,6 @@
         <div class="header-actions">
           <button class="order-button" id="abrirCarrinhoTopo" type="button">
             Carrinho <span id="contadorTopo" class="contador-badge">0</span>
-          </button>
-          <button class="nav-toggle" id="navToggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="mainNav">
-            <span></span><span></span><span></span>
           </button>
         </div>
       </div>
@@ -86,7 +92,6 @@
 
           <div class="social-icons">
             <a href="https://wa.me/67077192888" class="social-icon whatsapp" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-            <a href="#" class="social-icon facebook" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
             <a href="https://www.instagram.com/lafarinatimor/" class="social-icon instagram" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
           </div>
         </div>
@@ -105,9 +110,10 @@
         <div class="footer-links-col">
           <h3>Contacto</h3>
           <ul>
-            <li><a href="tel:#">Telefone</a></li>
-            <li><a href="mailto:#">Email</a></li>
-            <li><a href="#">Morada</a></li>
+            <li><a href="tel:+67077192888">+670 7719 2888</a></li>
+            <li><a href="https://wa.me/67077192888" target="_blank" rel="noopener">Encomendar por WhatsApp</a></li>
+            <li><a href="https://www.instagram.com/lafarinatimor/" target="_blank" rel="noopener">@lafarinatimor</a></li>
+            <li>Díli, Timor-Leste</li>
           </ul>
         </div>
 
