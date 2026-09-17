@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>La Farina — Pão, Focaccias e Massas Artesanais em Díli</title>
     <meta name="description" content="La Farina: pão artesanal, focaccias e massas frescas feitas em Díli, Timor-Leste. Encomenda por WhatsApp." />
+    <!-- Canonical: aponta para o domínio final (www.lafarina.tl), mesmo
+         enquanto o site está publicado em tiagovskicode.github.io — evita
+         conteúdo duplicado aos olhos do Google quando o domínio mudar. -->
+    <link rel="canonical" href="https://www.lafarina.tl/index.html" />
 
     <meta property="og:type" content="website" />
     <meta property="og:title" content="La Farina — Pão, Focaccias e Massas Artesanais em Díli" />
@@ -26,10 +30,13 @@
       href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Sora:wght@100..800&display=swap"
       rel="stylesheet"
     />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    />
+    <!-- Font Awesome: só os módulos "solid" e "brands", em vez do "all"
+         completo — o site só usa ícones destes dois grupos (casa, loja,
+         WhatsApp, Instagram, etc.), por isso não há motivo para carregar
+         também "regular", "duotone", "sharp" e "thin", que não são usados. -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/fontawesome.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/solid.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/brands.min.css" />
 
     <!-- Dados estruturados (schema.org) — ajuda o Google a mostrar a La
          Farina como negócio local nos resultados de pesquisa (morada,
@@ -131,7 +138,7 @@
       <section class="home-sobre" id="sobre-nos">
         <div class="home-sobre-content">
           <div class="home-sobre-image">
-            <img src="img/meninas.jpg" alt="Imagem da padaria La Farina" />
+            <img src="img/meninas.jpg" alt="Imagem da padaria La Farina" loading="lazy" />
             <p class="home-sobre-card">A equipa por traz</p>
           </div>
           <div class="home-sobre-text">
@@ -156,7 +163,7 @@
 
           <div class="cards">
             <div class="card">
-              <img src="img/pao.jpg" alt="Pão Artesanal" />
+              <img src="img/pao.jpg" alt="Pão Artesanal" loading="lazy" />
               <div class="card-info">
                 <h3>Pão Artesanal</h3>
                 <p>
@@ -168,7 +175,7 @@
             </div>
 
             <div class="card">
-              <img src="img/focaccias.jpg" alt="Focaccias" />
+              <img src="img/focaccias.jpg" alt="Focaccias" loading="lazy" />
               <div class="card-info">
                 <h3>Focaccias</h3>
                 <p>
@@ -180,7 +187,7 @@
             </div>
 
             <div class="card">
-              <img src="img/massas.jpg" alt="Massas Frescas" />
+              <img src="img/massas.jpg" alt="Massas Frescas" loading="lazy" />
               <div class="card-info">
                 <h3>Massas Frescas</h3>
                 <p>
@@ -192,7 +199,7 @@
             </div>
 
             <div class="card">
-              <img src="img/molhos.jpg" alt="Molhos e Conservas" />
+              <img src="img/molhos.jpg" alt="Molhos e Conservas" loading="lazy" />
               <div class="card-info">
                 <h3>Molhos &amp; Conservas</h3>
                 <p>
@@ -249,7 +256,7 @@
           <h2>As nossas avaliações</h2>
           <div class="cards-reviews">
             <div class="cards-reviews-info">
-              <span class="review-icon"><img src="img/facebook.png" alt="" /></span>
+              <span class="review-icon"><img src="img/facebook.png" alt="" loading="lazy" /></span>
               <p>A La Farina está a dar os primeiros passos em Díli.</p>
               <p>
                 Adorávamos saber a tua experiência — o que gostaste, o que
@@ -295,7 +302,7 @@
       <div class="footer-content">
         <div class="footer-brand">
           <div class="brand-header">
-            <img src="logo.png" alt="La Farina Logo" class="brand-logo" />
+            <img src="logo.png" alt="La Farina Logo" class="brand-logo" loading="lazy" />
             <div class="brand-name-block">
               <span class="brand-name">La Farina</span>
               <span class="brand-location">Díli, Timor-Leste</span>
@@ -321,6 +328,7 @@
             <li><a href="shop.html">Loja</a></li>
             <li><a href="subscription.html">Assinatura</a></li>
             <li><a href="contact.html">Contactar</a></li>
+            <li><a href="privacy.html">Política de Privacidade</a></li>
           </ul>
         </div>
 

@@ -594,6 +594,24 @@ p{
 }
 .about-story-text a.button{ align-self: flex-start; }
 
+/* ---------- POLÍTICA DE PRIVACIDADE ---------- */
+.privacy-content{
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto;
+}
+.privacy-content h2{
+  margin-top: 40px;
+  margin-bottom: 10px;
+  font-size: 22px;
+}
+.privacy-content h2:first-child{ margin-top: 0; }
+.privacy-content p{
+  color: var(--ink-soft);
+  line-height: 1.7;
+  margin: 0;
+}
+
 /* ---------- 8. RECOMENDADOS PELO CHEFE ---------- */
 .massas{
   padding: 96px 5vw;

@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Assinatura Semanal — La Farina</title>
     <meta name="description" content="Subscreve uma cesta semanal de pão, focaccia e massa fresca da La Farina — recebe sempre, sem teres de encomendar de cada vez." />
+    <!-- Canonical: aponta para o domínio final (www.lafarina.tl), mesmo
+         enquanto o site está publicado em tiagovskicode.github.io — evita
+         conteúdo duplicado aos olhos do Google quando o domínio mudar. -->
+    <link rel="canonical" href="https://www.lafarina.tl/subscription.html" />
 
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Assinatura Semanal — La Farina" />
@@ -26,10 +30,13 @@
       href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Sora:wght@100..800&display=swap"
       rel="stylesheet"
     />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    />
+    <!-- Font Awesome: só os módulos "solid" e "brands", em vez do "all"
+         completo — o site só usa ícones destes dois grupos (casa, loja,
+         WhatsApp, Instagram, etc.), por isso não há motivo para carregar
+         também "regular", "duotone", "sharp" e "thin", que não são usados. -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/fontawesome.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/solid.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/brands.min.css" />
 
     <!-- Dados estruturados (schema.org) — ajuda o Google a mostrar a La
          Farina como negócio local nos resultados de pesquisa (morada,
@@ -153,7 +160,7 @@
       <div class="footer-content">
         <div class="footer-brand">
           <div class="brand-header">
-            <img src="logo.png" alt="La Farina Logo" class="brand-logo" />
+            <img src="logo.png" alt="La Farina Logo" class="brand-logo" loading="lazy" />
             <div class="brand-name-block">
               <span class="brand-name">La Farina</span>
               <span class="brand-location">Díli, Timor-Leste</span>
@@ -179,6 +186,7 @@
             <li><a href="shop.html">Loja</a></li>
             <li><a href="subscription.html">Assinatura</a></li>
             <li><a href="contact.html">Contactar</a></li>
+            <li><a href="privacy.html">Política de Privacidade</a></li>
           </ul>
         </div>
 

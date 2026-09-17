@@ -3,16 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contacto — La Farina</title>
-    <meta name="description" content="Fala com a La Farina por WhatsApp ou Instagram. Encomendas e entregas em Díli, Timor-Leste." />
+    <title>Política de Privacidade — La Farina</title>
+    <meta name="description" content="Como a La Farina trata os teus dados: o que é guardado no teu telemóvel, o que passa pelo WhatsApp e Instagram, e como nos contactar sobre privacidade." />
+    <meta name="robots" content="noindex" />
     <!-- Canonical: aponta para o domínio final (www.lafarina.tl), mesmo
          enquanto o site está publicado em tiagovskicode.github.io — evita
          conteúdo duplicado aos olhos do Google quando o domínio mudar. -->
-    <link rel="canonical" href="https://www.lafarina.tl/contact.html" />
+    <link rel="canonical" href="https://www.lafarina.tl/privacy.html" />
 
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Contacto — La Farina" />
-    <meta property="og:description" content="Fala com a La Farina por WhatsApp ou Instagram. Encomendas e entregas em Díli, Timor-Leste." />
+    <meta property="og:title" content="Política de Privacidade — La Farina" />
+    <meta property="og:description" content="Como a La Farina trata os teus dados." />
     <meta property="og:image" content="logo.png" />
 
     <link rel="stylesheet" href="style.css" />
@@ -37,38 +38,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/fontawesome.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/solid.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/brands.min.css" />
-
-    <!-- Dados estruturados (schema.org) — ajuda o Google a mostrar a La
-         Farina como negócio local nos resultados de pesquisa (morada,
-         horário, contacto). Substitui "COLOCAR-DOMINIO-AQUI" pelo domínio
-         final assim que estiver comprado e o site estiver publicado lá. -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Bakery",
-      "name": "La Farina",
-      "image": "https://COLOCAR-DOMINIO-AQUI/logo.png",
-      "url": "https://COLOCAR-DOMINIO-AQUI/",
-      "telephone": "+670 7719 2888",
-      "priceRange": "$",
-      "servesCuisine": "Italiana",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Díli",
-        "addressCountry": "TL"
-      },
-      "openingHoursSpecification": {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-        "opens": "08:00",
-        "closes": "18:00"
-      },
-      "sameAs": [
-        "https://www.instagram.com/lafarinatimor/"
-      ],
-      "description": "Projeto social independente que forma jovens timorenses em panificação e massa artesanal, com pão, focaccias e massas frescas em Díli, Timor-Leste."
-    }
-    </script>
   </head>
 
   <body>
@@ -85,7 +54,7 @@
           <a href="about.html"><i class="fas fa-circle-info"></i>Sobre Nós</a>
           <a href="shop.html"><i class="fas fa-store"></i>Loja</a>
           <a href="subscription.html"><i class="fas fa-calendar-days"></i>Assinatura</a>
-          <a href="contact.html" class="active"><i class="fas fa-comment-dots"></i>Contactar</a>
+          <a href="contact.html"><i class="fas fa-comment-dots"></i>Contactar</a>
         </nav>
         <div class="header-actions">
           <button class="order-button" id="abrirCarrinhoTopo" type="button">
@@ -97,51 +66,90 @@
 
     <main>
       <!-- ===================== BANNER DA PÁGINA ===================== -->
-      <section class="page-hero page-hero--contact">
-        <span class="hero-badge">Fala Connosco</span>
-        <h1>Estamos só a uma mensagem de distância</h1>
-        <p>Dúvidas, encomendas especiais ou parcerias — escolhe a forma mais fácil para ti.</p>
+      <section class="page-hero page-hero--about">
+        <span class="hero-badge">Transparência</span>
+        <h1>Política de Privacidade</h1>
+        <p>Última atualização: setembro de 2026. Explicamos aqui, em linguagem simples, o que acontece com os teus dados quando visitas o site da La Farina.</p>
       </section>
 
-      <!-- ===================== INFO RÁPIDA ===================== -->
-      <section class="contact-pilares">
-        <div class="contact-pilares-grid contact-pilares-grid--3">
-          <div class="contact-pilar">
-            <span class="contact-pilar-icone"><i class="fas fa-location-dot"></i></span>
-            <h3>Onde estamos</h3>
-            <p>Díli, Timor-Leste — entregas por WhatsApp em toda a cidade.</p>
-          </div>
-          <div class="contact-pilar">
-            <span class="contact-pilar-icone"><i class="fas fa-clock"></i></span>
-            <h3>Horário de encomendas</h3>
-            <p>Segunda a sábado, das 8h às 18h. Resposta em poucas horas.</p>
-          </div>
-          <div class="contact-pilar">
-            <span class="contact-pilar-icone"><i class="fas fa-truck"></i></span>
-            <h3>Entrega</h3>
-            <p>Diretamente ao teu condomínio, a combinar após a encomenda.</p>
-          </div>
-        </div>
-      </section>
+      <!-- ===================== CONTEÚDO ===================== -->
+      <section class="about-story">
+        <div class="privacy-content">
 
-      <!-- ===================== CONTACTO PRINCIPAL ===================== -->
-      <section class="contact-main">
-        <div class="contact-info">
-          <h2>Contacto</h2>
-          <h3>Fala connosco</h3>
+          <h2>O essencial, resumido</h2>
           <p>
-            Tens dúvidas, encomendas especiais ou queres saber mais sobre o
-            projeto? Estamos só a uma mensagem de distância.
+            A La Farina não tem servidor próprio nem base de dados de clientes.
+            O site é uma montra e uma loja simples: o carrinho de compras fica
+            guardado só no teu próprio telemóvel ou computador, e a encomenda
+            é finalizada através de uma mensagem de WhatsApp que tu próprio
+            envias. Não vendemos nem partilhamos dados com terceiros para fins
+            de publicidade.
           </p>
-          <div class="contact-redes-sociais">
-            <a href="https://wa.me/67077192888" target="_blank" rel="noopener" class="button">
-              <i class="fab fa-whatsapp"></i> Falar no WhatsApp
-            </a>
-            <a href="https://www.instagram.com/lafarinatimor/" target="_blank" rel="noopener" class="button button--instagram">
-              <i class="fab fa-instagram"></i> Segue-nos no Instagram
-            </a>
-          </div>
-          <p class="contact-telefone">+670 7719 2888</p>
+
+          <h2>O que fica guardado no teu dispositivo</h2>
+          <p>
+            Quando adicionas produtos ao carrinho, essa informação (quais os
+            produtos e as quantidades) fica guardada localmente no teu
+            navegador — chama-se <em>localStorage</em> — para o carrinho não
+            se perder se saíres do site e voltares. Esta informação nunca sai
+            do teu dispositivo, não é enviada para nenhum servidor da La
+            Farina, e desaparece se limpares os dados do navegador.
+          </p>
+
+          <h2>WhatsApp e Instagram</h2>
+          <p>
+            Quando finalizas uma encomenda, deixas uma opinião ou nos
+            contactas por WhatsApp ou Instagram, essa conversa passa a
+            acontecer dentro dessas plataformas, que pertencem à Meta. A
+            partir desse momento, o tratamento dos teus dados (nome, número
+            de telefone, mensagens) segue a política de privacidade do
+            WhatsApp e do Instagram, e não a nossa. Recomendamos que
+            consultes essas políticas se tiveres dúvidas sobre como essas
+            empresas usam a informação.
+          </p>
+
+          <h2>Analytics</h2>
+          <p>
+            Este site ainda não usa nenhuma ferramenta de estatísticas de
+            visitas. Se isso vier a mudar no futuro (por exemplo, para
+            perceber quantas pessoas visitam a loja), esta página será
+            atualizada para o explicar antes de a ferramenta entrar em
+            funcionamento.
+          </p>
+
+          <h2>Cookies</h2>
+          <p>
+            O site não usa cookies de rastreamento nem de publicidade. Os
+            únicos dados guardados no teu dispositivo são os já descritos
+            acima (o carrinho de compras), através de <em>localStorage</em>,
+            que tecnicamente não é um cookie e não é partilhado com ninguém.
+          </p>
+
+          <h2>Os teus direitos</h2>
+          <p>
+            Como não recolhemos nem guardamos dados pessoais nos nossos
+            próprios sistemas, não há uma "conta" ou "perfil" para pedires
+            para apagar. Se em algum momento nos enviaste dados por WhatsApp
+            ou Instagram (por exemplo, o teu nome e morada para uma entrega)
+            e quiseres que os apaguemos das nossas conversas, basta pedir
+            diretamente por essa via.
+          </p>
+
+          <h2>Alterações a esta política</h2>
+          <p>
+            Podemos atualizar esta página à medida que o site cresce (por
+            exemplo, ao adicionar analytics ou um sistema de encomendas mais
+            avançado). Vamos sempre indicar aqui a data da última
+            atualização, no topo da página.
+          </p>
+
+          <h2>Contacto</h2>
+          <p>
+            Para qualquer dúvida sobre esta política ou sobre os teus dados,
+            fala connosco por WhatsApp ou Instagram — os contactos estão no
+            rodapé desta página.
+          </p>
+
         </div>
       </section>
     </main>

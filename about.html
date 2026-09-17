@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sobre Nós — La Farina</title>
     <meta name="description" content="Conhece a história da La Farina: um projeto social independente que forma jovens timorenses em Díli." />
+    <!-- Canonical: aponta para o domínio final (www.lafarina.tl), mesmo
+         enquanto o site está publicado em tiagovskicode.github.io — evita
+         conteúdo duplicado aos olhos do Google quando o domínio mudar. -->
+    <link rel="canonical" href="https://www.lafarina.tl/about.html" />
 
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Sobre Nós — La Farina" />
@@ -26,10 +30,13 @@
       href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Sora:wght@100..800&display=swap"
       rel="stylesheet"
     />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    />
+    <!-- Font Awesome: só os módulos "solid" e "brands", em vez do "all"
+         completo — o site só usa ícones destes dois grupos (casa, loja,
+         WhatsApp, Instagram, etc.), por isso não há motivo para carregar
+         também "regular", "duotone", "sharp" e "thin", que não são usados. -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/fontawesome.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/solid.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/brands.min.css" />
 
     <!-- Dados estruturados (schema.org) — ajuda o Google a mostrar a La
          Farina como negócio local nos resultados de pesquisa (morada,
@@ -100,7 +107,7 @@
       <section class="about-story">
         <div class="about-story-content">
           <div class="about-story-image">
-            <img src="img/meninas.jpg" alt="Chef Pollyanna com a equipa da La Farina" />
+            <img src="img/meninas.jpg" alt="Chef Pollyanna com a equipa da La Farina" loading="lazy" />
             <p class="about-story-card">Como tudo começou</p>
           </div>
           <div class="about-story-text">
@@ -182,7 +189,7 @@
         <div class="equipa-grid">
           <div class="equipa-card">
             <div class="equipa-foto">
-              <img src="img/helder.png" alt="Chef Helder Machado" />
+              <img src="img/helder.png" alt="Chef Helder Machado" loading="lazy" />
             </div>
             <h3>Helder Machado</h3>
             <p class="equipa-role">Direção &amp; Formação</p>
@@ -197,7 +204,7 @@
 
           <div class="equipa-card">
             <div class="equipa-foto">
-              <img src="img/person.png" alt="Chef Pollyanna Serrano" />
+              <img src="img/person.png" alt="Chef Pollyanna Serrano" loading="lazy" />
             </div>
             <h3>Pollyanna Serrano</h3>
             <p class="equipa-role">Gastronomia Italiana</p>
@@ -221,7 +228,7 @@
         <div class="equipa-grid equipa-grid--3">
           <div class="equipa-card">
             <div class="equipa-foto">
-              <img src="img/person.png" alt="Nélia, padeira da La Farina" />
+              <img src="img/person.png" alt="Nélia, padeira da La Farina" loading="lazy" />
             </div>
             <h3>Nélia</h3>
             <p class="equipa-role">Panificação &amp; Focaccias</p>
@@ -234,7 +241,7 @@
 
           <div class="equipa-card">
             <div class="equipa-foto">
-              <img src="img/person.png" alt="Verônica, cozinheira da La Farina" />
+              <img src="img/person.png" alt="Verônica, cozinheira da La Farina" loading="lazy" />
             </div>
             <h3>Verônica</h3>
             <p class="equipa-role">Massas Frescas &amp; Conservas</p>
@@ -247,7 +254,7 @@
 
           <div class="equipa-card">
             <div class="equipa-foto">
-              <img src="img/person.png" alt="Maculina, padeira da La Farina" />
+              <img src="img/person.png" alt="Maculina, padeira da La Farina" loading="lazy" />
             </div>
             <h3>Maculina</h3>
             <p class="equipa-role">Panificação &amp; Massa Fresca</p>
@@ -292,7 +299,7 @@
       <div class="footer-content">
         <div class="footer-brand">
           <div class="brand-header">
-            <img src="logo.png" alt="La Farina Logo" class="brand-logo" />
+            <img src="logo.png" alt="La Farina Logo" class="brand-logo" loading="lazy" />
             <div class="brand-name-block">
               <span class="brand-name">La Farina</span>
               <span class="brand-location">Díli, Timor-Leste</span>
@@ -318,6 +325,7 @@
             <li><a href="shop.html">Loja</a></li>
             <li><a href="subscription.html">Assinatura</a></li>
             <li><a href="contact.html">Contactar</a></li>
+            <li><a href="privacy.html">Política de Privacidade</a></li>
           </ul>
         </div>
 
