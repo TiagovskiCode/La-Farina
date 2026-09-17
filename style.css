@@ -1958,16 +1958,19 @@ p{
   .impacto-grid{ grid-template-columns: 1fr; gap: 32px; }
   .header-container{
     padding: 0 16px;
-    /* mobile: 3 colunas — hamburguer à esquerda, logo ao centro,
-       carrinho à direita. O nav-bar não ocupa coluna porque passa a
-       painel flutuante em position:fixed (ver abaixo). */
-    grid-template-columns: auto 1fr auto;
+    /* mobile: logo à esquerda, carrinho e hamburguer agrupados à
+       direita (hamburguer é o elemento mais à direita de todos).
+       O nav-bar não ocupa coluna porque passa a painel flutuante em
+       position:fixed (ver abaixo). */
+    grid-template-columns: 1fr auto auto;
     justify-content: initial;
   }
-  .logo{ justify-self: center; }
+  .logo{ order: 1; justify-self: start; }
   .logo img{ width: 48px; }
 
-  .nav-toggle{ display: flex; }
+  .header-actions{ order: 2; justify-self: end; }
+
+  .nav-toggle{ display: flex; order: 3; justify-self: end; }
 
   .order-button{
     padding: 10px 16px;
@@ -1980,8 +1983,8 @@ p{
   .nav-bar{
     position: fixed;
     top: 92px;
-    left: 12px;
-    /* ancorado à esquerda, alinhado com o hamburguer, em vez de ocupar
+    right: 12px;
+    /* ancorado à direita, alinhado com o hamburguer, em vez de ocupar
        toda a largura — parece que o painel sai do próprio botão */
     width: min(280px, calc(100% - 24px));
     flex-direction: column;
