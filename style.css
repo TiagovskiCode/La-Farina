@@ -1,25 +1,5 @@
-/* =============================================================
-   LA FARINA — style.css
-   Índice:
-     1. Tokens (cores, fontes, espaçamentos)
-     2. Reset & base
-     3. Tipografia
-     4. Sistema de botões
-     5. Header
-     6. Hero
-     7. Sobre Nós
-     8. Recomendados pelo chefe
-     9. Como Encomendar
-    10. Reviews
-    11. Contacto
-    12. Footer
-    13. Responsivo
-   ============================================================= */
-
-/* ---------- 1. TOKENS ---------- */
 :root{
-  /* cores */
-  --cream:          #F6EEDB;
+    --cream:          #F6EEDB;
   --paper:          #FFFBF2;
   --gold:           #E0A93B;
   --gold-deep:      #B9821F;
@@ -32,21 +12,17 @@
   --ink-soft:       #5A5044;
   --line:           rgba(28,20,16,0.12);
 
-  /* fontes */
-  --font-display: 'Kalam', cursive;
+    --font-display: 'Kalam', cursive;
   --font-body:    'Sora', sans-serif;
 
-  /* raios e sombra */
-  --radius-lg: 26px;
+    --radius-lg: 26px;
   --radius-md: 16px;
   --radius-sm: 10px;
   --shadow-card: 0 2px 12px rgba(28,20,16,0.06);
 
-  /* largura máxima do conteúdo */
-  --content-width: 1180px;
+    --content-width: 1180px;
 }
 
-/* ---------- 2. RESET & BASE ---------- */
 *{
   margin: 0;
   padding: 0;
@@ -57,7 +33,6 @@
 
 html{ scroll-behavior: smooth; }
 
-/* foco visível para navegação por teclado (acessibilidade) */
 a:focus-visible,
 button:focus-visible,
 input:focus-visible,
@@ -79,7 +54,6 @@ a{ color: inherit; font-family: var(--font-body); }
 button{ font-family: var(--font-body); border: none; cursor: pointer; background: none; }
 ul{ list-style: none; }
 
-/* ---------- 3. TIPOGRAFIA ---------- */
 h1{ font-family: var(--font-display); font-weight: 400; color: var(--green-lafarina); }
 h2{ font-family: var(--font-display); font-weight: 400; color: var(--green-lafarina); }
 h3{ font-family: var(--font-display); font-weight: 400; color: var(--forest-deep); }
@@ -90,11 +64,6 @@ p{
   color: var(--ink-soft);
 }
 
-/* ---------- 4. SISTEMA DE BOTÕES ---------- */
-/* .button e .order-button aplicam-se sempre diretamente ao elemento
-   clicável (<a> ou <button>) — nunca a uma div à volta.
-   A seta "→" vem do CSS (::after), não de uma imagem, para nunca
-   desalinhar em relação ao texto. */
 .button,
 .order-button{
   display: inline-flex;
@@ -110,9 +79,6 @@ p{
   transition: background-color .2s ease, border-color .2s ease, color .2s ease;
 }
 
-/* a seta desliza ligeiramente para a direita no hover — dá vida ao
-   botão sem precisar de imagem nenhuma, e nunca desalinha porque nasce
-   do próprio texto */
 .button::after{
   content: '\2192';
   display: inline-block;
@@ -133,7 +99,6 @@ p{
   background-color: var(--forest);
 }
 
-/* usar só nos 3-4 CTAs mais importantes do site, não em todos os botões */
 .button--accent{
   background-color: var(--rust);
   color: var(--paper);
@@ -150,7 +115,6 @@ p{
   background-color: var(--rust-deep);
 }
 
-/* variante compacta — botões dentro de um card */
 .button--sm{
   width: 100%;
   margin-top: auto;
@@ -161,11 +125,10 @@ p{
 }
 .button--sm:hover{
   color: var(--rust);
-  transform: none; 
+  transform: none;
   transition: color .2s ease;
 }
 
-/* ---------- 5. HEADER ---------- */
 .header{
   position: fixed;
   top: 0;
@@ -215,11 +178,8 @@ p{
   color: var(--forest);
   font-weight: 700;
 }
-/* os ícones só aparecem no menu mobile (ver breakpoint 700px) — no
-   desktop o nav-bar mantém-se limpo, só com texto */
 .nav-bar a i{ display: none; }
 
-/* ---------- 5b. MENU MOBILE (hamburger) ---------- */
 .nav-toggle{
   display: none;
   flex-direction: column;
@@ -242,14 +202,12 @@ p{
   border-radius: 2px;
   transition: transform .25s ease, opacity .2s ease, background-color .25s ease;
 }
-/* estado aberto: preenche a rust, condizente com os outros CTAs do site */
 .nav-toggle.open{ background-color: var(--rust); }
 .nav-toggle.open span{ background-color: var(--paper); }
 .nav-toggle.open span:nth-child(1){ transform: translateY(7px) rotate(45deg); }
 .nav-toggle.open span:nth-child(2){ opacity: 0; }
 .nav-toggle.open span:nth-child(3){ transform: translateY(-7px) rotate(-45deg); }
 
-/* ---------- 6. HERO ---------- */
 .hero{
   position: relative;
   min-height: 100vh;
@@ -371,8 +329,6 @@ p{
   .scroll-cue span{ animation: none; }
 }
 
-/* ---------- 6.1 PILARES (porquê nós) ---------- */
-/* ---------- 6. PILARES (independentes por página) ---------- */
 .home-pilares{
   padding: 56px 5vw;
   background-color: var(--paper);
@@ -386,8 +342,8 @@ p{
   gap: 32px;
 }
 .home-pilar{
-   text-align: center; 
-   padding-top: 20px; 
+   text-align: center;
+   padding-top: 20px;
 }
 .home-pilar-icone{
   display: inline-flex;
@@ -453,8 +409,8 @@ p{
 }
 .contact-pilares-grid--3{ grid-template-columns: repeat(3, 1fr); }
 
-.contact-pilar{ 
-  text-align: center; 
+.contact-pilar{
+  text-align: center;
 }
 
 .contact-pilar-icone{
@@ -481,7 +437,6 @@ p{
   color: var(--ink-soft);
 }
 
-/* ---------- 7. SOBRE NÓS (independentes por página) ---------- */
 .home-sobre{
   background-color: var(--cream);
   display: flex;
@@ -594,7 +549,6 @@ p{
 }
 .about-story-text a.button{ align-self: flex-start; }
 
-/* ---------- POLÍTICA DE PRIVACIDADE ---------- */
 .privacy-content{
   width: 100%;
   max-width: 760px;
@@ -612,7 +566,6 @@ p{
   margin: 0;
 }
 
-/* ---------- 8. RECOMENDADOS PELO CHEFE ---------- */
 .massas{
   padding: 96px 5vw;
   background-image:
@@ -689,7 +642,6 @@ p{
 
 .ver-loja-toda{ margin-top: 44px; }
 
-/* ---------- 9. COMO ENCOMENDAR ---------- */
 .encomendar{
   padding: 96px 5vw;
   background-color: var(--cream);
@@ -739,7 +691,6 @@ p{
   gap: 32px;
 }
 
-/* linha de conexão entre os passos, só em ecrãs largos */
 .cards-encomendar::before{
   content: '';
   position: absolute;
@@ -786,9 +737,7 @@ p{
   background-color: var(--cream);
   border-radius: 50%;
   font-size: 18px;
-  /* ícone Font Awesome em rust, a condizer com os acentos do site
-     (antes era um emoji, que trazia cor própria) */
-  color: var(--rust);
+    color: var(--rust);
 }
 
 .step-number{
@@ -814,7 +763,6 @@ p{
   color: var(--ink-soft);
 }
 
-/* ---------- 10. REVIEWS ---------- */
 .reviews{
   padding: 96px 5vw;
   background-color: var(--forest-deep);
@@ -863,7 +811,6 @@ p{
 .cards-reviews-info p{ font-size: 15px; margin-bottom: 8px; }
 .cards-reviews-info .button{ margin-top: 12px; align-self: flex-start; }
 
-/* ---------- 11. CONTACTO (independentes por página) ---------- */
 .home-contacto{
   position: relative;
   padding: 130px 5vw;
@@ -990,7 +937,6 @@ p{
   border-color: rgba(246,238,219,.7);
 }
 
-/* gradiente oficial do Instagram */
 .button--instagram{
   background: linear-gradient(45deg, #FEDA75 0%, #FA7E1E 25%, #D62976 50%, #962FBF 75%, #4F5BD5 100%);
   color: var(--paper);
@@ -1008,14 +954,12 @@ p{
   color: var(--paper);
 }
 
-/* ---------- 12. FOOTER ---------- */
 .main-footer{
   position: relative;
   background-color: var(--ink);
   color: rgba(246,238,219,.75);
 }
 
-/* faixa de destaque no topo do footer */
 .main-footer::before{
   content: '';
   display: block;
@@ -1023,7 +967,6 @@ p{
   background: linear-gradient(90deg, var(--gold), var(--green-lafarina));
 }
 
-/* faixa de chamada para ação, antes das colunas */
 .footer-cta{
   background-color: var(--forest-deep);
   border-bottom: 1px solid rgba(246,238,219,.1);
@@ -1184,21 +1127,14 @@ p{
 }
 .voltar-topo:hover{ color: var(--paper); }
 
-
-/* ---------- 12.1 PÁGINA — BANNER INTERNO ---------- */
-/* usado no topo das páginas internas (sobre nós, contacto, loja...) */
 .page-hero{
-  /* fluido: escala suavemente com o ecrã em vez de "saltar" num breakpoint fixo */
-  padding: clamp(120px, 24vw, 180px) 6vw clamp(48px, 10vw, 80px);
+    padding: clamp(120px, 24vw, 180px) 6vw clamp(48px, 10vw, 80px);
   text-align: center;
   background-color: var(--forest-deep);
   background-size: cover;
   background-image: radial-gradient(circle at 20% 20%, rgba(224,169,59,.12), transparent 25%),
                      radial-gradient(circle at 80% 80%, rgba(58,120,59,.18), transparent 25%);
 }
-/* ganchos por página: só a imagem de fundo muda — padding, cor base e
-   alinhamento vêm sempre de .page-hero, para o hero ficar fluido em
-   qualquer página sem repetir os mesmos valores 4 vezes */
 .page-hero--about{
   background-image: linear-gradient(100deg, rgba(19,34,26,.72) 0%, rgba(19,34,26,.38) 42%, rgba(19,34,26,.12) 70%),
   url('img/pasta.jpg');
@@ -1218,7 +1154,6 @@ p{
   url('https://images.pexels.com/photos/30666735/pexels-photo-30666735.jpeg');
 }
 
-/* ---------- 6.5 PÁGINA 404 ---------- */
 .page-404{
   min-height: 70vh;
   display: flex;
@@ -1269,7 +1204,6 @@ p{
   color: rgba(246,238,219,.8);
 }
 
-/* ---------- 12.2 MISSÃO / CITAÇÃO ---------- */
 .missao{
   padding: 80px 5vw;
   text-align: center;
@@ -1292,7 +1226,6 @@ p{
   letter-spacing: .06em;
 }
 
-/* ---------- 12.25 IMPACTO SOCIAL ---------- */
 .impacto{
   padding: 90px 5vw;
   background-color: var(--forest-deep);
@@ -1319,8 +1252,6 @@ p{
   color: var(--gold);
   margin-bottom: 10px;
 }
-/* quando a "métrica" é um ícone em vez de um número, reduz um pouco
-   para ficar oticamente do mesmo peso dos números ao lado */
 .impacto-numero--icone{
   font-size: clamp(2rem, 4vw, 2.8rem);
   line-height: 1.3;
@@ -1333,7 +1264,6 @@ p{
   margin: 0 auto;
 }
 
-/* ---------- 12.3 EQUIPA ---------- */
 .equipa{
   padding: 96px 5vw;
   background-color: var(--cream);
@@ -1393,7 +1323,6 @@ p{
   font-size: 15px;
 }
 
-/* ---------- 12.4 CROWDFUNDING ---------- */
 .crowdfunding{
   padding: 90px 5vw;
   text-align: center;
@@ -1415,13 +1344,11 @@ p{
   margin-bottom: 28px;
 }
 
-/* ---------- 12.5 LOJA ---------- */
 .loja{
   padding: 60px 5vw 100px;
   background-color: var(--cream);
 }
 
-/* ---------- SUBSCRIÇÃO SEMANAL ---------- */
 .assinaturas{
   padding: clamp(48px, 12vw, 90px) 5vw;
   background-color: var(--paper);
@@ -1446,9 +1373,7 @@ p{
   max-width: var(--content-width);
   margin: 0 auto;
   display: grid;
-  /* fluido: preenche o espaço disponível e reflui sozinho (3 -> 2 -> 1
-     coluna) consoante a largura do ecrã, sem precisar de breakpoints */
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
   gap: clamp(20px, 4vw, 28px);
   align-items: stretch;
 }
@@ -1464,9 +1389,6 @@ p{
   box-shadow: var(--shadow-card);
 }
 
-/* Plano em destaque — ligeiramente elevado e com moldura em rust.
-   Sem translateY em ecrãs estreitos: quando os cards empilham em 1
-   coluna, "levantar" o card do meio deixa de fazer sentido visual. */
 .assinatura-card--destaque{
   background-color: var(--paper);
   border-color: var(--rust);
@@ -1572,12 +1494,10 @@ p{
   gap: 20px;
 }
 
-/* vista "Todos" — grelha fixa, todos os cards do mesmo tamanho */
 .product-grid--todos{
   grid-template-columns: repeat(4, 1fr);
 }
 
-/* Só para leitores de ecrã, nunca aparece no visual */
 .sr-only{
   position: absolute;
   width: 1px; height: 1px;
@@ -1588,10 +1508,6 @@ p{
   border: 0;
 }
 
-/* ---------- ESQUELETO DE CARREGAMENTO (loja) ----------
-   Cards "fantasma" mostrados no HTML antes do script.js correr, para a
-   grelha nunca aparecer vazia/em branco enquanto os produtos carregam.
-   O script.js substitui este conteúdo assim que renderiza a loja. */
 .skeleton-card{ pointer-events: none; }
 .skeleton-block{
   border-radius: 8px;
@@ -1634,8 +1550,7 @@ p{
   object-fit: cover;
   border-radius: 14px;
   margin-bottom: 4px;
-  background: linear-gradient(135deg, var(--gold), var(--rust)); /* aparece enquanto a foto real não existe */
-}
+  background: linear-gradient(135deg, var(--gold), var(--rust)); }
 
 .card-top{
   display: flex;
@@ -1674,7 +1589,6 @@ p{
   background-color: var(--gold-deep) !important;
 }
 
-/* ---------- ÁREA DE PRODUTO NO CARD (seletor de corte + quantidade) ---------- */
 .produto-area{
   display: flex;
   flex-direction: column;
@@ -1683,7 +1597,6 @@ p{
   margin-top: auto;
 }
 
-/* Seletor "Inteiro / Fatiado" — só existe nos produtos da categoria pão */
 .produto-corte{
   display: flex;
   gap: 6px;
@@ -1712,13 +1625,10 @@ p{
   color: var(--cream);
 }
 
-/* ---------- CONTROLO DE QUANTIDADE NO CARD (loja) ---------- */
 .produto-controlo{
   width: 100%;
 }
 
-/* Estado ativo (qty > 0): pill escura com stepper, mesma altura/largura
-   do botão "Adicionar" para o card não "saltar" ao trocar de estado */
 .produto-controlo--ativo{
   display: flex;
   align-items: center;
@@ -1753,7 +1663,6 @@ p{
   text-align: center;
 }
 
-/* Pequeno "pulso" ao adicionar um produto pela primeira vez (0 -> 1) */
 @keyframes produto-pulso{
   0%{ transform: scale(1); }
   40%{ transform: scale(1.06); }
@@ -1763,7 +1672,6 @@ p{
   animation: produto-pulso .3s ease;
 }
 
-/* ---------- 12.6 BARRA FIXA DO CARRINHO ---------- */
 .cart-bar{
   position: fixed;
   left: 0;
@@ -1776,7 +1684,6 @@ p{
   transition: transform .3s ease;
 }
 .cart-bar.visible{ transform: translateY(0); }
-/* forçado pelo JS quando o footer entra em vista, para nunca sobrepor */
 .cart-bar.perto-footer{ transform: translateY(100%) !important; }
 .cart-bar-row{
   max-width: var(--content-width);
@@ -1803,7 +1710,6 @@ p{
   border-radius: 999px;
 }
 
-/* ---------- 12.7 PAINEL LATERAL DO CARRINHO ---------- */
 .cart-overlay{
   position: fixed;
   inset: 0;
@@ -1901,10 +1807,8 @@ p{
 }
 .qty-btn:hover{ background-color: var(--cream); }
 
-/* ---------- RECOMENDAÇÕES FINAIS NO CARRINHO ---------- */
 .cart-recomendacoes{
-  display: none; /* fica visible via JS quando há sugestões para mostrar */
-  padding: 16px 24px;
+  display: none;   padding: 16px 24px;
   border-top: 1px solid var(--line);
   background-color: var(--cream);
 }
@@ -1997,7 +1901,6 @@ p{
   color: var(--forest-deep);
 }
 
-/* ---------- 13. RESPONSIVO ---------- */
 @media (max-width: 1280px){
   .product-grid--todos{ grid-template-columns: repeat(3, 1fr); }
 }
@@ -2025,11 +1928,7 @@ p{
   .impacto-grid{ grid-template-columns: 1fr; gap: 32px; }
   .header-container{
     padding: 0 16px;
-    /* mobile: logo à esquerda, carrinho e hamburguer agrupados à
-       direita (hamburguer é o elemento mais à direita de todos).
-       O nav-bar não ocupa coluna porque passa a painel flutuante em
-       position:fixed (ver abaixo). */
-    grid-template-columns: 1fr auto auto;
+        grid-template-columns: 1fr auto auto;
     justify-content: initial;
   }
   .logo{ order: 1; justify-self: start; }
@@ -2044,16 +1943,11 @@ p{
     font-size: 14px;
   }
 
-  /* Painel do menu — cartão flutuante "solto" do header, não faixa
-     edge-to-edge, para ficar mais estilizado e condizente com os
-     restantes cartões do site (cart-panel, produto-card, etc.) */
-  .nav-bar{
+    .nav-bar{
     position: fixed;
     top: 92px;
     right: 12px;
-    /* ancorado à direita, alinhado com o hamburguer, em vez de ocupar
-       toda a largura — parece que o painel sai do próprio botão */
-    width: min(280px, calc(100% - 24px));
+        width: min(280px, calc(100% - 24px));
     flex-direction: column;
     align-items: stretch;
     background: var(--cream);
@@ -2074,9 +1968,7 @@ p{
     pointer-events: auto;
   }
 
-  /* Faixa decorativa no topo do painel — o mesmo gradiente dourado/rust
-     usado nos acentos do site, para o menu não parecer uma lista "nua" */
-  .nav-bar::before{
+    .nav-bar::before{
     content: '';
     display: block;
     height: 4px;
@@ -2093,9 +1985,7 @@ p{
     font-weight: 600;
     position: relative;
     transition: background-color .2s ease, color .2s ease, padding-left .2s ease;
-    /* animação em cascata: cada link entra com um pequeno atraso quando
-       o painel abre, em vez de aparecer tudo de uma vez */
-    opacity: 0;
+        opacity: 0;
     transform: translateX(-8px);
   }
   .nav-bar.open a{
@@ -2110,8 +2000,7 @@ p{
     to{ opacity: 1; transform: translateX(0); }
   }
 
-  /* Ícone de cada link — só existe visualmente aqui no mobile */
-  .nav-bar a i{
+    .nav-bar a i{
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -2131,9 +2020,7 @@ p{
     background-color: rgba(168,75,42,0.08);
     font-weight: 700;
   }
-  /* pequena barra vertical rust do lado esquerdo do link ativo, para
-     ficar claro qual a página atual mesmo com o menu fechado a seguir */
-  .nav-bar a.active::before{
+    .nav-bar a.active::before{
     content: '';
     position: absolute;
     left: 0;
@@ -2152,9 +2039,7 @@ p{
   .about-story-image{ height: auto; aspect-ratio: 4/3; }
   .cards{ grid-template-columns: repeat(2, 1fr); gap: 14px; }
 
-  /* Cards mais compactos em mobile — menos padding e imagens mais baixas,
-     para caber mais produtos por scroll sem ficar apertado */
-  .card{ padding: 14px; border-radius: 10px; }
+    .card{ padding: 14px; border-radius: 10px; }
   .card img{ aspect-ratio: 4 / 3; border-radius: 10px; margin-bottom: 10px; }
   .card-info h3{ font-size: 16px; margin-bottom: 4px; }
   .card-info p{ font-size: 12.5px; }
@@ -2185,9 +2070,7 @@ p{
 }
 
 @media (max-width: 420px){
-  /* ecrãs muito estreitos: mantém as 2 colunas compactas, só aperta
-     ainda mais o espaçamento para não ficar demasiado apertado */
-  .product-grid,
+    .product-grid,
   .product-grid--todos,
   .cards{ gap: 10px; }
   .card{ padding: 12px; }

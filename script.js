@@ -1,32 +1,9 @@
-/* =============================================================
-   LA FARINA — script.js
-   Índice:
-     1. Dados dos produtos (loja)
-     2. Estado do carrinho
-     3. Renderização da loja
-     4. Lógica do carrinho (adicionar, remover, quantidades)
-     5. Painel do carrinho (abrir/fechar)
-     6. Checkout via WhatsApp
-     7. Menu mobile
-     8. Barra do carrinho x footer
-     9. Subscrição semanal
-   ============================================================= */
-
-/* ---------- 1. DADOS DOS PRODUTOS ----------
-   Os produtos, categorias e planos de assinatura (CATEGORY_LABELS,
-   PRODUCTS, SUBSCRIPTIONS) já não vivem aqui — foram para o ficheiro
-   products.js, carregado antes deste no HTML. É esse o ficheiro a
-   editar para mudar preços, produtos ou planos. */
-
-// Rótulos do corte, usados na etiqueta do carrinho e na mensagem do WhatsApp
 const CORTE_LABELS = { inteiro: 'Inteiro', fatiado: 'Fatiado' };
 
-const WHATSAPP_NUMBER = '67077192888'; // +670 7719 2888 — número oficial confirmado
+const WHATSAPP_NUMBER = '67077192888';
 
 function money(n){ return '$' + n.toFixed(2).replace(/\.00$/, ''); }
 
-/* ---------- 2. ESTADO DO CARRINHO ---------- */
-// carregado do localStorage para o carrinho sobreviver entre páginas
 let cart = {};
 try{
   cart = JSON.parse(localStorage.getItem('lafarina-cart') || '{}');
@@ -46,11 +23,6 @@ function encontrarProduto(id){
   return null;
 }
 
-/**
- * O carrinho pode guardar variantes do mesmo produto (ex: pão inteiro vs
- * fatiado) usando uma "chave composta" no formato "id::corte". Estas duas
- * funções separam a chave nas suas duas partes.
- */
 function idBase(chave){
   return chave.split('::')[0];
 }
@@ -59,14 +31,10 @@ function corteDeChave(chave){
   return partes.length > 1 ? partes[1] : null;
 }
 
-/** Nome do produto com o corte anexado, quando aplicável (ex: "Ciabatta (Fatiado)") */
 function nomeComCorte(p, corte){
   return corte ? `${p.name} (${CORTE_LABELS[corte]})` : p.name;
 }
 
-// Migração: carrinhos guardados antes desta funcionalidade tinham o pão
-// guardado só com o id simples (sem corte). Ao carregar, migramos essas
-// entradas para "id::inteiro", que passa a ser o valor por omissão.
 Object.keys(cart).forEach(chave => {
   if (!chave.includes('::')){
     const p = encontrarProduto(chave);
@@ -79,7 +47,6 @@ Object.keys(cart).forEach(chave => {
 });
 guardarCarrinho();
 
-/* ---------- 3. RENDERIZAÇÃO DA LOJA (só existe em shop.html) ---------- */
 const grid = document.getElementById('productGrid');
 const tabs = document.querySelectorAll('.tab');
 
@@ -98,9 +65,6 @@ function criarCardHTML(p, i){
   `;
 }
 
-// Guarda, por produto, qual o corte escolhido AGORA na loja (não é o
-// carrinho em si — é só a opção selecionada antes de clicar "Adicionar").
-// Só é relevante para produtos da categoria "pao".
 const corteEscolhido = {};
 
 function corteAtualDoProduto(p){
@@ -108,16 +72,11 @@ function corteAtualDoProduto(p){
   return corteEscolhido[p.id] || 'inteiro';
 }
 
-/** Devolve a chave usada no objeto `cart` para este produto, já com o corte incluído quando aplicável */
 function chaveCarrinho(p){
   const corte = corteAtualDoProduto(p);
   return corte ? `${p.id}::${corte}` : p.id;
 }
 
-/**
- * Área completa de um produto no card: o seletor de corte (só para pão)
- * + o controlo de quantidade correspondente à opção selecionada.
- */
 function criarAreaProdutoHTML(p){
   const seletor = p.categoria === 'pao' ? criarSeletorCorteHTML(p) : '';
   return `
@@ -128,7 +87,6 @@ function criarAreaProdutoHTML(p){
   `;
 }
 
-/** Seletor "Inteiro / Fatiado" — só aparece nos produtos da categoria pão */
 function criarSeletorCorteHTML(p){
   const corte = corteAtualDoProduto(p);
   return `
@@ -139,12 +97,6 @@ function criarSeletorCorteHTML(p){
   `;
 }
 
-/**
- * Devolve o HTML do controlo de quantidade de um produto (considerando já
- * o corte selecionado, quando aplicável), consoante o estado do carrinho:
- *  - qty === 0 -> botao "Adicionar"
- *  - qty > 0   -> stepper "- qty +" (permite ajustar sem sair do card)
- */
 function criarControloHTML(p){
   const chave = chaveCarrinho(p);
   const qty = cart[chave] || 0;
@@ -166,10 +118,6 @@ function criarControloHTML(p){
   `;
 }
 
-/**
- * Liga os eventos de clique de uma área de produto completa: o seletor de
- * corte (se existir) e o controlo de quantidade (Adicionar / stepper).
- */
 function ligarAreaProduto(areaEl){
   if (!areaEl) return;
 
@@ -190,12 +138,6 @@ function ligarAreaProduto(areaEl){
   });
 }
 
-/**
- * Substitui, no DOM, a área inteira de UM produto (seletor de corte +
- * controlo de quantidade) — evita re-renderizar a grelha toda a cada
- * clique (o que reiniciaria as animacoes de entrada e faria a grelha
- * "saltar"). Chamada sempre que o corte OU a quantidade mudam.
- */
 function atualizarAreaProduto(produtoId, comPulso){
   if (!grid) return;
   const areaAtual = grid.querySelector(`.produto-area[data-produto="${produtoId}"]`);
@@ -244,12 +186,11 @@ if (tabs.length){
   renderCategoria('todos');
 }
 
-/* ---------- 4. LÓGICA DO CARRINHO ---------- */
 function adicionarAoCarrinho(chave){
   cart[chave] = (cart[chave] || 0) + 1;
   guardarCarrinho();
   atualizarInterfaceCarrinho();
-  atualizarAreaProduto(idBase(chave), true); // true = mostra o pulso de feedback ao passar de 0 para 1
+  atualizarAreaProduto(idBase(chave), true);
 }
 
 function alterarQuantidade(chave, delta){
@@ -258,7 +199,7 @@ function alterarQuantidade(chave, delta){
   if (cart[chave] <= 0) delete cart[chave];
   guardarCarrinho();
   atualizarInterfaceCarrinho();
-  atualizarAreaProduto(idBase(chave), false); // mantém o card da loja sincronizado com o painel lateral
+  atualizarAreaProduto(idBase(chave), false);
 }
 
 function totalItens(){
@@ -276,7 +217,6 @@ function atualizarInterfaceCarrinho(){
   const items = totalItens();
   const preco = totalPreco();
 
-  // barra fixa no fundo (shop.html)
   const cartBar = document.getElementById('cartBar');
   const cartSummary = document.getElementById('cartSummary');
   if (cartBar && cartSummary){
@@ -288,11 +228,9 @@ function atualizarInterfaceCarrinho(){
     }
   }
 
-  // contador no header (todas as páginas)
   const contadorTopo = document.getElementById('contadorTopo');
   if (contadorTopo) contadorTopo.textContent = items;
 
-  // total no painel
   const cartTotal = document.getElementById('cartTotal');
   if (cartTotal) cartTotal.textContent = money(preco);
 
@@ -333,12 +271,9 @@ function renderizarListaCarrinho(){
   });
 }
 
-/* ---------- 5. PAINEL DO CARRINHO ---------- */
 const cartPanel = document.getElementById('cartPanel');
 const cartOverlay = document.getElementById('cartOverlay');
 
-// Categorias que fazem bom par com cada categoria já presente no carrinho
-// (ex: quem leva massa, é natural sugerir um molho para acompanhar).
 const CATEGORIAS_COMPLEMENTARES = {
   pao: ['molhos'],
   focaccia: ['molhos'],
@@ -346,7 +281,6 @@ const CATEGORIAS_COMPLEMENTARES = {
   molhos: ['massas', 'pao'],
 };
 
-/** Baralha um array sem alterar o original (Fisher-Yates) */
 function baralhar(array){
   const copia = [...array];
   for (let i = copia.length - 1; i > 0; i--){
@@ -356,11 +290,6 @@ function baralhar(array){
   return copia;
 }
 
-/**
- * Escolhe até `maxItens` produtos para recomendar no carrinho, com base
- * nas categorias já presentes (ex: massas -> sugere molhos). Nunca sugere
- * um produto que já esteja no carrinho.
- */
 function obterRecomendacoes(maxItens){
   const idsNoCarrinho = new Set(Object.keys(cart).map(idBase));
 
@@ -379,7 +308,6 @@ function obterRecomendacoes(maxItens){
   categoriasAlvo.forEach(cat => candidatos.push(...(PRODUCTS[cat] || [])));
   candidatos = candidatos.filter(p => !idsNoCarrinho.has(p.id));
 
-  // Sem categorias complementares (ou já tudo adicionado) -> sugere de todo o catálogo
   if (candidatos.length === 0){
     candidatos = Object.values(PRODUCTS).flat().filter(p => !idsNoCarrinho.has(p.id));
   }
@@ -387,10 +315,6 @@ function obterRecomendacoes(maxItens){
   return baralhar(candidatos).slice(0, maxItens);
 }
 
-/**
- * Desenha o bloco "Também podes gostar" dentro do painel do carrinho.
- * Só aparece quando há pelo menos 1 item no carrinho.
- */
 function renderizarRecomendacoes(){
   const bloco = document.getElementById('cartRecomendacoes');
   if (!bloco) return;
@@ -429,10 +353,9 @@ function renderizarRecomendacoes(){
     btn.addEventListener('click', () => {
       const p = encontrarProduto(btn.dataset.id);
       if (!p) return;
-      // pão recomendado entra sempre como "Inteiro" por omissão
       const chave = p.categoria === 'pao' ? `${p.id}::inteiro` : p.id;
       adicionarAoCarrinho(chave);
-      renderizarRecomendacoes(); // já não sugere o mesmo produto outra vez
+      renderizarRecomendacoes();
     });
   });
 }
@@ -441,7 +364,7 @@ function abrirCarrinho(){
   if (!cartPanel) return;
   cartPanel.classList.add('open');
   cartOverlay.classList.add('visible');
-  renderizarRecomendacoes(); // recalcula as sugestões sempre que o carrinho abre
+  renderizarRecomendacoes();
 }
 function fecharCarrinho(){
   if (!cartPanel) return;
@@ -454,7 +377,6 @@ document.getElementById('abrirCarrinhoTopo')?.addEventListener('click', abrirCar
 document.getElementById('cartFecharBtn')?.addEventListener('click', fecharCarrinho);
 cartOverlay?.addEventListener('click', fecharCarrinho);
 
-/* ---------- 6. CHECKOUT VIA WHATSAPP ---------- */
 document.getElementById('cartCheckout')?.addEventListener('click', () => {
   const entries = Object.entries(cart);
   if (entries.length === 0) return;
@@ -476,7 +398,6 @@ document.getElementById('cartCheckout')?.addEventListener('click', () => {
   window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(mensagem)}`, '_blank');
 });
 
-/* ---------- 7. MENU MOBILE ---------- */
 const navToggle = document.getElementById('navToggle');
 const mainNav = document.getElementById('mainNav');
 if (navToggle && mainNav){
@@ -492,17 +413,13 @@ if (navToggle && mainNav){
     navToggle.setAttribute('aria-expanded', String(aberto));
   });
 
-  // fecha o menu assim que se escolhe uma página
   mainNav.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', fecharMenuMobile);
   });
 }
 
-/* ---------- INIT ---------- */
 atualizarInterfaceCarrinho();
 
-/* ---------- 8. BARRA DO CARRINHO x FOOTER ---------- */
-// esconde a cart-bar assim que o footer entra em vista, para nunca sobrepor
 const cartBarEl = document.getElementById('cartBar');
 const footerEl = document.querySelector('.main-footer');
 if (cartBarEl && footerEl && 'IntersectionObserver' in window){
@@ -514,9 +431,6 @@ if (cartBarEl && footerEl && 'IntersectionObserver' in window){
   footerObserver.observe(footerEl);
 }
 
-/* ---------- 9. SUBSCRIÇÃO SEMANAL ---------- */
-
-/** HTML de um card de plano de subscrição */
 function criarAssinaturaHTML(sub){
   return `
     <div class="assinatura-card ${sub.destaque ? 'assinatura-card--destaque' : ''}">
@@ -532,12 +446,6 @@ function criarAssinaturaHTML(sub){
   `;
 }
 
-/**
- * Desenha os planos de subscrição na loja e liga o botão "Subscrever" a
- * uma mensagem de WhatsApp pré-formatada (não há pagamento recorrente
- * automático — a Nélia/Verônica combinam os detalhes e o pagamento
- * diretamente com o cliente, tal como as encomendas normais).
- */
 function renderizarAssinaturas(){
   const grid = document.getElementById('assinaturasGrid');
   if (!grid) return;
