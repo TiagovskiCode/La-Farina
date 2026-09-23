@@ -72,7 +72,7 @@ const CATEGORY_LABELS = {
 /* ---------- PRODUTOS ---------- */
 const PRODUCTS = {
   pao: [
-    { id: 'pao-chorizo',    name: 'Pão de Chorizo',     price: 6, img: 'img/produtos/pao-chorizo.jpg', desc: 'Massa artesanal recheada com chorizo.' },
+    { id: 'pao-chorizo',    name: 'Pão de Chorizo',     price: 6, img: 'img/pao-choriço.jpg', desc: 'Massa artesanal recheada com chorizo.' },
     { id: 'pao-parmesan',   name: 'Pão de Parmesão',    price: 6, img: 'img/produtos/pao-parmesan.jpg', desc: 'Crosta dourada, miolo macio, parmesão.' },
     { id: 'pao-blue',       name: 'Pão de Queijo Azul', price: 6, img: 'img/produtos/pao-blue.jpg', desc: 'Sabor intenso de queijo azul.' },
     { id: 'pao-ciabatta',   name: 'Ciabatta',           price: 4, img: 'img/produtos/pao-ciabatta.jpg', desc: 'Clássica, crocante por fora, alveolada por dentro.' },
