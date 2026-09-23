@@ -11,6 +11,35 @@
    aqui automaticamente.
 
    ---------------------------------------------------------------
+   FOTOS DOS PRODUTOS — como colocar
+   ---------------------------------------------------------------
+   Todas as fotos vivem na pasta "img/produtos/" (cria esta pasta, ao
+   lado da pasta "icons/", se ainda não existir).
+
+   Cada produto já sabe o nome exato do ficheiro que precisa —
+   está escrito no campo "img" de cada produto, em baixo. Por
+   exemplo, o produto com id 'pao-chorizo' espera encontrar o
+   ficheiro:
+        img/produtos/pao-chorizo.jpg
+
+   Ou seja: só precisas de tirar a foto, dar-lhe exatamente esse
+   nome (respeita maiúsculas/minúsculas) e colocá-la nessa pasta.
+   Não precisas de mudar mais nada neste ficheiro — assim que o
+   ficheiro existir com o nome certo, aparece automaticamente no
+   site, em todos os sítios onde esse produto é mostrado (loja e
+   sugestões do carrinho).
+
+   Sugestões para a foto:
+     - Formato quadrado (ex: 1000x1000px) — o site corta para
+       quadrado automaticamente, mas fica melhor se já vier
+       enquadrada assim, com o produto centrado.
+     - Ficheiro .jpg (é o que está à espera; se só tiveres .png,
+       muda a extensão no campo "img" desse produto para .png).
+     - Enquanto a foto não existir, o card mostra só o fundo
+       dourado, sem foto partida — não há problema em ires
+       adicionando aos poucos.
+
+   ---------------------------------------------------------------
    COMO ADICIONAR UM PRODUTO NOVO
    ---------------------------------------------------------------
    1. Escolhe a categoria certa em baixo: pao, focaccia, massas ou molhos.
@@ -19,7 +48,9 @@
         id    -> um código único, sem espaços nem acentos (ex: 'pao-alho')
         name  -> o nome que aparece no site
         price -> o preço em dólares, só o número (ex: 6, ou 6.50)
-        img   -> o link da foto do produto
+        img   -> o caminho da foto — usa sempre 'img/produtos/' seguido
+                 do mesmo id que escolheste acima + '.jpg'
+                 (ex: 'img/produtos/pao-alho.jpg')
         desc  -> a descrição curta que aparece no card
         badge -> opcional. Só usar em produtos que queiras destacar
                  (ex: 'Mais vendido'). Para não usar, apaga a linha toda.
@@ -41,52 +72,50 @@ const CATEGORY_LABELS = {
 /* ---------- PRODUTOS ---------- */
 const PRODUCTS = {
   pao: [
-    { id: 'pao-chorizo',    name: 'Pão de Chorizo',     price: 6, img: 'https://images.pexels.com/photos/8633662/pexels-photo-8633662.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Massa artesanal recheada com chorizo.' },
-    { id: 'pao-parmesan',   name: 'Pão de Parmesão',    price: 6, img: 'https://images.pexels.com/photos/30350350/pexels-photo-30350350.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Crosta dourada, miolo macio, parmesão.' },
-    { id: 'pao-blue',       name: 'Pão de Queijo Azul', price: 6, img: 'https://images.pexels.com/photos/30890566/pexels-photo-30890566.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Sabor intenso de queijo azul.' },
-    { id: 'pao-ciabatta',   name: 'Ciabatta',           price: 4, img: 'https://images.pexels.com/photos/36202913/pexels-photo-36202913.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Clássica, crocante por fora, alveolada por dentro.' },
-    { id: 'pao-multigrain', name: 'Pão Multigrãos',     price: 8, img: 'https://images.pexels.com/photos/6608542/pexels-photo-6608542.jpeg?auto=compress&cs=tinysrgb&w=800', badge: 'Mais vendido', desc: 'Mistura de grãos, textura densa e nutritiva.' },
-    { id: 'cinnamon-roll',  name: 'Cinnamon Roll',      price: 2, img: 'https://images.pexels.com/photos/3951306/pexels-photo-3951306.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Rolinho de canela individual.' },
-    { id: 'soft-rolls',     name: 'Pãezinhos Macios (8un)', price: 6, img: 'https://images.pexels.com/photos/1287278/pexels-photo-1287278.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Pacote com 8 unidades, ideais para o dia a dia.' },
+    { id: 'pao-chorizo',    name: 'Pão de Chorizo',     price: 6, img: 'img/produtos/pao-chorizo.jpg', desc: 'Massa artesanal recheada com chorizo.' },
+    { id: 'pao-parmesan',   name: 'Pão de Parmesão',    price: 6, img: 'img/produtos/pao-parmesan.jpg', desc: 'Crosta dourada, miolo macio, parmesão.' },
+    { id: 'pao-blue',       name: 'Pão de Queijo Azul', price: 6, img: 'img/produtos/pao-blue.jpg', desc: 'Sabor intenso de queijo azul.' },
+    { id: 'pao-ciabatta',   name: 'Ciabatta',           price: 4, img: 'img/produtos/pao-ciabatta.jpg', desc: 'Clássica, crocante por fora, alveolada por dentro.' },
+    { id: 'pao-multigrain', name: 'Pão Multigrãos',     price: 8, img: 'img/produtos/pao-multigrain.jpg', badge: 'Mais vendido', desc: 'Mistura de grãos, textura densa e nutritiva.' },
+    { id: 'cinnamon-roll',  name: 'Cinnamon Roll',      price: 2, img: 'img/produtos/cinnamon-roll.jpg', desc: 'Rolinho de canela individual.' },
+    { id: 'soft-rolls',     name: 'Pãezinhos Macios (8un)', price: 6, img: 'img/produtos/soft-rolls.jpg', desc: 'Pacote com 8 unidades, ideais para o dia a dia.' },
   ],
   focaccia: [
-    { id: 'foc-herb',       name: 'Focaccia de Ervas',                price: 10, img: 'https://images.pexels.com/photos/29653173/pexels-photo-29653173.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Azeite, ervas frescas e flor de sal.' },
-    { id: 'foc-rosolive',   name: 'Focaccia de Alecrim e Azeitona',   price: 10, img: 'https://images.pexels.com/photos/33657315/pexels-photo-33657315.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Alecrim fresco e azeitonas inteiras.' },
-    { id: 'foc-tompesto',   name: 'Focaccia de Tomate e Pesto',      price: 10, img: 'https://images.pexels.com/photos/36863149/pexels-photo-36863149.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Tomate maduro e pesto caseiro.' },
-    { id: 'foc-chorolive',  name: 'Focaccia de Chorizo e Azeitona',  price: 10, img: 'https://images.pexels.com/photos/30666816/pexels-photo-30666816.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Chorizo fatiado com azeitonas.' },
-    { id: 'foc-bluewalnut', name: 'Focaccia de Queijo Azul e Noz',   price: 10, img: 'https://images.pexels.com/photos/30666812/pexels-photo-30666812.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Queijo azul com nozes torradas.' },
-    { id: 'sf-choc',        name: 'Focaccia Doce de Chocolate',       price: 10, img: 'https://images.pexels.com/photos/6829491/pexels-photo-6829491.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Massa fofa com pedaços de chocolate.' },
-    { id: 'sf-bancin',      name: 'Focaccia Doce de Banana e Canela', price: 10, img: 'https://images.pexels.com/photos/33739660/pexels-photo-33739660.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Banana caramelizada e canela.' },
-    { id: 'sf-bannut',      name: 'Focaccia Doce de Banana e Nutella', price: 10, img: 'https://images.pexels.com/photos/4114141/pexels-photo-4114141.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Banana com Nutella derretida.' },
-    { id: 'sf-applecin',    name: 'Focaccia Doce de Maçã e Canela',   price: 10, img: 'https://images.pexels.com/photos/4610166/pexels-photo-4610166.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Maçã salteada com canela.' },
+    { id: 'foc-herb',       name: 'Focaccia de Ervas',                price: 10, img: 'img/produtos/foc-herb.jpg', desc: 'Azeite, ervas frescas e flor de sal.' },
+    { id: 'foc-rosolive',   name: 'Focaccia de Alecrim e Azeitona',   price: 10, img: 'img/produtos/foc-rosolive.jpg', desc: 'Alecrim fresco e azeitonas inteiras.' },
+    { id: 'foc-tompesto',   name: 'Focaccia de Tomate e Pesto',      price: 10, img: 'img/produtos/foc-tompesto.jpg', desc: 'Tomate maduro e pesto caseiro.' },
+    { id: 'foc-chorolive',  name: 'Focaccia de Chorizo e Azeitona',  price: 10, img: 'img/produtos/foc-chorolive.jpg', desc: 'Chorizo fatiado com azeitonas.' },
+    { id: 'foc-bluewalnut', name: 'Focaccia de Queijo Azul e Noz',   price: 10, img: 'img/produtos/foc-bluewalnut.jpg', desc: 'Queijo azul com nozes torradas.' },
+    { id: 'sf-choc',        name: 'Focaccia Doce de Chocolate',       price: 10, img: 'img/produtos/sf-choc.jpg', desc: 'Massa fofa com pedaços de chocolate.' },
+    { id: 'sf-bancin',      name: 'Focaccia Doce de Banana e Canela', price: 10, img: 'img/produtos/sf-bancin.jpg', desc: 'Banana caramelizada e canela.' },
+    { id: 'sf-bannut',      name: 'Focaccia Doce de Banana e Nutella', price: 10, img: 'img/produtos/sf-bannut.jpg', desc: 'Banana com Nutella derretida.' },
+    { id: 'sf-applecin',    name: 'Focaccia Doce de Maçã e Canela',   price: 10, img: 'img/produtos/sf-applecin.jpg', desc: 'Maçã salteada com canela.' },
   ],
   massas: [
-    { id: 'pasta-small',      name: 'Massa Artesanal Pequena (500g)',  price: 6,  img: 'https://images.pexels.com/photos/2998955/pexels-photo-2998955.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Formatos espiral e concha.' },
-    { id: 'pasta-fettuccine', name: 'Fettuccine (500g)',               price: 5,  img: 'https://images.pexels.com/photos/5710178/pexels-photo-5710178.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Sabores limão, beterraba, espinafre ou natural.' },
-    { id: 'gnocchi-trad',     name: 'Nhoque Tradicional (500g)',       price: 8,  img: 'https://images.pexels.com/photos/6659620/pexels-photo-6659620.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Pré-cozido, pronto a saltear.' },
-    { id: 'gnocchi-cheese',   name: 'Nhoque Recheado de Queijo (500g)',price: 14, img: 'https://images.pexels.com/photos/6659628/pexels-photo-6659628.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Pré-cozido, recheio cremoso de queijo.' },
-    { id: 'lasagne-beef',     name: 'Lasanha de Carne (1,7kg)',        price: 20, img: 'https://images.pexels.com/photos/5949922/pexels-photo-5949922.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Ingredientes frescos, pronta para o forno.' },
-    { id: 'lasagne-veg',      name: 'Lasanha Vegetariana (1,7kg)',     price: 15, img: 'https://images.pexels.com/photos/4079520/pexels-photo-4079520.jpeg', desc: 'Ingredientes frescos, pronta para o forno.' },
+    { id: 'pasta-small',      name: 'Massa Artesanal Pequena (500g)',  price: 6,  img: 'img/produtos/pasta-small.jpg', desc: 'Formatos espiral e concha.' },
+    { id: 'pasta-fettuccine', name: 'Fettuccine (500g)',               price: 5,  img: 'img/produtos/pasta-fettuccine.jpg', desc: 'Sabores limão, beterraba, espinafre ou natural.' },
+    { id: 'gnocchi-trad',     name: 'Nhoque Tradicional (500g)',       price: 8,  img: 'img/produtos/gnocchi-trad.jpg', desc: 'Pré-cozido, pronto a saltear.' },
+    { id: 'gnocchi-cheese',   name: 'Nhoque Recheado de Queijo (500g)',price: 14, img: 'img/produtos/gnocchi-cheese.jpg', desc: 'Pré-cozido, recheio cremoso de queijo.' },
+    { id: 'lasagne-beef',     name: 'Lasanha de Carne (1,7kg)',        price: 20, img: 'img/produtos/lasagne-beef.jpg', desc: 'Ingredientes frescos, pronta para o forno.' },
+    { id: 'lasagne-veg',      name: 'Lasanha Vegetariana (1,7kg)',     price: 15, img: 'img/produtos/lasagne-veg.jpg', desc: 'Ingredientes frescos, pronta para o forno.' },
   ],
-  // NOTA: várias imagens desta categoria ainda estão repetidas (placeholders
-  // do Pexels). Por marcar com fotos reais dos produtos assim que as tivermos.
   molhos: [
-    { id: 'garlic-confit',    name: 'Confit de Alho',               price: 3,  img: 'https://images.pexels.com/photos/3273989/pexels-photo-3273989.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Alho confitado lentamente em azeite.' },
-    { id: 'chimichurri',      name: 'Chimichurri',                  price: 5,  img: 'https://images.pexels.com/photos/9685273/pexels-photo-9685273.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Molho fresco de ervas, alho e vinagre.' },
-    { id: 'caponata',         name: 'Caponata de Beringela',        price: 4,  img: 'https://images.pexels.com/photos/8580763/pexels-photo-8580763.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Beringela agridoce ao estilo siciliano.' },
-    { id: 'peperonata',       name: 'Peperonata',                   price: 10, img: 'https://images.pexels.com/photos/1051849/pexels-photo-1051849.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Pimentos salteados em azeite e ervas.' },
-    { id: 'tomato-sauce-s',   name: 'Molho de Tomate',              price: 4,  img: 'https://images.pexels.com/photos/9685273/pexels-photo-9685273.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Molho de tomate tradicional, base para massas.' },
-    { id: 'brazil-chilli',    name: 'Pimenta Brasileira',           price: 4,  img: 'https://images.pexels.com/photos/8896839/pexels-photo-8896839.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Molho de pimenta com toque brasileiro.' },
-    { id: 'plum-merlot',      name: 'Compota de Ameixa com Merlot', price: 10, img: 'https://images.pexels.com/photos/1051849/pexels-photo-1051849.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Compota encorpada de ameixa reduzida em Merlot.' },
-    { id: 'pineapple-ginger', name: 'Compota de Ananás e Gengibre', price: 5,  img: 'https://images.pexels.com/photos/8896839/pexels-photo-8896839.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Doce e picante, ótima com queijos.' },
-    { id: 'mango-passion',    name: 'Compota de Manga e Maracujá',  price: 5,  img: 'https://images.pexels.com/photos/1051849/pexels-photo-1051849.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Sabor tropical de manga e maracujá.' },
-    { id: 'chili-jam',        name: 'Compota de Pimenta',           price: 5,  img: 'https://images.pexels.com/photos/8896839/pexels-photo-8896839.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Compota agridoce com pimenta.' },
-    { id: 'tangerine-jam',    name: 'Compota de Tangerina',         price: 7,  img: 'https://images.pexels.com/photos/1051849/pexels-photo-1051849.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Compota cítrica de tangerina.' },
-    { id: 'tomato-sauce-600', name: 'Molho de Tomate (600g)',       price: 5,  img: 'https://images.pexels.com/photos/9685273/pexels-photo-9685273.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Frasco de 600g, ideal para a semana.' },
-    { id: 'bolognese-600',    name: 'Molho Bolonhesa (600g)',       price: 8,  img: 'https://images.pexels.com/photos/5949922/pexels-photo-5949922.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Molho de carne encorpado, frasco de 600g.' },
-    { id: 'white-sauce-600',  name: 'Molho Branco (600g)',          price: 5,  img: 'https://images.pexels.com/photos/8580763/pexels-photo-8580763.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Molho branco cremoso, frasco de 600g.' },
-    { id: 'cassava-powder',   name: 'Farinha de Mandioca (400g)',   price: 5,  img: 'https://images.pexels.com/photos/3273989/pexels-photo-3273989.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Farinha torrada, produto local.' },
-    { id: 'potato-sticks',    name: 'Batata Palha (200g)',          price: 3,  img: 'https://images.pexels.com/photos/8580763/pexels-photo-8580763.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Crocante, ótima para acompanhar.' },
+    { id: 'garlic-confit',    name: 'Confit de Alho',               price: 3,  img: 'img/produtos/garlic-confit.jpg', desc: 'Alho confitado lentamente em azeite.' },
+    { id: 'chimichurri',      name: 'Chimichurri',                  price: 5,  img: 'img/produtos/chimichurri.jpg', desc: 'Molho fresco de ervas, alho e vinagre.' },
+    { id: 'caponata',         name: 'Caponata de Beringela',        price: 4,  img: 'img/produtos/caponata.jpg', desc: 'Beringela agridoce ao estilo siciliano.' },
+    { id: 'peperonata',       name: 'Peperonata',                   price: 10, img: 'img/produtos/peperonata.jpg', desc: 'Pimentos salteados em azeite e ervas.' },
+    { id: 'tomato-sauce-s',   name: 'Molho de Tomate',              price: 4,  img: 'img/produtos/tomato-sauce-s.jpg', desc: 'Molho de tomate tradicional, base para massas.' },
+    { id: 'brazil-chilli',    name: 'Pimenta Brasileira',           price: 4,  img: 'img/produtos/brazil-chilli.jpg', desc: 'Molho de pimenta com toque brasileiro.' },
+    { id: 'plum-merlot',      name: 'Compota de Ameixa com Merlot', price: 10, img: 'img/produtos/plum-merlot.jpg', desc: 'Compota encorpada de ameixa reduzida em Merlot.' },
+    { id: 'pineapple-ginger', name: 'Compota de Ananás e Gengibre', price: 5,  img: 'img/produtos/pineapple-ginger.jpg', desc: 'Doce e picante, ótima com queijos.' },
+    { id: 'mango-passion',    name: 'Compota de Manga e Maracujá',  price: 5,  img: 'img/produtos/mango-passion.jpg', desc: 'Sabor tropical de manga e maracujá.' },
+    { id: 'chili-jam',        name: 'Compota de Pimenta',           price: 5,  img: 'img/produtos/chili-jam.jpg', desc: 'Compota agridoce com pimenta.' },
+    { id: 'tangerine-jam',    name: 'Compota de Tangerina',         price: 7,  img: 'img/produtos/tangerine-jam.jpg', desc: 'Compota cítrica de tangerina.' },
+    { id: 'tomato-sauce-600', name: 'Molho de Tomate (600g)',       price: 5,  img: 'img/produtos/tomato-sauce-600.jpg', desc: 'Frasco de 600g, ideal para a semana.' },
+    { id: 'bolognese-600',    name: 'Molho Bolonhesa (600g)',       price: 8,  img: 'img/produtos/bolognese-600.jpg', desc: 'Molho de carne encorpado, frasco de 600g.' },
+    { id: 'white-sauce-600',  name: 'Molho Branco (600g)',          price: 5,  img: 'img/produtos/white-sauce-600.jpg', desc: 'Molho branco cremoso, frasco de 600g.' },
+    { id: 'cassava-powder',   name: 'Farinha de Mandioca (400g)',   price: 5,  img: 'img/produtos/cassava-powder.jpg', desc: 'Farinha torrada, produto local.' },
+    { id: 'potato-sticks',    name: 'Batata Palha (200g)',          price: 3,  img: 'img/produtos/potato-sticks.jpg', desc: 'Crocante, ótima para acompanhar.' },
   ],
 };
 

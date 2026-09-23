@@ -54,7 +54,7 @@ function criarCardHTML(p, i){
   return `
     <article class="card produto-card" style="animation-delay:${i * 0.04}s">
       ${p.badge ? `<span class="badge">${p.badge}</span>` : ''}
-      <img src="${p.img}" alt="${p.name}" loading="lazy">
+      <img src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.onerror=null;this.src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==';">
       <div class="card-top">
         <h3 class="card-name">${p.name}</h3>
         <span class="card-price">${money(p.price)}</span>
@@ -338,7 +338,7 @@ function renderizarRecomendacoes(){
     <div class="cart-recomendacoes-lista">
       ${recomendados.map(p => `
         <div class="recomendacao-item">
-          <img src="${p.img}" alt="${p.name}" loading="lazy">
+          <img src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.onerror=null;this.src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==';">
           <div class="recomendacao-info">
             <span class="recomendacao-nome">${p.name}</span>
             <span class="recomendacao-preco">${money(p.price)}</span>
