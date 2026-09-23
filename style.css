@@ -1287,6 +1287,7 @@ p{
   gap: 32px;
 }
 .equipa-grid--3{ grid-template-columns: repeat(3, 1fr); }
+.equipa-grid--4{ grid-template-columns: repeat(4, 1fr); }
 
 .equipa-card{
   padding-top: 32px;
