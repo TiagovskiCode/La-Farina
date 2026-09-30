@@ -80,7 +80,6 @@ p{
 }
 
 .button::after{
-  content: '\2192';
   display: inline-block;
   transition: transform .25s ease;
 }
@@ -570,7 +569,7 @@ p{
   padding: 96px 5vw;
   background-image:
     linear-gradient(rgba(19, 34, 26, 0.65), rgba(19,34,26,.65)),
-    url('imagens-pc/mosaico.jpg');
+    url('img/background-2.jpg');
   background-size: cover;
   background-position: center;
   display: flex;
