@@ -243,7 +243,7 @@ function renderizarListaCarrinho(){
 
   const entries = Object.entries(cart);
   if (entries.length === 0){
-    lista.innerHTML = '<p class="cart-vazio">O teu carrinho está vazio. Vai à loja e adiciona os teus favoritos!</p>';
+    lista.innerHTML = '<p class="cart-vazio">O seu carrinho está vazio. Vá à loja e adicione os seus favoritos!</p>';
     return;
   }
 
