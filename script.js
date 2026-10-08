@@ -2,6 +2,12 @@ const CORTE_LABELS = { inteiro: 'Inteiro', fatiado: 'Fatiado' };
 
 const WHATSAPP_NUMBER = '67077192888';
 
+function abrirWhatsApp(mensagem){
+  const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(mensagem)}`;
+  const janela = window.open(url, '_blank', 'noopener');
+  if (!janela) window.location.href = url;
+}
+
 function money(n){ return '$' + n.toFixed(2).replace(/\.00$/, ''); }
 
 let cart = {};
@@ -183,7 +189,13 @@ if (tabs.length){
       renderCategoria(tab.dataset.cat);
     });
   });
-  renderCategoria('todos');
+  const catInicial = location.hash.replace('#', '');
+  const tabInicial = [...tabs].find(t => t.dataset.cat === catInicial);
+  if (tabInicial){
+    tabInicial.click();
+  } else {
+    renderCategoria('todos');
+  }
 }
 
 function adicionarAoCarrinho(chave){
@@ -364,12 +376,14 @@ function abrirCarrinho(){
   if (!cartPanel) return;
   cartPanel.classList.add('open');
   cartOverlay.classList.add('visible');
+  document.body.style.overflow = 'hidden';
   renderizarRecomendacoes();
 }
 function fecharCarrinho(){
   if (!cartPanel) return;
   cartPanel.classList.remove('open');
   cartOverlay.classList.remove('visible');
+  document.body.style.overflow = '';
 }
 
 document.getElementById('cartAbrirBtn')?.addEventListener('click', abrirCarrinho);
@@ -395,7 +409,7 @@ document.getElementById('cartCheckout')?.addEventListener('click', () => {
     `Total: ${money(totalPreco())}`,
   ].join('\n');
 
-  window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(mensagem)}`, '_blank');
+  abrirWhatsApp(mensagem);
 });
 
 const navToggle = document.getElementById('navToggle');
@@ -416,7 +430,25 @@ if (navToggle && mainNav){
   mainNav.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', fecharMenuMobile);
   });
+
+  document.addEventListener('click', (e) => {
+    if (!mainNav.classList.contains('open')) return;
+    if (mainNav.contains(e.target) || navToggle.contains(e.target)) return;
+    fecharMenuMobile();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') fecharMenuMobile();
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 700) fecharMenuMobile();
+  });
 }
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') fecharCarrinho();
+});
 
 atualizarInterfaceCarrinho();
 
@@ -466,7 +498,7 @@ function renderizarAssinaturas(){
         'Podem confirmar-me o dia de entrega e como funciona o pagamento semanal?',
       ].join('\n');
 
-      window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(mensagem)}`, '_blank');
+      abrirWhatsApp(mensagem);
     });
   });
 }
