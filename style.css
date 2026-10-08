@@ -1692,6 +1692,7 @@ p{
   align-items: center;
   justify-content: space-between;
   padding: 14px 24px;
+  padding-bottom: calc(14px + env(safe-area-inset-bottom, 0px));
   font-weight: 600;
 }
 
@@ -1728,6 +1729,7 @@ p{
   z-index: 1100;
   width: min(400px, 100vw);
   height: 100vh;
+  height: 100dvh;
   display: flex;
   flex-direction: column;
   background: var(--paper);
@@ -1747,6 +1749,11 @@ p{
 .cart-panel-header h2{ font-size: 22px; }
 
 .cart-fechar{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
   background: none;
   border: none;
   font-size: 28px;
@@ -1939,9 +1946,12 @@ p{
   .nav-toggle{ display: flex; order: 3; justify-self: end; }
 
   .order-button{
+    min-height: 44px;
     padding: 10px 16px;
     font-size: 14px;
   }
+
+  .nav-toggle{ width: 44px; height: 44px; }
 
     .nav-bar{
     position: fixed;
@@ -1968,17 +1978,11 @@ p{
     pointer-events: auto;
   }
 
-    .nav-bar::before{
-    content: '';
-    display: block;
-    height: 4px;
-    background: linear-gradient(90deg, var(--gold), var(--rust));
-  }
-
   .nav-bar a{
     display: flex;
     align-items: center;
     gap: 14px;
+    min-height: 54px;
     padding: 16px 22px;
     border-bottom: 1px solid var(--line);
     font-size: 16.5px;
@@ -2052,10 +2056,21 @@ p{
   .card-name{ font-size: 14px; }
   .card-price{ font-size: 13px; }
   .card-desc{ font-size: 12px; }
-  .produto-add{ padding: 9px 10px; font-size: 12.5px; }
+  .produto-add{ min-height: 44px; padding: 9px 10px; font-size: 12.5px; }
   .produto-corte{ gap: 4px; }
-  .corte-btn{ padding: 5px 6px; font-size: 11px; }
-  .produto-qty-btn{ width: 26px; height: 26px; font-size: 14px; }
+  .corte-btn{ min-height: 40px; padding: 8px 6px; font-size: 12px; }
+  .produto-qty-btn{ width: 36px; height: 36px; font-size: 18px; }
+  .qty-btn{ width: 36px; height: 36px; font-size: 18px; }
+  .recomendacao-add{ width: 40px; height: 40px; font-size: 20px; }
+  .tabs{
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    gap: 4px;
+    margin-bottom: 24px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .tab{ flex-shrink: 0; min-height: 44px; white-space: nowrap; }
   .produto-qty-valor{ font-size: 13px; }
   .badge{ font-size: .58rem; padding: .3em .6em; }
   .cards-encomendar::before{ display: none; }
