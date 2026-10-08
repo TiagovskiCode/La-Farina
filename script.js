@@ -346,7 +346,7 @@ function renderizarRecomendacoes(){
 
   bloco.classList.add('visible');
   bloco.innerHTML = `
-    <h3 class="cart-recomendacoes-titulo">Também podes gostar</h3>
+    <h3 class="cart-recomendacoes-titulo">Você também pode gostar</h3>
     <div class="cart-recomendacoes-lista">
       ${recomendados.map(p => `
         <div class="recomendacao-item">
@@ -473,7 +473,7 @@ function criarAssinaturaHTML(sub){
       <ul class="assinatura-lista">
         ${sub.itens.map(item => `<li>${item}</li>`).join('')}
       </ul>
-      <button class="button ${sub.destaque ? 'button--accent' : ''} assinatura-btn" data-id="${sub.id}" type="button">Subscrever</button>
+      <button class="button ${sub.destaque ? 'button--accent' : ''} assinatura-btn" data-id="${sub.id}" type="button">Assinar</button>
     </div>
   `;
 }
@@ -490,12 +490,12 @@ function renderizarAssinaturas(){
       if (!sub) return;
 
       const mensagem = [
-        `Olá! Quero subscrever a "${sub.nome}" (${money(sub.preco)}/semana) na La Farina.`,
+        `Olá! Quero assinar a "${sub.nome}" (${money(sub.preco)}/semana) na La Farina.`,
         '',
         'Inclui:',
         ...sub.itens.map(item => `• ${item}`),
         '',
-        'Podem confirmar-me o dia de entrega e como funciona o pagamento semanal?',
+        'Podem confirmar o dia de entrega e como funciona o pagamento semanal?',
       ].join('\n');
 
       abrirWhatsApp(mensagem);

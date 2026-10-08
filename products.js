@@ -140,7 +140,7 @@ const SUBSCRIPTIONS = [
     id: 'sub-pao',
     nome: 'Cesta de Pão',
     preco: 18,
-    desc: 'Um pão à tua escolha, toda a semana, sem teres de encomendar.',
+    desc: 'Um pão à sua escolha, toda a semana, sem precisar encomendar.',
     itens: [
       '1x pão artesanal à escolha (inteiro ou fatiado)',
       'Entrega semanal, sempre no mesmo dia',
@@ -163,7 +163,7 @@ const SUBSCRIPTIONS = [
     id: 'sub-completa',
     nome: 'Cesta Completa',
     preco: 45,
-    desc: 'Pão, focaccia e massa fresca — tudo o que precisas para a semana.',
+    desc: 'Pão, focaccia e massa fresca — tudo o que você precisa para a semana.',
     itens: [
       '1x pão artesanal à escolha',
       '1x focaccia à escolha',
