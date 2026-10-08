@@ -22,13 +22,15 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Sora:wght@100..800&display=swap"
-      rel="stylesheet"
-    />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/fontawesome.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/solid.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/brands.min.css" />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Sora:wght@100..800&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Sora:wght@100..800&display=swap" /></noscript>
+        <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/fontawesome.min.css" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/fontawesome.min.css" /></noscript>
+    <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/solid.min.css" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/solid.min.css" /></noscript>
+    <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/brands.min.css" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/brands.min.css" /></noscript>
 
         <script type="application/ld+json">
     {
@@ -93,7 +95,7 @@
             <section class="about-story">
         <div class="about-story-content">
           <div class="about-story-image">
-            <img src="img/meninas.jpg" alt="Chef Pollyanna com a equipe da La Farina" loading="lazy" />
+            <picture><source type="image/webp" srcset="img/meninas-480.webp 480w, img/meninas-920.webp 920w" sizes="(max-width: 700px) 92vw, 460px" /><img src="img/meninas.jpg" alt="Chef Pollyanna com a equipe da La Farina" width="920" height="690" loading="lazy" decoding="async" /></picture>
             <p class="about-story-card">Como tudo começou</p>
           </div>
           <div class="about-story-text">
@@ -171,7 +173,7 @@
         <div class="equipa-grid">
           <div class="equipa-card">
             <div class="equipa-foto">
-              <img src="img/helder.png" alt="Chef Helder Machado" loading="lazy" />
+              <picture><source type="image/webp" srcset="img/helder.webp" /><img src="img/helder.jpg" alt="Chef Helder Machado" width="128" height="128" loading="lazy" decoding="async" /></picture>
             </div>
             <h3>Helder Machado</h3>
             <p class="equipa-role">Direção &amp; Formação</p>
@@ -186,7 +188,7 @@
 
           <div class="equipa-card">
             <div class="equipa-foto">
-              <img src="img/Pollyanna.png" alt="Chef Pollyanna Serrano" loading="lazy" />
+              <picture><source type="image/webp" srcset="img/Pollyanna.webp" /><img src="img/Pollyanna.jpg" alt="Chef Pollyanna Serrano" width="128" height="128" loading="lazy" decoding="async" /></picture>
             </div>
             <h3>Pollyanna Serrano</h3>
             <p class="equipa-role">Gastronomia Italiana</p>
@@ -208,7 +210,7 @@
           
           <div class="equipa-card">
             <div class="equipa-foto">
-              <img src="meninas/Anastacia.jpeg" alt="Anastácia, padeira da La Farina" loading="lazy" />
+              <picture><source srcset="meninas/Anastacia.webp" type="image/webp" /><img src="meninas/Anastacia.jpeg" alt="Anastácia, padeira da La Farina" width="128" height="128" loading="lazy" decoding="async" /></picture>
             </div>
             <h3>Anastácia</h3>
             <p class="equipa-role">Tesoureira</p>
@@ -219,7 +221,7 @@
 
           <div class="equipa-card">
             <div class="equipa-foto">
-              <img src="meninas/Maculina.jpeg" alt="Maculina, padeira da La Farina" loading="lazy" />
+              <picture><source srcset="meninas/Maculina.webp" type="image/webp" /><img src="meninas/Maculina.jpeg" alt="Maculina, padeira da La Farina" width="128" height="128" loading="lazy" decoding="async" /></picture>
             </div>
             <h3>Maculina</h3>
             <p class="equipa-role">Panificação &amp; Massa Fresca</p>
@@ -232,7 +234,7 @@
 
           <div class="equipa-card">
             <div class="equipa-foto">
-              <img src="meninas/Nelia.jpeg" alt="Nélia, padeira da La Farina" loading="lazy" />
+              <picture><source srcset="meninas/Nelia.webp" type="image/webp" /><img src="meninas/Nelia.jpeg" alt="Nélia, padeira da La Farina" width="128" height="128" loading="lazy" decoding="async" /></picture>
             </div>
             <h3>Nélia</h3>
             <p class="equipa-role">Panificação &amp; Focaccias</p>
@@ -243,7 +245,7 @@
           
           <div class="equipa-card">
             <div class="equipa-foto">
-              <img src="meninas/Veronica.jpeg" alt="Verônica, cozinheira da La Farina" loading="lazy" />
+              <picture><source srcset="meninas/Veronica.webp" type="image/webp" /><img src="meninas/Veronica.jpeg" alt="Verônica, cozinheira da La Farina" width="128" height="128" loading="lazy" decoding="async" /></picture>
             </div>
             <h3>Verônica</h3>
             <p class="equipa-role">Massas Frescas &amp; Conservas</p>
@@ -354,7 +356,7 @@
       </div>
     </aside>
 
-    <script src="products.js"></script>
-    <script src="script.js"></script>
+    <script src="products.js" defer></script>
+    <script src="script.js" defer></script>
   </body>
 </html>

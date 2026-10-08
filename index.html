@@ -12,6 +12,8 @@
     <meta property="og:description" content="Pão artesanal, focaccias e massas frescas feitas em Díli, Timor-Leste." />
     <meta property="og:image" content="https://tiagovskicode.github.io/La-Farina/logo.png" />
 
+    <link rel="preload" as="image" href="img/background-2-mobile.webp" media="(max-width: 700px)" fetchpriority="high" />
+    <link rel="preload" as="image" href="img/background-2.webp" media="(min-width: 701px)" fetchpriority="high" />
     <link rel="stylesheet" href="style.css" />
         <link rel="icon" href="icons/favicon.ico" sizes="any" />
     <link rel="icon" href="icons/icon-192.png" type="image/png" sizes="192x192" />
@@ -22,13 +24,15 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Sora:wght@100..800&display=swap"
-      rel="stylesheet"
-    />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/fontawesome.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/solid.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/brands.min.css" />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Sora:wght@100..800&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Sora:wght@100..800&display=swap" /></noscript>
+        <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/fontawesome.min.css" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/fontawesome.min.css" /></noscript>
+    <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/solid.min.css" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/solid.min.css" /></noscript>
+    <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/brands.min.css" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/brands.min.css" /></noscript>
 
         <script type="application/ld+json">
     {
@@ -66,7 +70,7 @@
           <span></span><span></span><span></span>
         </button>
         <div class="logo">
-          <a href="index.html"><img src="logo.png" alt="La Farina Logo" /></a>
+          <a href="index.html"><img src="logo.png" alt="La Farina Logo" fetchpriority="high" /></a>
         </div>
         <nav class="nav-bar" id="mainNav">
           <a href="index.html"><i class="fas fa-house"></i>Início</a>
@@ -125,7 +129,7 @@
       <section class="home-sobre" id="sobre-nos">
         <div class="home-sobre-content">
           <div class="home-sobre-image">
-            <img src="img/meninas.jpg" alt="Imagem da padaria La Farina" loading="lazy" />
+            <picture><source type="image/webp" srcset="img/meninas-480.webp 480w, img/meninas-920.webp 920w" sizes="(max-width: 700px) 92vw, 460px" /><img src="img/meninas.jpg" alt="Imagem da padaria La Farina" width="920" height="690" loading="lazy" decoding="async" /></picture>
             <p class="home-sobre-card">A equipe por trás</p>
           </div>
           <div class="home-sobre-text">
@@ -185,7 +189,7 @@
             </div>
 
             <div class="card">
-              <img src="shop-img/molhos.jpg" alt="Molhos e Conservas" loading="lazy" />
+              <picture><source type="image/webp" srcset="shop-img/molhos.webp" /><img src="shop-img/molhos.jpg" alt="Molhos e Conservas" width="700" height="700" loading="lazy" decoding="async" /></picture>
               <div class="card-info">
                 <h3>Molhos &amp; Conservas</h3>
                 <p>
@@ -361,7 +365,7 @@
       </div>
     </aside>
 
-    <script src="products.js"></script>
-    <script src="script.js"></script>
+    <script src="products.js" defer></script>
+    <script src="script.js" defer></script>
   </body>
 </html>

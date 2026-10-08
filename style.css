@@ -585,7 +585,7 @@ p{
   padding: 96px 5vw;
   background-image:
     linear-gradient(rgba(19, 34, 26, 0.65), rgba(19,34,26,.65)),
-    url('img/background-massas.jpg');
+    url('img/background-2.jpg');
   background-size: cover;
   background-position: center;
   display: flex;
@@ -631,6 +631,7 @@ p{
 
 .card img{
   width: 100%;
+  height: auto;
   aspect-ratio: 1 / 1;
   object-fit: cover;
   border-radius: 18px;
@@ -2054,6 +2055,7 @@ p{
   .nav-bar a.active i{ color: var(--rust); }
 
   .hero{ padding: 110px 6vw 56px; background-position: 62% center; }
+  .hero-content{ animation: none; }
   .hero-content h2{ font-size: 18px; }
   .hero-content h1{ font-size: clamp(56px, 18vw, 80px); }
   .hero-content p{ font-size: 16px; margin-bottom: 24px; }
@@ -2122,3 +2124,18 @@ p{
   .card-name{ font-size: 13px; }
   .card-price{ font-size: 12px; }
 }
+.hero{ background-image: linear-gradient(100deg, rgba(19,34,26,.72) 0%, rgba(19,34,26,.38) 42%, rgba(19,34,26,.12) 70%), url('img/background-2-mobile.webp'); }
+.massas{ background-image: linear-gradient(rgba(19, 34, 26, 0.65), rgba(19,34,26,.65)), url('img/background-2-mobile.webp'); }
+.page-hero--contact{ background-image: linear-gradient(100deg, rgba(19,34,26,.72) 0%, rgba(19,34,26,.38) 42%, rgba(19,34,26,.12) 70%), url('img/assistence-mobile.webp'); }
+.page-hero--shop{ background-image: linear-gradient(100deg, rgba(19,34,26,.72) 0%, rgba(19,34,26,.38) 42%, rgba(19,34,26,.12) 70%), url('img/pasta-shop-mobile.webp'); }
+.crowdfunding{ background-image: linear-gradient(100deg, rgba(0, 0, 0, 0.50) 0%, rgba(0, 0, 0, 0.50) 0%), url('img/pasta-help-mobile.webp'); }
+
+@media (min-width: 701px){
+  .hero{ background-image: linear-gradient(100deg, rgba(19,34,26,.72) 0%, rgba(19,34,26,.38) 42%, rgba(19,34,26,.12) 70%), url('img/background-2.webp'); }
+  .massas{ background-image: linear-gradient(rgba(19, 34, 26, 0.65), rgba(19,34,26,.65)), url('img/background-2.webp'); }
+  .page-hero--contact{ background-image: linear-gradient(100deg, rgba(19,34,26,.72) 0%, rgba(19,34,26,.38) 42%, rgba(19,34,26,.12) 70%), url('img/assistence.webp'); }
+  .page-hero--shop{ background-image: linear-gradient(100deg, rgba(19,34,26,.72) 0%, rgba(19,34,26,.38) 42%, rgba(19,34,26,.12) 70%), url('img/pasta-shop.webp'); }
+  .crowdfunding{ background-image: linear-gradient(100deg, rgba(0, 0, 0, 0.50) 0%, rgba(0, 0, 0, 0.50) 0%), url('img/pasta-help.webp'); }
+}
+
+picture{ display: contents; }
