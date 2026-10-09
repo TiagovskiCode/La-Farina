@@ -1,5 +1,3 @@
-const CORTE_LABELS = { inteiro: 'Inteiro', fatiado: 'Fatiado' };
-
 const WHATSAPP_NUMBER = '67077192888';
 
 function abrirWhatsApp(mensagem){
@@ -29,26 +27,11 @@ function encontrarProduto(id){
   return null;
 }
 
-function idBase(chave){
-  return chave.split('::')[0];
-}
-function corteDeChave(chave){
-  const partes = chave.split('::');
-  return partes.length > 1 ? partes[1] : null;
-}
-
-function nomeComCorte(p, corte){
-  return corte ? `${p.name} (${CORTE_LABELS[corte]})` : p.name;
-}
-
 Object.keys(cart).forEach(chave => {
-  if (!chave.includes('::')){
-    const p = encontrarProduto(chave);
-    if (p && p.categoria === 'pao'){
-      const novaChave = `${chave}::inteiro`;
-      cart[novaChave] = (cart[novaChave] || 0) + cart[chave];
-      delete cart[chave];
-    }
+  const base = chave.split('::')[0];
+  if (base !== chave){
+    cart[base] = (cart[base] || 0) + cart[chave];
+    delete cart[chave];
   }
 });
 guardarCarrinho();
@@ -71,40 +54,16 @@ function criarCardHTML(p, i){
   `;
 }
 
-const corteEscolhido = {};
-
-function corteAtualDoProduto(p){
-  if (p.categoria !== 'pao') return null;
-  return corteEscolhido[p.id] || 'inteiro';
-}
-
-function chaveCarrinho(p){
-  const corte = corteAtualDoProduto(p);
-  return corte ? `${p.id}::${corte}` : p.id;
-}
-
 function criarAreaProdutoHTML(p){
-  const seletor = p.categoria === 'pao' ? criarSeletorCorteHTML(p) : '';
   return `
     <div class="produto-area" data-produto="${p.id}">
-      ${seletor}
       ${criarControloHTML(p)}
     </div>
   `;
 }
 
-function criarSeletorCorteHTML(p){
-  const corte = corteAtualDoProduto(p);
-  return `
-    <div class="produto-corte" role="group" aria-label="Escolher corte de ${p.name}">
-      <button class="corte-btn ${corte === 'inteiro' ? 'ativo' : ''}" data-produto="${p.id}" data-corte="inteiro" type="button">Inteiro</button>
-      <button class="corte-btn ${corte === 'fatiado' ? 'ativo' : ''}" data-produto="${p.id}" data-corte="fatiado" type="button">Fatiado</button>
-    </div>
-  `;
-}
-
 function criarControloHTML(p){
-  const chave = chaveCarrinho(p);
+  const chave = p.id;
   const qty = cart[chave] || 0;
 
   if (qty > 0){
@@ -126,13 +85,6 @@ function criarControloHTML(p){
 
 function ligarAreaProduto(areaEl){
   if (!areaEl) return;
-
-  areaEl.querySelectorAll('.corte-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      corteEscolhido[btn.dataset.produto] = btn.dataset.corte;
-      atualizarAreaProduto(btn.dataset.produto, false);
-    });
-  });
 
   const btnAdd = areaEl.querySelector('.produto-add');
   if (btnAdd){
@@ -202,7 +154,7 @@ function adicionarAoCarrinho(chave){
   cart[chave] = (cart[chave] || 0) + 1;
   guardarCarrinho();
   atualizarInterfaceCarrinho();
-  atualizarAreaProduto(idBase(chave), true);
+  atualizarAreaProduto(chave, true);
 }
 
 function alterarQuantidade(chave, delta){
@@ -211,7 +163,7 @@ function alterarQuantidade(chave, delta){
   if (cart[chave] <= 0) delete cart[chave];
   guardarCarrinho();
   atualizarInterfaceCarrinho();
-  atualizarAreaProduto(idBase(chave), false);
+  atualizarAreaProduto(chave, false);
 }
 
 function totalItens(){
@@ -220,7 +172,7 @@ function totalItens(){
 
 function totalPreco(){
   return Object.entries(cart).reduce((sum, [id, qty]) => {
-    const p = encontrarProduto(idBase(id));
+    const p = encontrarProduto(id);
     return sum + (p ? p.price * qty : 0);
   }, 0);
 }
@@ -260,13 +212,12 @@ function renderizarListaCarrinho(){
   }
 
   lista.innerHTML = entries.map(([id, qty]) => {
-    const p = encontrarProduto(idBase(id));
+    const p = encontrarProduto(id);
     if (!p) return '';
-    const corte = corteDeChave(id);
     return `
       <div class="cart-item">
         <div class="cart-item-info">
-          <span class="cart-item-nome">${nomeComCorte(p, corte)}</span>
+          <span class="cart-item-nome">${p.name}</span>
           <span class="cart-item-preco">${money(p.price)}</span>
         </div>
         <div class="cart-item-qty">
@@ -303,7 +254,7 @@ function baralhar(array){
 }
 
 function obterRecomendacoes(maxItens){
-  const idsNoCarrinho = new Set(Object.keys(cart).map(idBase));
+  const idsNoCarrinho = new Set(Object.keys(cart));
 
   const categoriasNoCarrinho = new Set();
   idsNoCarrinho.forEach(id => {
@@ -365,8 +316,7 @@ function renderizarRecomendacoes(){
     btn.addEventListener('click', () => {
       const p = encontrarProduto(btn.dataset.id);
       if (!p) return;
-      const chave = p.categoria === 'pao' ? `${p.id}::inteiro` : p.id;
-      adicionarAoCarrinho(chave);
+      adicionarAoCarrinho(p.id);
       renderizarRecomendacoes();
     });
   });
@@ -396,9 +346,8 @@ document.getElementById('cartCheckout')?.addEventListener('click', () => {
   if (entries.length === 0) return;
 
   const linhas = entries.map(([id, qty]) => {
-    const p = encontrarProduto(idBase(id));
-    const corte = corteDeChave(id);
-    return p ? `• ${qty}x ${nomeComCorte(p, corte)} — ${money(p.price * qty)}` : '';
+    const p = encontrarProduto(id);
+    return p ? `• ${qty}x ${p.name} — ${money(p.price * qty)}` : '';
   });
 
   const mensagem = [
@@ -462,96 +411,3 @@ if (cartBarEl && footerEl && 'IntersectionObserver' in window){
   }, { threshold: 0 });
   footerObserver.observe(footerEl);
 }
-
-function criarAssinaturaHTML(sub){
-  return `
-    <div class="assinatura-card ${sub.destaque ? 'assinatura-card--destaque' : ''}">
-      ${sub.destaque ? '<span class="assinatura-badge">Mais popular</span>' : ''}
-      <h3>${sub.nome}</h3>
-      <p class="assinatura-desc">${sub.desc}</p>
-      <div class="assinatura-preco">${money(sub.preco)}</div>
-      <ul class="assinatura-lista">
-        ${sub.itens.map(item => `<li>${item}</li>`).join('')}
-      </ul>
-      <button class="button ${sub.destaque ? 'button--accent' : ''} assinatura-btn" data-id="${sub.id}" type="button">Quero este combo</button>
-    </div>
-  `;
-}
-
-function renderizarAssinaturas(){
-  const grid = document.getElementById('assinaturasGrid');
-  if (!grid) return;
-
-  grid.innerHTML = SUBSCRIPTIONS.map(criarAssinaturaHTML).join('');
-
-  grid.querySelectorAll('.assinatura-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const sub = SUBSCRIPTIONS.find(s => s.id === btn.dataset.id);
-      if (!sub) return;
-
-      const mensagem = [
-        `Olá! Quero encomendar o "${sub.nome}" (${money(sub.preco)}) na La Farina.`,
-        '',
-        'Inclui:',
-        ...sub.itens.map(item => `• ${item}`),
-        '',
-        'Podem confirmar as opções, o dia de entrega e a forma de pagamento?',
-      ].join('\n');
-
-      abrirWhatsApp(mensagem);
-    });
-  });
-}
-
-renderizarAssinaturas();
-
-function criarEventoHTML(ev){
-  const d = new Date(`${ev.data}T00:00:00`);
-  const dia = String(d.getDate()).padStart(2, '0');
-  const mes = d.toLocaleDateString('pt-BR', { month: 'short' }).replace('.', '');
-  const semana = d.toLocaleDateString('pt-BR', { weekday: 'long' });
-  return `
-    <article class="card evento-card">
-      <div class="evento-topo">
-        <div class="evento-data" aria-hidden="true">
-          <span class="evento-dia">${dia}</span>
-          <span class="evento-mes">${mes}</span>
-        </div>
-        <h3 class="evento-titulo">${ev.titulo}</h3>
-      </div>
-      <ul class="evento-info">
-        <li><i class="fas fa-calendar-days"></i><span>${semana}, ${d.toLocaleDateString('pt-BR', { day: 'numeric', month: 'long' })}</span></li>
-        ${ev.hora ? `<li><i class="fas fa-clock"></i><span>${ev.hora}</span></li>` : ''}
-        ${ev.local ? `<li><i class="fas fa-location-dot"></i><span>${ev.local}</span></li>` : ''}
-      </ul>
-      ${ev.desc ? `<p class="evento-desc">${ev.desc}</p>` : ''}
-      <button class="button button--sm evento-btn" data-id="${ev.id}" type="button">Quero saber mais</button>
-    </article>
-  `;
-}
-
-function renderizarEventos(){
-  const grid = document.getElementById('eventosGrid');
-  if (!grid || typeof EVENTS === 'undefined') return;
-
-  const hoje = new Date();
-  hoje.setHours(0, 0, 0, 0);
-
-  const proximos = EVENTS
-    .filter(ev => new Date(`${ev.data}T00:00:00`) >= hoje)
-    .sort((a, b) => a.data.localeCompare(b.data));
-
-  if (!proximos.length) return;
-
-  grid.innerHTML = proximos.map(criarEventoHTML).join('');
-
-  grid.querySelectorAll('.evento-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const ev = proximos.find(e => e.id === btn.dataset.id);
-      if (!ev) return;
-      abrirWhatsApp(`Olá! Gostaria de saber mais sobre o evento "${ev.titulo}" da La Farina.`);
-    });
-  });
-}
-
-renderizarEventos();

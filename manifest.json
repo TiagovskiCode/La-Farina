@@ -10,7 +10,10 @@
   "orientation": "portrait",
   "background_color": "#FFFBF2",
   "theme_color": "#13221A",
-  "categories": ["food", "shopping"],
+  "categories": [
+    "food",
+    "shopping"
+  ],
   "icons": [
     {
       "src": "icons/icon-192.png",
@@ -36,13 +39,12 @@
       "name": "Ver a loja",
       "short_name": "Loja",
       "url": "shop.html",
-      "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }]
-    },
-    {
-      "name": "Combos de pão e massas",
-      "short_name": "Combos",
-      "url": "combos.html",
-      "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }]
+      "icons": [
+        {
+          "src": "icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
     }
   ]
 }
