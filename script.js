@@ -346,7 +346,7 @@ function renderizarRecomendacoes(){
 
   bloco.classList.add('visible');
   bloco.innerHTML = `
-    <h3 class="cart-recomendacoes-titulo">Você também pode gostar</h3>
+    <h3 class="cart-recomendacoes-titulo">Acompanhamentos perfeitos</h3>
     <div class="cart-recomendacoes-lista">
       ${recomendados.map(p => `
         <div class="recomendacao-item">
@@ -469,11 +469,11 @@ function criarAssinaturaHTML(sub){
       ${sub.destaque ? '<span class="assinatura-badge">Mais popular</span>' : ''}
       <h3>${sub.nome}</h3>
       <p class="assinatura-desc">${sub.desc}</p>
-      <div class="assinatura-preco">${money(sub.preco)}<span>/semana</span></div>
+      <div class="assinatura-preco">${money(sub.preco)}</div>
       <ul class="assinatura-lista">
         ${sub.itens.map(item => `<li>${item}</li>`).join('')}
       </ul>
-      <button class="button ${sub.destaque ? 'button--accent' : ''} assinatura-btn" data-id="${sub.id}" type="button">Assinar</button>
+      <button class="button ${sub.destaque ? 'button--accent' : ''} assinatura-btn" data-id="${sub.id}" type="button">Quero este combo</button>
     </div>
   `;
 }
@@ -490,12 +490,12 @@ function renderizarAssinaturas(){
       if (!sub) return;
 
       const mensagem = [
-        `Olá! Quero assinar a "${sub.nome}" (${money(sub.preco)}/semana) na La Farina.`,
+        `Olá! Quero encomendar o "${sub.nome}" (${money(sub.preco)}) na La Farina.`,
         '',
         'Inclui:',
         ...sub.itens.map(item => `• ${item}`),
         '',
-        'Podem confirmar o dia de entrega e como funciona o pagamento semanal?',
+        'Podem confirmar as opções, o dia de entrega e a forma de pagamento?',
       ].join('\n');
 
       abrirWhatsApp(mensagem);
@@ -504,3 +504,54 @@ function renderizarAssinaturas(){
 }
 
 renderizarAssinaturas();
+
+function criarEventoHTML(ev){
+  const d = new Date(`${ev.data}T00:00:00`);
+  const dia = String(d.getDate()).padStart(2, '0');
+  const mes = d.toLocaleDateString('pt-BR', { month: 'short' }).replace('.', '');
+  const semana = d.toLocaleDateString('pt-BR', { weekday: 'long' });
+  return `
+    <article class="card evento-card">
+      <div class="evento-topo">
+        <div class="evento-data" aria-hidden="true">
+          <span class="evento-dia">${dia}</span>
+          <span class="evento-mes">${mes}</span>
+        </div>
+        <h3 class="evento-titulo">${ev.titulo}</h3>
+      </div>
+      <ul class="evento-info">
+        <li><i class="fas fa-calendar-days"></i><span>${semana}, ${d.toLocaleDateString('pt-BR', { day: 'numeric', month: 'long' })}</span></li>
+        ${ev.hora ? `<li><i class="fas fa-clock"></i><span>${ev.hora}</span></li>` : ''}
+        ${ev.local ? `<li><i class="fas fa-location-dot"></i><span>${ev.local}</span></li>` : ''}
+      </ul>
+      ${ev.desc ? `<p class="evento-desc">${ev.desc}</p>` : ''}
+      <button class="button button--sm evento-btn" data-id="${ev.id}" type="button">Quero saber mais</button>
+    </article>
+  `;
+}
+
+function renderizarEventos(){
+  const grid = document.getElementById('eventosGrid');
+  if (!grid || typeof EVENTS === 'undefined') return;
+
+  const hoje = new Date();
+  hoje.setHours(0, 0, 0, 0);
+
+  const proximos = EVENTS
+    .filter(ev => new Date(`${ev.data}T00:00:00`) >= hoje)
+    .sort((a, b) => a.data.localeCompare(b.data));
+
+  if (!proximos.length) return;
+
+  grid.innerHTML = proximos.map(criarEventoHTML).join('');
+
+  grid.querySelectorAll('.evento-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const ev = proximos.find(e => e.id === btn.dataset.id);
+      if (!ev) return;
+      abrirWhatsApp(`Olá! Gostaria de saber mais sobre o evento "${ev.titulo}" da La Farina.`);
+    });
+  });
+}
+
+renderizarEventos();

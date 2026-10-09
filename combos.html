@@ -3,13 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <title>Loja — La Farina</title>
-    <meta name="description" content="Pão artesanal, focaccias, massas frescas e conservas da La Farina. Escolha, adicione ao carrinho e encomende por WhatsApp." />
-        <link rel="canonical" href="https://www.lafarina.tl/shop.html" />
+    <title>Combos — La Farina</title>
+    <meta name="description" content="Combos de pão, focaccia e massa fresca da La Farina — escolha o seu e encomende por WhatsApp, sem compromisso." />
+        <link rel="canonical" href="https://www.lafarina.tl/combos.html" />
 
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Loja — La Farina" />
-    <meta property="og:description" content="Pão artesanal, focaccias, massas frescas e conservas. Escolha, adicione ao carrinho e encomende por WhatsApp." />
+    <meta property="og:title" content="Combos — La Farina" />
+    <meta property="og:description" content="Combos de pão, focaccia e massa fresca — escolha o seu e encomende por WhatsApp, sem compromisso." />
     <meta property="og:image" content="https://tiagovskicode.github.io/La-Farina/logo.png" />
 
     <link rel="stylesheet" href="style.css" />
@@ -25,7 +25,7 @@
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Sora:wght@100..800&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Sora:wght@100..800&display=swap" /></noscript>
 
-    <script type="application/ld+json">
+        <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Bakery",
@@ -67,8 +67,8 @@
           <a href="index.html"><i class="fas fa-house"></i>Início</a>
           <a href="about.html"><i class="fas fa-circle-info"></i>Sobre Nós</a>
           <a href="eventos.html"><i class="fas fa-calendar-days"></i>Eventos</a>
-          <a href="shop.html" class="active"><i class="fas fa-store"></i>Loja</a>
-          <a href="combos.html"><i class="fas fa-basket-shopping"></i>Combos</a>
+          <a href="shop.html"><i class="fas fa-store"></i>Loja</a>
+          <a href="combos.html" class="active"><i class="fas fa-basket-shopping"></i>Combos</a>
           <a href="contact.html"><i class="fas fa-comment-dots"></i>Contatar</a>
         </nav>
         <div class="header-actions">
@@ -80,100 +80,51 @@
     </header>
 
     <main>
-            <section class="page-hero page-hero--shop">
-        <span class="hero-badge">A Loja</span>
-        <h1>Escolha, adicione, encomende</h1>
-        <p>Tudo feito à mão, no próprio dia. Adicione os seus favoritos ao carrinho e finalize por WhatsApp.</p>
+            <section class="page-hero page-hero--subscription">
+        <span class="hero-badge">Novidade</span>
+        <h1>Combos para facilitar o seu dia</h1>
+        <p>Pão, focaccia e massa fresca juntos num só pedido. Escolha o combo, encomende por WhatsApp e, se quiser repetir, é só pedir de novo — sem compromisso.</p>
       </section>
 
-            <section class="loja">
-        <div class="loja-inner">
+            <section class="assinaturas">
+        <div class="assinaturas-grid" id="assinaturasGrid">
+                  </div>
+      </section>
 
-          <div class="tabs" id="tabs" role="tablist" aria-label="Categorias de produtos">
-            <button class="tab active" data-cat="todos" role="tab" aria-selected="true">Todos</button>
-            <button class="tab" data-cat="pao" role="tab" aria-selected="false">Pão</button>
-            <button class="tab" data-cat="focaccia" role="tab" aria-selected="false">Focaccias</button>
-            <button class="tab" data-cat="massas" role="tab" aria-selected="false">Massas Frescas</button>
-            <button class="tab" data-cat="molhos" role="tab" aria-selected="false">Molhos &amp; Conservas</button>
-          </div>
-
-          <span class="sr-only" role="status">Carregando produtos…</span>
-          <div class="product-grid product-grid--todos" id="productGrid">
-                        <div class="card produto-card skeleton-card" aria-hidden="true">
-              <div class="skeleton-block skeleton-img"></div>
-              <div class="card-top">
-                <div class="skeleton-block skeleton-line skeleton-line--name"></div>
-                <div class="skeleton-block skeleton-line skeleton-line--price"></div>
+            <section class="encomendar">
+        <div class="encomendar-info">
+          <span class="encomendar-eyebrow">Simples e sem complicações</span>
+          <h2>Como funciona?</h2>
+          <h3>Peça quando quiser, sem compromisso</h3>
+          <div class="cards-encomendar">
+            <div class="cards-encomendar-info">
+              <div class="passo-topo">
+                <span class="passo-icone"><i class="fas fa-basket-shopping"></i></span>
+                <span class="step-number">1</span>
               </div>
-              <div class="skeleton-block skeleton-line skeleton-line--desc"></div>
-              <div class="skeleton-block skeleton-line skeleton-line--desc-short"></div>
-              <div class="skeleton-block skeleton-btn"></div>
+              <h3>Escolha o combo</h3>
+              <p>Escolha o combo que mais combina com você e toque em "Quero este combo".</p>
             </div>
-            <div class="card produto-card skeleton-card" aria-hidden="true">
-              <div class="skeleton-block skeleton-img"></div>
-              <div class="card-top">
-                <div class="skeleton-block skeleton-line skeleton-line--name"></div>
-                <div class="skeleton-block skeleton-line skeleton-line--price"></div>
+            <div class="cards-encomendar-info">
+              <div class="passo-topo">
+                <span class="passo-icone"><i class="fas fa-comments"></i></span>
+                <span class="step-number">2</span>
               </div>
-              <div class="skeleton-block skeleton-line skeleton-line--desc"></div>
-              <div class="skeleton-block skeleton-line skeleton-line--desc-short"></div>
-              <div class="skeleton-block skeleton-btn"></div>
+              <h3>Combinamos por WhatsApp</h3>
+              <p>Confirmamos com você as suas escolhas (como o tipo de pão), o dia de entrega e a forma de pagamento.</p>
             </div>
-            <div class="card produto-card skeleton-card" aria-hidden="true">
-              <div class="skeleton-block skeleton-img"></div>
-              <div class="card-top">
-                <div class="skeleton-block skeleton-line skeleton-line--name"></div>
-                <div class="skeleton-block skeleton-line skeleton-line--price"></div>
+            <div class="cards-encomendar-info">
+              <div class="passo-topo">
+                <span class="passo-icone"><i class="fas fa-truck"></i></span>
+                <span class="step-number">3</span>
               </div>
-              <div class="skeleton-block skeleton-line skeleton-line--desc"></div>
-              <div class="skeleton-block skeleton-line skeleton-line--desc-short"></div>
-              <div class="skeleton-block skeleton-btn"></div>
-            </div>
-            <div class="card produto-card skeleton-card" aria-hidden="true">
-              <div class="skeleton-block skeleton-img"></div>
-              <div class="card-top">
-                <div class="skeleton-block skeleton-line skeleton-line--name"></div>
-                <div class="skeleton-block skeleton-line skeleton-line--price"></div>
-              </div>
-              <div class="skeleton-block skeleton-line skeleton-line--desc"></div>
-              <div class="skeleton-block skeleton-line skeleton-line--desc-short"></div>
-              <div class="skeleton-block skeleton-btn"></div>
+              <h3>Receba o seu pedido</h3>
+              <p>Quer repetir? É só pedir de novo, quando quiser. Não há compromisso nem renovação.</p>
             </div>
           </div>
         </div>
       </section>
-
-            <div class="cart-bar" id="cartBar">
-        <div class="cart-bar-row">
-          <span id="cartSummary">0 itens</span>
-          <button class="button button--sm" id="cartAbrirBtn" type="button" style="width:auto;">Ver carrinho</button>
-        </div>
-      </div>
     </main>
-
-        <div class="cart-overlay" id="cartOverlay"></div>
-    <aside class="cart-panel" id="cartPanel" aria-label="Carrinho de compras">
-      <div class="cart-panel-header">
-        <h2>O seu carrinho</h2>
-        <button class="cart-fechar" id="cartFecharBtn" aria-label="Fechar carrinho" type="button">&times;</button>
-      </div>
-
-      <div class="cart-panel-lista" id="cartLista">
-        <p class="cart-vazio" id="cartVazioMsg">O seu carrinho está vazio. Vá à loja e adicione os seus favoritos!</p>
-      </div>
-
-            <div class="cart-recomendacoes" id="cartRecomendacoes"></div>
-
-      <div class="cart-panel-footer">
-        <div class="cart-total-row">
-          <span>Total</span>
-          <span id="cartTotal">$0</span>
-        </div>
-        <button class="button button--accent" id="cartCheckout" type="button" style="width:100%; justify-content:center;">
-          Finalizar no WhatsApp
-        </button>
-      </div>
-    </aside>
 
     <footer class="main-footer">
 
@@ -239,6 +190,30 @@
         </div>
       </div>
     </footer>
+
+        <div class="cart-overlay" id="cartOverlay"></div>
+    <aside class="cart-panel" id="cartPanel" aria-label="Carrinho de compras">
+      <div class="cart-panel-header">
+        <h2>O seu carrinho</h2>
+        <button class="cart-fechar" id="cartFecharBtn" aria-label="Fechar carrinho" type="button">&times;</button>
+      </div>
+
+      <div class="cart-panel-lista" id="cartLista">
+        <p class="cart-vazio" id="cartVazioMsg">O seu carrinho está vazio. Vá à loja e adicione os seus favoritos!</p>
+      </div>
+
+            <div class="cart-recomendacoes" id="cartRecomendacoes"></div>
+
+      <div class="cart-panel-footer">
+        <div class="cart-total-row">
+          <span>Total</span>
+          <span id="cartTotal">$0</span>
+        </div>
+        <button class="button button--accent" id="cartCheckout" type="button" style="width:100%; justify-content:center;">
+          Finalizar no WhatsApp
+        </button>
+      </div>
+    </aside>
 
     <script src="products.js" defer></script>
     <script src="script.js" defer></script>

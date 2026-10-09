@@ -39,9 +39,9 @@
       "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }]
     },
     {
-      "name": "Assinatura semanal",
-      "short_name": "Assinatura",
-      "url": "subscription.html",
+      "name": "Combos de pão e massas",
+      "short_name": "Combos",
+      "url": "combos.html",
       "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }]
     }
   ]
