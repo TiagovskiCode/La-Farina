@@ -94,7 +94,7 @@ const PRODUCTS = {
   massas: [
     { id: 'pasta-small',      name: 'Massa Artesanal Pequena (500g)',  price: 6,  img: 'shop-img/massa-artesanal-p.jpg', desc: 'Formatos espiral e concha.' },
     { id: 'pasta-fettuccine', name: 'Fettuccine (500g)',               price: 5,  img: 'shop-img/fetucini.jpg', desc: 'Sabores limão, beterraba, espinafre ou natural.' },
-    { id: 'gnocchi-trad',     name: 'Nhoque Tradicional (500g)',       price: 8,  img: 'shop-img/gnocchi.jpg', desc: 'Pré-cozido, pronto a saltear.' },
+    { id: 'gnocchi-trad',     name: 'Nhoque Tradicional (500g)',       price: 8,  img: 'shop-img/gnocchi.jpg', desc: 'Pré-cozido, pronto para saltear.' },
     { id: 'gnocchi-cheese',   name: 'Nhoque Recheado de Queijo (500g)',price: 14, img: 'shop-img/gnocchi-queijo.jpg', desc: 'Pré-cozido, recheio cremoso de queijo.' },
     { id: 'lasagne-beef',     name: 'Lasanha de Carne (1,7kg)',        price: 20, img: 'shop-img/lasanha.jpg', desc: 'Ingredientes frescos, pronta para o forno.' },
     { id: 'lasagne-veg',      name: 'Lasanha Vegetariana (1,7kg)',     price: 15, img: 'shop-img/lasanha-veg.jpg', desc: 'Ingredientes frescos, pronta para o forno.' },
@@ -102,12 +102,12 @@ const PRODUCTS = {
   molhos: [
     { id: 'garlic-confit',    name: 'Confit de Alho',               price: 3,  img: 'shop-img/confit-alho.jpg', desc: 'Alho confitado lentamente em azeite.' },
     { id: 'chimichurri',      name: 'Chimichurri',                  price: 5,  img: 'shop-img/chimichurri.jpg', desc: 'Molho fresco de ervas, alho e vinagre.' },
-    { id: 'caponata',         name: 'Caponata de Beringela',        price: 4,  img: 'shop-img/caponata-berinjela.jpg', desc: 'Beringela agridoce ao estilo siciliano.' },
-    { id: 'peperonata',       name: 'Peperonata',                   price: 10, img: 'shop-img/peperonata.jpg', desc: 'Pimentos salteados em azeite e ervas.' },
+    { id: 'caponata',         name: 'Caponata de Berinjela',        price: 4,  img: 'shop-img/caponata-berinjela.jpg', desc: 'Berinjela agridoce ao estilo siciliano.' },
+    { id: 'peperonata',       name: 'Peperonata',                   price: 10, img: 'shop-img/peperonata.jpg', desc: 'Pimentões salteados em azeite e ervas.' },
     { id: 'tomato-sauce-s',   name: 'Molho de Tomate',              price: 4,  img: 'shop-img/molho-tomate.jpg', desc: 'Molho de tomate tradicional, base para massas.' },
     { id: 'brazil-chilli',    name: 'Pimenta Brasileira',           price: 4,  img: 'shop-img/pimenta-brasileira.jpg', desc: 'Molho de pimenta com toque brasileiro.' },
     { id: 'plum-merlot',      name: 'Compota de Ameixa com Merlot', price: 10, img: 'shop-img/compota-ameixa.jpg', desc: 'Compota encorpada de ameixa reduzida em Merlot.' },
-    { id: 'pineapple-ginger', name: 'Compota de Ananás e Gengibre', price: 5,  img: 'shop-img/compota-ananas.jpg', desc: 'Doce e picante, ótima com queijos.' },
+    { id: 'pineapple-ginger', name: 'Compota de Abacaxi e Gengibre', price: 5,  img: 'shop-img/compota-ananas.jpg', desc: 'Doce e picante, ótima com queijos.' },
     { id: 'mango-passion',    name: 'Compota de Manga e Maracujá',  price: 5,  img: 'shop-img/compota-manga.jpg', desc: 'Sabor tropical de manga e maracujá.' },
     { id: 'chili-jam',        name: 'Compota de Pimenta',           price: 5,  img: 'shop-img/compota-pimenta.jpg', desc: 'Compota agridoce com pimenta.' },
     { id: 'tangerine-jam',    name: 'Compota de Tangerina',         price: 7,  img: 'shop-img/compota-tangerina.jpg', desc: 'Compota cítrica de tangerina.' },
@@ -144,7 +144,7 @@ const SUBSCRIPTIONS = [
     itens: [
       '1x pão artesanal à escolha (inteiro ou fatiado)',
       'Entrega semanal, sempre no mesmo dia',
-      'Podes trocar o pão quando quiseres',
+      'Você pode trocar o pão quando quiser',
     ],
   },
   {

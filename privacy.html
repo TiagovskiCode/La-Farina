@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pt">
+<html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
@@ -23,13 +23,8 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Sora:wght@100..800&display=swap"
-      rel="stylesheet"
-    />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/fontawesome.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/solid.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/brands.min.css" />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Sora:wght@100..800&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Sora:wght@100..800&display=swap" /></noscript>
   </head>
 
   <body>
@@ -69,10 +64,10 @@
           <h2>O essencial, resumido</h2>
           <p>
             A La Farina não tem servidor próprio nem base de dados de clientes.
-            O site é uma montra e uma loja simples: o carrinho de compras fica
+            O site é uma vitrine e uma loja simples: o carrinho de compras fica
             guardado só no seu próprio celular ou computador, e a encomenda
             é finalizada através de uma mensagem de WhatsApp que você mesmo
-            envia. Não vendemos nem partilhamos dados com terceiros para fins
+            envia. Não vendemos nem compartilhamos dados com terceiros para fins
             de publicidade.
           </p>
 
@@ -80,7 +75,7 @@
           <p>
             Quando você adiciona produtos ao carrinho, essa informação (quais os
             produtos e as quantidades) fica guardada localmente no seu
-            navegador — chama-se <em>localStorage</em> — para o carrinho não
+            navegador — chamado de <em>localStorage</em> — para o carrinho não
             se perder se você sair do site e voltar. Esta informação nunca sai
             do seu dispositivo, não é enviada para nenhum servidor da La
             Farina, e desaparece se você limpar os dados do navegador.
@@ -103,7 +98,7 @@
             Este site ainda não usa nenhuma ferramenta de estatísticas de
             visitas. Se isso vier a mudar no futuro (por exemplo, para
             perceber quantas pessoas visitam a loja), esta página será
-            atualizada para o explicar antes de a ferramenta entrar em
+            atualizada para explicar isso antes de a ferramenta entrar em
             funcionamento.
           </p>
 
@@ -112,12 +107,12 @@
             O site não usa cookies de rastreamento nem de publicidade. Os
             únicos dados guardados no seu dispositivo são os já descritos
             acima (o carrinho de compras), através de <em>localStorage</em>,
-            que tecnicamente não é um cookie e não é partilhado com ninguém.
+            que tecnicamente não é um cookie e não é compartilhado com ninguém.
           </p>
 
           <h2>Os seus direitos</h2>
           <p>
-            Como não recolhemos nem guardamos dados pessoais nos nossos
+            Como não coletamos nem armazenamos dados pessoais nos nossos
             próprios sistemas, não há uma "conta" ou "perfil" para você pedir
             para apagar. Se em algum momento você nos enviou dados por WhatsApp
             ou Instagram (por exemplo, o seu nome e endereço para uma entrega)
@@ -232,7 +227,7 @@
       </div>
     </aside>
 
-    <script src="products.js"></script>
-    <script src="script.js"></script>
+    <script src="products.js" defer></script>
+    <script src="script.js" defer></script>
   </body>
 </html>

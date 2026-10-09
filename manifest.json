@@ -1,8 +1,8 @@
 {
   "name": "La Farina — Pão, Focaccias e Massas Artesanais",
   "short_name": "La Farina",
-  "description": "Pão artesanal, focaccias e massas frescas feitas em Díli, Timor-Leste. Encomenda por WhatsApp.",
-  "lang": "pt",
+  "description": "Pão artesanal, focaccias e massas frescas feitas em Díli, Timor-Leste. Encomende por WhatsApp.",
+  "lang": "pt-BR",
   "dir": "ltr",
   "start_url": "index.html",
   "scope": "./",

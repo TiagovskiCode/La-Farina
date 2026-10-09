@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pt">
+<html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
@@ -22,13 +22,8 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Sora:wght@100..800&display=swap"
-      rel="stylesheet"
-    />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/fontawesome.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/solid.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/brands.min.css" />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Sora:wght@100..800&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Sora:wght@100..800&display=swap" /></noscript>
 
     <script type="application/ld+json">
     {
@@ -101,7 +96,7 @@
             <button class="tab" data-cat="molhos" role="tab" aria-selected="false">Molhos &amp; Conservas</button>
           </div>
 
-          <span class="sr-only" role="status">A carregar produtos…</span>
+          <span class="sr-only" role="status">Carregando produtos…</span>
           <div class="product-grid product-grid--todos" id="productGrid">
                         <div class="card produto-card skeleton-card" aria-hidden="true">
               <div class="skeleton-block skeleton-img"></div>
@@ -243,7 +238,7 @@
       </div>
     </footer>
 
-    <script src="products.js"></script>
-    <script src="script.js"></script>
+    <script src="products.js" defer></script>
+    <script src="script.js" defer></script>
   </body>
 </html>
