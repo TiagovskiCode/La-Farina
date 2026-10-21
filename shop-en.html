@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Shop — La Farina</title>
+    <meta name="description" content="Artisan bread, focaccias, fresh pasta and preserves from La Farina. Choose, add to your cart and order on WhatsApp." />
+        <link rel="canonical" href="https://www.lafarina.tl/shop-en.html" />
+    <link rel="alternate" hreflang="pt-BR" href="https://www.lafarina.tl/shop.html" />
+    <link rel="alternate" hreflang="en" href="https://www.lafarina.tl/shop-en.html" />
+    <link rel="alternate" hreflang="x-default" href="https://www.lafarina.tl/shop.html" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Shop — La Farina" />
+    <meta property="og:description" content="Artisan bread, focaccias, fresh pasta and preserves. Choose, add to your cart and order on WhatsApp." />
+    <meta property="og:image" content="https://tiagovskicode.github.io/La-Farina/logo.png" />
+
+    <link rel="stylesheet" href="style.css" />
+        <link rel="icon" href="icons/favicon.ico" sizes="any" />
+    <link rel="icon" href="icons/icon-192.png" type="image/png" sizes="192x192" />
+    <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#13221A" />
+    <meta name="apple-mobile-web-app-title" content="La Farina" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Sora:wght@100..800&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Sora:wght@100..800&display=swap" /></noscript>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Bakery",
+      "name": "La Farina",
+      "image": "https://tiagovskicode.github.io/La-Farina/logo.png",
+      "url": "https://tiagovskicode.github.io/La-Farina/",
+      "telephone": "+670 7719 2888",
+      "priceRange": "$",
+      "servesCuisine": "Italian",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Dili",
+        "addressCountry": "TL"
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+        "opens": "08:00",
+        "closes": "18:00"
+      },
+      "sameAs": [
+        "https://www.instagram.com/lafarinatimor/"
+      ],
+      "description": "An independent social project that trains young Timorese people in artisan baking and fresh pasta, with bread, focaccias and fresh pasta in Dili, Timor-Leste."
+    }
+    </script>
+  </head>
+
+  <body>
+    <header class="header" id="topo">
+      <div class="header-container">
+        <button class="nav-toggle" id="navToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mainNav">
+          <span></span><span></span><span></span>
+        </button>
+        <div class="logo">
+          <a href="index-en.html"><img src="logo.png" alt="La Farina Logo" /></a>
+        </div>
+        <nav class="nav-bar" id="mainNav">
+          <a href="index-en.html"><i class="fas fa-house"></i>Home</a>
+          <a href="about-en.html"><i class="fas fa-circle-info"></i>About Us</a>
+          <a href="shop-en.html" class="active"><i class="fas fa-store"></i>Shop</a>
+          <a href="contact-en.html"><i class="fas fa-comment-dots"></i>Contact</a>
+          <a class="lang-switch" href="shop.html" hreflang="pt-BR" lang="pt-BR"><i class="fas fa-globe"></i>Português</a>
+        </nav>
+        <div class="header-actions">
+          <button class="order-button" id="abrirCarrinhoTopo" type="button">
+            Cart <span id="contadorTopo" class="contador-badge">0</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+            <section class="page-hero page-hero--shop">
+        <span class="hero-badge">The Shop</span>
+        <h1>Choose, add, order</h1>
+        <p>Everything handmade, on the day. Add your favourites to the cart and check out on WhatsApp.</p>
+      </section>
+
+            <section class="loja">
+        <div class="loja-inner">
+
+          <div class="tabs" id="tabs" role="tablist" aria-label="Product categories">
+            <button class="tab active" data-cat="todos" role="tab" aria-selected="true">All</button>
+            <button class="tab" data-cat="pao" role="tab" aria-selected="false">Bread</button>
+            <button class="tab" data-cat="focaccia" role="tab" aria-selected="false">Focaccias</button>
+            <button class="tab" data-cat="massas" role="tab" aria-selected="false">Fresh Pasta</button>
+            <button class="tab" data-cat="molhos" role="tab" aria-selected="false">Sauces &amp; Preserves</button>
+          </div>
+
+          <span class="sr-only" role="status">Loading products…</span>
+          <div class="product-grid product-grid--todos" id="productGrid">
+                        <div class="card produto-card skeleton-card" aria-hidden="true">
+              <div class="skeleton-block skeleton-img"></div>
+              <div class="card-top">
+                <div class="skeleton-block skeleton-line skeleton-line--name"></div>
+                <div class="skeleton-block skeleton-line skeleton-line--price"></div>
+              </div>
+              <div class="skeleton-block skeleton-line skeleton-line--desc"></div>
+              <div class="skeleton-block skeleton-line skeleton-line--desc-short"></div>
+              <div class="skeleton-block skeleton-btn"></div>
+            </div>
+            <div class="card produto-card skeleton-card" aria-hidden="true">
+              <div class="skeleton-block skeleton-img"></div>
+              <div class="card-top">
+                <div class="skeleton-block skeleton-line skeleton-line--name"></div>
+                <div class="skeleton-block skeleton-line skeleton-line--price"></div>
+              </div>
+              <div class="skeleton-block skeleton-line skeleton-line--desc"></div>
+              <div class="skeleton-block skeleton-line skeleton-line--desc-short"></div>
+              <div class="skeleton-block skeleton-btn"></div>
+            </div>
+            <div class="card produto-card skeleton-card" aria-hidden="true">
+              <div class="skeleton-block skeleton-img"></div>
+              <div class="card-top">
+                <div class="skeleton-block skeleton-line skeleton-line--name"></div>
+                <div class="skeleton-block skeleton-line skeleton-line--price"></div>
+              </div>
+              <div class="skeleton-block skeleton-line skeleton-line--desc"></div>
+              <div class="skeleton-block skeleton-line skeleton-line--desc-short"></div>
+              <div class="skeleton-block skeleton-btn"></div>
+            </div>
+            <div class="card produto-card skeleton-card" aria-hidden="true">
+              <div class="skeleton-block skeleton-img"></div>
+              <div class="card-top">
+                <div class="skeleton-block skeleton-line skeleton-line--name"></div>
+                <div class="skeleton-block skeleton-line skeleton-line--price"></div>
+              </div>
+              <div class="skeleton-block skeleton-line skeleton-line--desc"></div>
+              <div class="skeleton-block skeleton-line skeleton-line--desc-short"></div>
+              <div class="skeleton-block skeleton-btn"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+            <div class="cart-bar" id="cartBar">
+        <div class="cart-bar-row">
+          <span id="cartSummary">0 items</span>
+          <button class="button button--sm" id="cartAbrirBtn" type="button" style="width:auto;">View cart</button>
+        </div>
+      </div>
+    </main>
+
+        <div class="cart-overlay" id="cartOverlay"></div>
+    <aside class="cart-panel" id="cartPanel" aria-label="Shopping cart">
+      <div class="cart-panel-header">
+        <h2>Your cart</h2>
+        <button class="cart-fechar" id="cartFecharBtn" aria-label="Close cart" type="button">&times;</button>
+      </div>
+
+      <div class="cart-panel-lista" id="cartLista">
+        <p class="cart-vazio" id="cartVazioMsg">Your cart is empty. Head to the shop and add your favourites!</p>
+      </div>
+
+            <div class="cart-recomendacoes" id="cartRecomendacoes"></div>
+
+      <div class="cart-panel-footer">
+        <div class="cart-total-row">
+          <span>Total</span>
+          <span id="cartTotal">$0</span>
+        </div>
+        <button class="button button--accent" id="cartCheckout" type="button" style="width:100%; justify-content:center;">
+          Checkout on WhatsApp
+        </button>
+      </div>
+    </aside>
+
+    <footer class="main-footer">
+
+      <div class="footer-content">
+        <div class="footer-brand">
+          <div class="brand-header">
+            <img src="logo.png" alt="La Farina Logo" class="brand-logo" loading="lazy" />
+            <div class="brand-name-block">
+              <span class="brand-name">La Farina</span>
+              <span class="brand-location">Dili, Timor-Leste</span>
+            </div>
+          </div>
+
+          <p class="brand-description">
+            An independent social project that trains young Timorese people in artisan baking and fresh pasta.
+          </p>
+
+          <div class="social-icons">
+            <a href="https://wa.me/67077192888" class="social-icon whatsapp" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://www.instagram.com/lafarinatimor/" class="social-icon instagram" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-links-col">
+          <h3>Navigation</h3>
+          <ul>
+            <li><a href="index-en.html">Home</a></li>
+            <li><a href="about-en.html">About us</a></li>
+            <li><a href="shop-en.html">Shop</a></li>
+            <li><a href="contact-en.html">Contact</a></li>
+            <li><a href="privacy-en.html">Privacy Policy</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links-col">
+          <h3>Contact</h3>
+          <ul>
+            <li><a href="tel:+67077192888">+670 7719 2888</a></li>
+            <li><a href="https://wa.me/67077192888" target="_blank" rel="noopener">Order on WhatsApp</a></li>
+            <li><a href="https://www.instagram.com/lafarinatimor/" target="_blank" rel="noopener">@lafarinatimor</a></li>
+            <li>Dili, Timor-Leste</li>
+          </ul>
+        </div>
+
+        <div class="footer-links-col">
+          <h3>Hours</h3>
+          <ul>
+            <li>Monday to Saturday</li>
+            <li>8 am &ndash; 6 pm</li>
+            <li>Orders via WhatsApp</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-bottom-content">
+          <p>&copy; 2026 La Farina. All rights reserved.</p>
+          <p>Developed by Tiago Teixeira</p>
+          <a href="#topo" class="voltar-topo">Back to top ↑</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="products.js" defer></script>
+    <script src="script.js" defer></script>
+  </body>
+</html>
