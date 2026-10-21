@@ -5,6 +5,7 @@
      - mudar o nome ou a descrição de um produto
      - adicionar ou remover um produto
      - trocar a foto de um produto
+     - traduzir um produto para inglês (bloco PRODUCTS_EN, no fim do ficheiro)
 
    NÃO precisas de mexer no script.js — ele lê os dados que estão
    aqui automaticamente.
@@ -125,3 +126,44 @@ const PRODUCTS = {
 Object.entries(PRODUCTS).forEach(([cat, lista]) => {
   lista.forEach(p => { p.categoria = cat; });
 });
+
+const PRODUCTS_EN = {
+  'pao-chorizo': { name: 'Chorizo Bread', desc: 'Artisan dough filled with chorizo.' },
+  'pao-parmesan': { name: 'Parmesan Bread', desc: 'Golden crust, soft crumb, parmesan.' },
+  'pao-blue': { name: 'Blue Cheese Bread', desc: 'Bold blue cheese flavour.' },
+  'pao-ciabatta': { name: 'Ciabatta', desc: 'Classic: crisp outside, airy inside.' },
+  'pao-multigrain': { name: 'Multigrain Bread', desc: 'A blend of grains, dense and nutritious texture.', badge: 'Best seller' },
+  'cinnamon-roll': { name: 'Cinnamon Roll', desc: 'Individual cinnamon roll.' },
+  'soft-rolls': { name: 'Soft Rolls (8 pcs)', desc: 'Pack of 8, perfect for everyday.' },
+  'foc-herb': { name: 'Herb Focaccia', desc: 'Olive oil, fresh herbs and flaky sea salt.' },
+  'foc-rosolive': { name: 'Rosemary & Olive Focaccia', desc: 'Fresh rosemary and whole olives.' },
+  'foc-tompesto': { name: 'Tomato & Pesto Focaccia', desc: 'Ripe tomato and homemade pesto.' },
+  'foc-chorolive': { name: 'Chorizo & Olive Focaccia', desc: 'Sliced chorizo with olives.' },
+  'foc-bluewalnut': { name: 'Blue Cheese & Walnut Focaccia', desc: 'Blue cheese with toasted walnuts.' },
+  'sf-choc': { name: 'Sweet Chocolate Focaccia', desc: 'Fluffy dough with chocolate chunks.' },
+  'sf-bancin': { name: 'Sweet Banana & Cinnamon Focaccia', desc: 'Caramelised banana and cinnamon.' },
+  'sf-bannut': { name: 'Sweet Banana & Nutella Focaccia', desc: 'Banana with melted Nutella.' },
+  'sf-applecin': { name: 'Sweet Apple & Cinnamon Focaccia', desc: 'Sautéed apple with cinnamon.' },
+  'pasta-small': { name: 'Small Artisan Pasta (500g)', desc: 'Spiral and shell shapes.' },
+  'pasta-fettuccine': { name: 'Fettuccine (500g)', desc: 'Flavours: lemon, beetroot, spinach or plain.' },
+  'gnocchi-trad': { name: 'Traditional Gnocchi (500g)', desc: 'Pre-cooked, ready to sauté.' },
+  'gnocchi-cheese': { name: 'Cheese-Filled Gnocchi (500g)', desc: 'Pre-cooked, creamy cheese filling.' },
+  'lasagne-beef': { name: 'Beef Lasagna (1.7kg)', desc: 'Fresh ingredients, ready for the oven.' },
+  'lasagne-veg': { name: 'Vegetarian Lasagna (1.7kg)', desc: 'Fresh ingredients, ready for the oven.' },
+  'garlic-confit': { name: 'Garlic Confit', desc: 'Garlic slowly confited in olive oil.' },
+  'chimichurri': { name: 'Chimichurri', desc: 'Fresh sauce of herbs, garlic and vinegar.' },
+  'caponata': { name: 'Eggplant Caponata', desc: 'Sweet-and-sour eggplant, Sicilian style.' },
+  'peperonata': { name: 'Peperonata', desc: 'Peppers sautéed in olive oil and herbs.' },
+  'tomato-sauce-s': { name: 'Tomato Sauce', desc: 'Traditional tomato sauce, a base for pasta.' },
+  'brazil-chilli': { name: 'Brazilian Chilli Sauce', desc: 'Chilli sauce with a Brazilian twist.' },
+  'plum-merlot': { name: 'Plum & Merlot Preserve', desc: 'Rich plum preserve reduced in Merlot.' },
+  'pineapple-ginger': { name: 'Pineapple & Ginger Preserve', desc: 'Sweet and spicy, great with cheese.' },
+  'mango-passion': { name: 'Mango & Passion Fruit Preserve', desc: 'Tropical flavour of mango and passion fruit.' },
+  'chili-jam': { name: 'Chilli Jam', desc: 'Sweet-and-sour jam with chilli.' },
+  'tangerine-jam': { name: 'Tangerine Preserve', desc: 'Citrusy tangerine preserve.' },
+  'tomato-sauce-600': { name: 'Tomato Sauce (600g)', desc: 'A 600g jar, ideal for the week.' },
+  'bolognese-600': { name: 'Bolognese Sauce (600g)', desc: 'Rich meat sauce, 600g jar.' },
+  'white-sauce-600': { name: 'White Sauce (600g)', desc: 'Creamy white sauce, 600g jar.' },
+  'cassava-powder': { name: 'Cassava Flour (400g)', desc: 'Toasted flour, a local product.' },
+  'potato-sticks': { name: 'Potato Sticks (200g)', desc: 'Crunchy, great as a side.' },
+};

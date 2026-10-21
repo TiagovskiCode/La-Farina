@@ -1,5 +1,56 @@
 const WHATSAPP_NUMBER = '67077192888';
 
+const LANG = document.documentElement.lang.startsWith('en') ? 'en' : 'pt';
+
+const TEXTOS = {
+  pt: {
+    add: 'Adicionar',
+    item: 'item',
+    items: 'itens',
+    cartEmpty: 'O seu carrinho está vazio. Vá à loja e adicione os seus favoritos!',
+    pairings: 'Acompanhamentos perfeitos',
+    decrease: 'Diminuir',
+    increase: 'Aumentar',
+    labelDecrease: nome => `Diminuir quantidade de ${nome}`,
+    labelIncrease: nome => `Aumentar quantidade de ${nome}`,
+    labelAddToCart: nome => `Adicionar ${nome} ao carrinho`,
+    orderIntro: 'Olá! Gostaria de fazer uma encomenda na La Farina:',
+    total: 'Total',
+  },
+  en: {
+    add: 'Add',
+    item: 'item',
+    items: 'items',
+    cartEmpty: 'Your cart is empty. Head to the shop and add your favourites!',
+    pairings: 'Perfect pairings',
+    decrease: 'Decrease',
+    increase: 'Increase',
+    labelDecrease: nome => `Decrease quantity of ${nome}`,
+    labelIncrease: nome => `Increase quantity of ${nome}`,
+    labelAddToCart: nome => `Add ${nome} to cart`,
+    orderIntro: 'Hello! I would like to place an order at La Farina:',
+    total: 'Total',
+  },
+};
+const T = TEXTOS[LANG];
+
+function traducaoProduto(p){
+  if (LANG !== 'en' || typeof PRODUCTS_EN === 'undefined') return null;
+  return PRODUCTS_EN[p.id] || null;
+}
+function nomeProduto(p){
+  const t = traducaoProduto(p);
+  return t && t.name ? t.name : p.name;
+}
+function descProduto(p){
+  const t = traducaoProduto(p);
+  return t && t.desc ? t.desc : (p.desc || '');
+}
+function badgeProduto(p){
+  const t = traducaoProduto(p);
+  return t && t.badge ? t.badge : p.badge;
+}
+
 function abrirWhatsApp(mensagem){
   const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(mensagem)}`;
   const janela = window.open(url, '_blank', 'noopener');
@@ -42,13 +93,13 @@ const tabs = document.querySelectorAll('.tab');
 function criarCardHTML(p, i){
   return `
     <article class="card produto-card" style="animation-delay:${i * 0.04}s">
-      ${p.badge ? `<span class="badge">${p.badge}</span>` : ''}
-      <img src="${p.img}" alt="${p.name}" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==';">
+      ${p.badge ? `<span class="badge">${badgeProduto(p)}</span>` : ''}
+      <img src="${p.img}" alt="${nomeProduto(p)}" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==';">
       <div class="card-top">
-        <h3 class="card-name">${p.name}</h3>
+        <h3 class="card-name">${nomeProduto(p)}</h3>
         <span class="card-price">${money(p.price)}</span>
       </div>
-      <p class="card-desc">${p.desc || ''}</p>
+      <p class="card-desc">${descProduto(p)}</p>
       ${criarAreaProdutoHTML(p)}
     </article>
   `;
@@ -69,16 +120,16 @@ function criarControloHTML(p){
   if (qty > 0){
     return `
       <div class="produto-controlo produto-controlo--ativo" data-id="${chave}">
-        <button class="produto-qty-btn" data-id="${chave}" data-delta="-1" type="button" aria-label="Diminuir quantidade de ${p.name}">−</button>
+        <button class="produto-qty-btn" data-id="${chave}" data-delta="-1" type="button" aria-label="${T.labelDecrease(nomeProduto(p))}">−</button>
         <span class="produto-qty-valor">${qty}</span>
-        <button class="produto-qty-btn" data-id="${chave}" data-delta="1" type="button" aria-label="Aumentar quantidade de ${p.name}">+</button>
+        <button class="produto-qty-btn" data-id="${chave}" data-delta="1" type="button" aria-label="${T.labelIncrease(nomeProduto(p))}">+</button>
       </div>
     `;
   }
 
   return `
     <div class="produto-controlo" data-id="${chave}">
-      <button class="button button--sm produto-add" data-id="${chave}" type="button">Adicionar</button>
+      <button class="button button--sm produto-add" data-id="${chave}" type="button">${T.add}</button>
     </div>
   `;
 }
@@ -185,7 +236,7 @@ function atualizarInterfaceCarrinho(){
   const cartSummary = document.getElementById('cartSummary');
   if (cartBar && cartSummary){
     if (items > 0){
-      cartSummary.textContent = `${items} ${items === 1 ? 'item' : 'itens'} · ${money(preco)}`;
+      cartSummary.textContent = `${items} ${items === 1 ? T.item : T.items} · ${money(preco)}`;
       cartBar.classList.add('visible');
     } else {
       cartBar.classList.remove('visible');
@@ -207,7 +258,7 @@ function renderizarListaCarrinho(){
 
   const entries = Object.entries(cart);
   if (entries.length === 0){
-    lista.innerHTML = '<p class="cart-vazio">O seu carrinho está vazio. Vá à loja e adicione os seus favoritos!</p>';
+    lista.innerHTML = `<p class="cart-vazio">${T.cartEmpty}</p>`;
     return;
   }
 
@@ -217,13 +268,13 @@ function renderizarListaCarrinho(){
     return `
       <div class="cart-item">
         <div class="cart-item-info">
-          <span class="cart-item-nome">${p.name}</span>
+          <span class="cart-item-nome">${nomeProduto(p)}</span>
           <span class="cart-item-preco">${money(p.price)}</span>
         </div>
         <div class="cart-item-qty">
-          <button class="qty-btn" data-id="${id}" data-delta="-1" type="button" aria-label="Diminuir">−</button>
+          <button class="qty-btn" data-id="${id}" data-delta="-1" type="button" aria-label="${T.decrease}">−</button>
           <span>${qty}</span>
-          <button class="qty-btn" data-id="${id}" data-delta="1" type="button" aria-label="Aumentar">+</button>
+          <button class="qty-btn" data-id="${id}" data-delta="1" type="button" aria-label="${T.increase}">+</button>
         </div>
       </div>
     `;
@@ -297,16 +348,16 @@ function renderizarRecomendacoes(){
 
   bloco.classList.add('visible');
   bloco.innerHTML = `
-    <h3 class="cart-recomendacoes-titulo">Acompanhamentos perfeitos</h3>
+    <h3 class="cart-recomendacoes-titulo">${T.pairings}</h3>
     <div class="cart-recomendacoes-lista">
       ${recomendados.map(p => `
         <div class="recomendacao-item">
-          <img src="${p.img}" alt="${p.name}" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==';">
+          <img src="${p.img}" alt="${nomeProduto(p)}" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==';">
           <div class="recomendacao-info">
-            <span class="recomendacao-nome">${p.name}</span>
+            <span class="recomendacao-nome">${nomeProduto(p)}</span>
             <span class="recomendacao-preco">${money(p.price)}</span>
           </div>
-          <button class="recomendacao-add" data-id="${p.id}" type="button" aria-label="Adicionar ${p.name} ao carrinho">+</button>
+          <button class="recomendacao-add" data-id="${p.id}" type="button" aria-label="${T.labelAddToCart(nomeProduto(p))}">+</button>
         </div>
       `).join('')}
     </div>
@@ -347,15 +398,15 @@ document.getElementById('cartCheckout')?.addEventListener('click', () => {
 
   const linhas = entries.map(([id, qty]) => {
     const p = encontrarProduto(id);
-    return p ? `• ${qty}x ${p.name} — ${money(p.price * qty)}` : '';
+    return p ? `• ${qty}x ${nomeProduto(p)} — ${money(p.price * qty)}` : '';
   });
 
   const mensagem = [
-    'Olá! Gostaria de fazer uma encomenda na La Farina:',
+    T.orderIntro,
     '',
     ...linhas,
     '',
-    `Total: ${money(totalPreco())}`,
+    `${T.total}: ${money(totalPreco())}`,
   ].join('\n');
 
   abrirWhatsApp(mensagem);
